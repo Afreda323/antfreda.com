@@ -3,7 +3,7 @@ import Timeline from '../components/Timeline'
 
 function Exp() {
   return (
-    <div>
+    <div id="exp">
       <Timeline />
     </div>
   )

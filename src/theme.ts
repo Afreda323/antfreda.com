@@ -27,6 +27,7 @@ export interface Theme {
       light: string
       main: string
       dark: string
+      highlight: string
     }
   }
   breakpoints?: {

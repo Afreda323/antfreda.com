@@ -1,0 +1,38 @@
+import styled from 'styled-components'
+import get from 'lodash/get'
+import { Theme } from '../theme'
+
+interface Props {
+  theme: Theme
+}
+
+export default styled.button`
+  background-color: transparent;
+  line-height: 1;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 13px;
+  border-radius: 2px;
+  padding: 12px 17px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+
+  ${({ theme }: Props) => `
+    border: 1px solid ${get(
+      theme,
+      'palette.text.highlight',
+      'rgb(100, 255, 218)'
+    )};
+    color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218);')};
+  `}
+
+  :hover {
+    ${({ theme }: Props) => `
+    background-color: ${get(
+      theme,
+      'palette.background.highlight',
+      'rgba(100, 255, 218, .1)'
+    )};
+  `}
+  }
+`
