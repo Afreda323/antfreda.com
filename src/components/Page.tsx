@@ -18,7 +18,7 @@ const Page = styled.div.attrs({
   ${({ theme }: Props) => `
     background-color: ${get(
       theme,
-      'palette.background.dark',
+      'palette.background.main',
       'rgba(37, 41, 68, 0.99)'
     )};
     color: ${get(theme, 'palette.text.main', 'rgb(189, 201, 234)')};

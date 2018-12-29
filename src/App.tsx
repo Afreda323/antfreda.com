@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import { ThemeProvider } from 'styled-components'
-
-import theme from './theme'
 
 import withNavbar from './hoc/withNavbar'
 
@@ -17,7 +14,6 @@ import Footer from './sections/Footer'
 class App extends Component {
   render() {
     return (
-      <ThemeProvider theme={theme}>
         <Page>
           <Header />
           <About />
@@ -26,7 +22,6 @@ class App extends Component {
           <Contact />
           <Footer />
         </Page>
-      </ThemeProvider>
     )
   }
 }

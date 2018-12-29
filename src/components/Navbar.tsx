@@ -13,6 +13,9 @@ class Navbar extends React.Component<{}, State> {
     isOpen: false
   }
 
+  componentDidMount() {
+      console.log(this.props)
+  }
   /**
    * Toggle the menu boolean in state
    * @param bool - The value to change the isOpen value to
@@ -110,7 +113,7 @@ const Wrapper = styled.div<WrapperProps>`
     background-color: ${get(
       theme,
       'palette.background.dark',
-      'rgba(30, 33, 56, 0.99)'
+      'rgba(21, 23, 39, 0.99)'
     )};
     color: ${get(theme, 'palette.text.main', 'rgb(189, 201, 234)')};
   `}

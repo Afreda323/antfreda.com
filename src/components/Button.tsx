@@ -23,7 +23,7 @@ export default styled.button`
       'palette.text.highlight',
       'rgb(100, 255, 218)'
     )};
-    color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218);')};
+    color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
   `}
 
   :hover {
