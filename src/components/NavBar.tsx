@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import ResumeLink from './ResumeLink'
 import { Theme } from '../theme'
-import Button from './Button'
 
 interface State {
   isOpen: boolean
