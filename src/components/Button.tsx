@@ -15,7 +15,7 @@ export default styled.button`
   border-radius: 2px;
   padding: 12px 17px;
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, box-shadow .2s;;
 
   ${({ theme }: Props) => `
     border: 1px solid ${get(
@@ -34,5 +34,7 @@ export default styled.button`
       'rgba(100, 255, 218, .1)'
     )};
   `}
+
+    box-shadow: rgba(2, 12, 27, 0.9) 0px 2px 4px;
   }
 `
