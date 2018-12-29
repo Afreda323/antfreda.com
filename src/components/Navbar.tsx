@@ -12,10 +12,7 @@ class Navbar extends React.Component<{}, State> {
   state = {
     isOpen: false
   }
-
-  componentDidMount() {
-      console.log(this.props)
-  }
+  
   /**
    * Toggle the menu boolean in state
    * @param bool - The value to change the isOpen value to
@@ -33,11 +30,12 @@ class Navbar extends React.Component<{}, State> {
         </MenuButton>
         <Logo href="#top">_AFreda</Logo>
         <LinksWrap>
-          <Link href="#about">Top</Link>
           <Link href="#about">About</Link>
           <Link href="#exp">Experience</Link>
           <Link href="#work">Work</Link>
-          <Link href="#contact">Contact</Link>
+          <Link style={{ marginRight: 10 }} href="#contact">
+            Contact
+          </Link>
           <Spacer />
           <ResumeLink />
         </LinksWrap>
@@ -156,7 +154,8 @@ const Logo = styled.a`
   `}
   ${({ theme }: { theme: Theme }) => `
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
-            display: none;
+            width: 100%;
+            padding: 20px; 
         }
     `}
 `

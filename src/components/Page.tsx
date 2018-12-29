@@ -14,7 +14,6 @@ const Page = styled.div.attrs({
   width: 100vw;
   max-height: 100vh;
   overflow: auto;
-  padding-top: 100px;
   ${({ theme }: Props) => `
     background-color: ${get(
       theme,

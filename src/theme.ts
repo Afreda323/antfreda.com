@@ -57,7 +57,7 @@ const theme: Theme = {
       dark: 'string'
     },
     text: {
-      light: 'string',
+      light: 'rgb(230, 241, 255)',
       main: 'rgb(189, 201, 234)',
       dark: 'string',
       highlight: 'rgb(100, 255, 218)'

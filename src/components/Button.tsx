@@ -10,7 +10,6 @@ export default styled.button`
   background-color: transparent;
   line-height: 1;
   cursor: pointer;
-  margin-left: 10px;
   font-size: 13px;
   border-radius: 2px;
   padding: 12px 17px;
