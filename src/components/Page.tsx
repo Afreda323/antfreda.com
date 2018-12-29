@@ -10,9 +10,8 @@ const Page = styled.div.attrs({
   className: 'page'
 })`
   padding: 20px;
-  height: 100vh;
   width: 100vw;
-  max-height: 100vh;
+  min-height: 100vh;
   overflow: auto;
   ${({ theme }: Props) => `
     background-color: ${get(
