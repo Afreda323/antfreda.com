@@ -64,6 +64,9 @@ const Wrapper = styled.div`
       'palette.background.dark',
       'rgba(37, 41, 68, 0.99)'
     )};
+    @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
+      padding: 150px 15px 150px;
+    }
   `}
 `
 const Inner = styled.div`

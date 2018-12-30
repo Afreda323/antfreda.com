@@ -73,6 +73,9 @@ const Wrapper = styled.div`
   justify-content: center;
   ${({ theme }: { theme: Theme }) => `
     background: ${get(theme, 'palette.gradients.linear', '')};
+    @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
+      padding: 100px 15px 100px;
+  }
   `}
 `
 

@@ -62,7 +62,7 @@ const Wrapper = styled.div`
             padding: 200px 120px 200px;
         }
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
-            padding: 200px 30px 200px;
+            padding: 200px 15px 200px;
             min-height: 300px;
             background: ${get(theme, 'palette.gradients.linear', '')};
         }

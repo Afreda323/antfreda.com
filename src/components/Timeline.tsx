@@ -116,6 +116,7 @@ const Companies = styled.div`
     @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
         display: flex;
         justify-content: stretch;
+        align-items: center;
         border-right: none;
         border-bottom: 1px solid ${get(
           theme,
@@ -161,9 +162,14 @@ const Company = styled.div`
         )};
       }
        @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
-            flex: 1;
-            text-align: center;
-            padding: 20px 10px;
+          flex: 1;
+          text-align: center;
+          align-items: center;
+          display: flex;
+          align-self: stretch;
+          justify-content: center;
+          padding: 20px 2vw;
+          font-size: 13px;
         }
     `}
 `
