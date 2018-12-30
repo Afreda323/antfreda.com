@@ -64,8 +64,8 @@ const theme: Theme = {
     },
     background: {
       light: 'string',
-      main: 'rgba(27, 30, 53, 0.99)',
-      dark: 'rgba(21, 23, 39, 0.99)',
+      main: 'rgba(21, 23, 39, 0.99)',
+      dark: 'rgba(14, 16, 27, 0.99)',
       highlight: 'rgba(100, 255, 218, .1)'
     }
   },

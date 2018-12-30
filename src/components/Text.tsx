@@ -8,6 +8,7 @@ interface Props {
 
 export const H1 = styled.h1`
   font-size: 80px;
+  font-weight: 700;
   ${({ theme }: Props) => `
     color: ${get(theme, 'palette.text.light', 'rgb(100, 255, 218)')};
     > span {
@@ -24,16 +25,18 @@ export const H1 = styled.h1`
     ${({ theme }: Props) => `
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
             font-size: 40px;
+            margin-bottom: 7px;
         }
     `}
     
 `
 
 export const H2 = styled.h2`
-font-size: 60px;
+    font-size: 60px;
   ${({ theme }: Props) => `
     color: ${get(theme, 'palette.text.main', 'rgb(100, 255, 218)')};
-    > span {
+    > a {
+        text-decoration: none;
         color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
     }
   `}
@@ -55,7 +58,9 @@ export const H3 = styled.h3``
 
 export const H4 = styled.h4``
 
-export const P = styled.p``
+export const P = styled.p`
+  line-height: 1.6;
+`
 
 export const Ul = styled.ul``
 

@@ -12,7 +12,7 @@ class Navbar extends React.Component<{}, State> {
   state = {
     isOpen: false
   }
-  
+
   /**
    * Toggle the menu boolean in state
    * @param bool - The value to change the isOpen value to
@@ -89,6 +89,11 @@ const MenuButton = styled.button`
   ${({ theme }: { theme: Theme }) => `
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
           display: inline-block;
+          background-color: ${get(
+            theme,
+            'palette.background.main',
+            'rgba(100, 255, 218, .1)'
+          )};
         }
     `}
 `
@@ -119,7 +124,7 @@ const Wrapper = styled.div<WrapperProps>`
   ${({ theme, isActive }: WrapperProps) => `
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
             right: 0;
-            width: auto;
+            width: 250px;
             max-width: 100%;
             flex-direction: column;
             justify-content: flex-start;
@@ -150,7 +155,7 @@ const Logo = styled.a`
   text-decoration: none;
   font-family: 'Courier New', Courier, monospace !important;
   ${({ theme }: { theme: Theme }) => `
-      color: ${get(theme, 'palette.text.highlight', 'rgb(87, 220, 204);')};
+      color: ${get(theme, 'palette.text.highlight', 'rgb(87, 220, 204)')};
   `}
   ${({ theme }: { theme: Theme }) => `
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
@@ -178,7 +183,7 @@ const Link = styled.a`
   cursor: pointer;
   text-decoration: none;
   padding: 12px 10px;
-  transition: color 0.2s;
+  transition: color 0.2s, background-color .2s;
 
   &:hover {
     ${({ theme }: { theme: Theme }) => `
@@ -191,6 +196,9 @@ const Link = styled.a`
           font-size: 20px;
           width: 100%;
           padding: 12px 60px 12px 20px;
+          &:hover {
+            background-color: ${get(theme, 'palette.background.highlight', 'rgb(87, 220, 204);')}
+          }
         }
     `}
 `
