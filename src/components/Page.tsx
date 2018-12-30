@@ -9,10 +9,8 @@ interface Props {
 const Page = styled.div.attrs({
   className: 'page'
 })`
-  padding: 20px;
   width: 100vw;
   min-height: 100vh;
-  overflow: auto;
   ${({ theme }: Props) => `
     background-color: ${get(
       theme,
@@ -20,9 +18,6 @@ const Page = styled.div.attrs({
       'rgba(37, 41, 68, 0.99)'
     )};
     color: ${get(theme, 'palette.text.main', 'rgb(189, 201, 234)')};
-    @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
-        padding-top: 50px;
-    }
   `}
 `
 

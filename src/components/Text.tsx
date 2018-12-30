@@ -43,7 +43,7 @@ export const H2 = styled.h2`
 
   ${({ theme }: Props) => `
         @media (max-width: ${get(theme, 'breakpoints.medium', '1000px')}) {
-            font-size: 40px;
+            font-size: 45px;
         }
     `}
 
@@ -60,6 +60,18 @@ export const H4 = styled.h4``
 
 export const P = styled.p`
   line-height: 1.6;
+  font-size: 20px;
+  ${({ theme }: Props) => `
+        @media (max-width: ${get(theme, 'breakpoints.medium', '1000px')}) {
+            font-size: 18px;
+        }
+    `}
+
+    ${({ theme }: Props) => `
+        @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
+            font-size: 16px;
+        }
+    `}
 `
 
 export const Ul = styled.ul``

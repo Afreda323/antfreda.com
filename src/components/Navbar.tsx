@@ -51,8 +51,8 @@ interface WrapperProps {
 
 const MenuButton = styled.button`
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   background-color: transparent;
   line-height: 1;
   cursor: pointer;
@@ -176,7 +176,7 @@ const Spacer = styled.div`
 `
 
 const Link = styled.a`
-  font-size: 13px;
+  font-size: 15px;
   display: inline-block;
   color: inherit;
   position: relative;
