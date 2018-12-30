@@ -34,6 +34,11 @@ export const H2 = styled.h2`
   `}
 `
 
+interface H3Props {
+  theme: Theme
+  block?: boolean
+}
+
 export const H3 = styled.h3`
   font-size: 50px;
   position: relative;
@@ -44,7 +49,7 @@ export const H3 = styled.h3`
   font-size: 30px;
   position: relative;
 
-  ${({ theme }: Props) => `
+  ${({ theme, block }: H3Props) => `
   color: ${get(theme, 'palette.text.main', 'rgb(100, 255, 218)')};
   :after {
     content: "";
@@ -59,6 +64,24 @@ export const H3 = styled.h3`
     position: relative;
     margin: 0 20px;
 }
+    ${block &&
+      `
+        justify-content: center
+        :before {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 300px;
+            background-color: ${get(
+              theme,
+              'palette.background.light',
+              'rgb(45, 57, 82)'
+            )};
+            position: relative;
+            margin: 0 20px;
+        }
+    `}
+
 `}
 
   ${({ theme }: Props) => `
@@ -93,12 +116,16 @@ export const Ul = styled.ul`
 `
 
 export const Li = styled.li`
+  line-height: 1.3;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
+  margin-right: 20px;
   padding-left: 20px;
   font-size: 15px;
-  width: 33%;
-  color: rgb(136, 146, 176);
+  width: calc(33% - 20px);
+  ${({ theme }: Props) => `
+      color: ${get(theme, 'palette.text.main', 'rgb(100, 255, 218)')};
+  `}
   :before {
     content: '»';
     position: absolute;
@@ -109,17 +136,21 @@ export const Li = styled.li`
       color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
   `}
   }
-  
+
   ${({ theme }: Props) => `
       @media (max-width: ${get(theme, 'breakpoints.medium', '1300px')}) {
-        width: 50%;
+        width: calc(50% - 20px);
     }
   `}
 `
 
 export const A = styled.a`
   text-decoration: none;
+  transition: opacity .2s;
   ${({ theme }: Props) => `
     color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
 `}
+  :hover {
+    opacity: 0.6;
+  }
 `
