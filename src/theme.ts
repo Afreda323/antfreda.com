@@ -1,3 +1,5 @@
+import get from 'lodash/get'
+
 export interface Theme {
   palette?: {
     white?: string
@@ -28,6 +30,10 @@ export interface Theme {
       main: string
       dark: string
       highlight: string
+    }
+    gradients: {
+      linear: string
+      radial: string
     }
   }
   breakpoints?: {
@@ -67,6 +73,20 @@ const theme: Theme = {
       main: 'rgba(21, 23, 39, 0.99)',
       dark: 'rgba(14, 16, 27, 0.99)',
       highlight: 'rgba(100, 255, 218, .1)'
+    },
+    gradients: {
+      radial: `radial-gradient(
+        ellipse at center, 
+        rgba(14, 16, 27, 0.99) 10%, 
+        rgba(21, 23, 39, 0.99) 50%, 
+        rgba(14, 16, 27, 0.99)
+      )`,
+      linear: `linear-gradient(
+        to top left, 
+        rgba(14, 16, 27, 0.99) 10%, 
+        rgba(21, 23, 39, 0.99) 50%, 
+        rgba(14, 16, 27, 0.99)
+      )`
     }
   },
   breakpoints: {

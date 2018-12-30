@@ -21,16 +21,17 @@ function Header() {
         <br />
         <PWrapper>
           <P>
-             Specialized in full stack{' '}
+            Specialized in full stack{' '}
             <A target="_blank" href="https://www.javascript.com/">
               Javascript
             </A>{' '}
             ,{' '}
             <A target="_blank" href="https://www.typescriptlang.org/">
               Typescript
-            </A> and all of their flavors.
-            . When not at work I like to spend some time trying to learn new
-            technologies. I'm currently getting deep in the land of{' '}
+            </A>{' '}
+            and all of their flavors. . When not at work I like to spend some
+            time trying to learn new technologies. I'm currently getting deep in
+            the land of{' '}
             <A target="_blank" href="https://golang.org/">
               Go
             </A>{' '}
@@ -56,21 +57,14 @@ const Wrapper = styled.div`
   display: flex;
   padding: 220px 220px 220px;
   ${({ theme }: { theme: Theme }) => `
-        background: radial-gradient(ellipse at center, ${get(
-          theme,
-          'palette.background.dark',
-          '700px'
-        )} 0%,${get(theme, 'palette.background.main', '700px')} 50%,${get(
-    theme,
-    'palette.background.dark',
-    '700px'
-  )} 100%);
+        background: ${get(theme, 'palette.gradients.radial', '')};
         @media (max-width: ${get(theme, 'breakpoints.medium', '1200px')}) {
-            padding: 220px 120px 220px;
+            padding: 200px 120px 200px;
         }
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
             padding: 200px 30px 200px;
             min-height: 300px;
+            background: ${get(theme, 'palette.gradients.linear', '')};
         }
     `}
 `
