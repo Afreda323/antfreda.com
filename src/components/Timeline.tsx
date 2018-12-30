@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 import get from 'lodash/get'
 import { H4, P, Ul, Li, A } from './Text'
 import { Theme } from '../theme'
@@ -49,11 +49,16 @@ class Timeline extends React.Component<Props, State> {
     ))
   }
 
-  getJob = () => {
-    const job = this.props.exp[this.state.activeIndex]
-    return (
-      <Summary>
-        <P style={{ lineHeight: 1.3 }}>
+  /**
+   * Render a job card for the selected index
+   */
+  getJobs = (): Array<JSX.Element> => {
+    return this.props.exp.map((job, i) => (
+      <Summary
+        key={`${job.company}-${job.title}-${i}`}
+        isActive={i === this.state.activeIndex}
+      >
+        <P style={{ lineHeight: 1.2 }}>
           {job.title}{' '}
           <A target="_blank" href={job.companyLink}>
             @{job.company}
@@ -70,14 +75,14 @@ class Timeline extends React.Component<Props, State> {
           ))}
         </Ul>
       </Summary>
-    )
+    ))
   }
 
   render() {
     return (
       <Wrapper>
         <Companies>{this.mapCompanies()}</Companies>
-        {this.getJob()}
+        <div>{this.getJobs()}</div>
       </Wrapper>
     )
   }
@@ -121,48 +126,78 @@ const Companies = styled.div`
   `}
 `
 
+const activeCompany = (theme: Theme) => `
+  opacity: 1;
+  pointer-events: all;
+  color: ${get(theme, 'palette.text.highlight', 'rgba(100, 255, 218, .1)')};
+  cursor: default;
+  background-color: ${get(
+    theme,
+    'palette.background.highlight',
+    'rgba(100, 255, 218, .1)'
+  )};
+`
+
 const Company = styled.div`
   padding: 20px 20px;
   font-size: 15px;
   width: 150px;
-  transition: background-color .2s, color .2s;
+  transition: background-color 0.2s, color 0.2s;
   cursor: pointer;
 
   ${({ theme, isActive }: { theme: Theme; isActive: boolean }) => `
       color: ${get(theme, 'palette.text.main', 'rgb(100, 255, 218)')};
-      ${isActive &&
-        `
+      ${isActive ? activeCompany(theme) : ''}
+      :hover {
+        background-color: ${get(
+          theme,
+          'palette.background.highlight',
+          'rgba(100, 255, 218, .1)'
+        )} !important;
         color: ${get(
           theme,
           'palette.text.highlight',
           'rgba(100, 255, 218, .1)'
         )};
-        background-color: ${get(
-          theme,
-          'palette.background.highlight',
-          'rgba(100, 255, 218, .1)'
-        )};`}
-
-      @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
-        flex: 1;
-        text-align: center;
-        padding: 20px 10px;
       }
-  `}
+       @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
+            flex: 1;
+            text-align: center;
+            padding: 20px 10px;
+        }
+    `}
+`
 
-  :hover {
-    ${({ theme }: { theme: Theme }) => `
-    background-color: ${get(
-      theme,
-      'palette.background.highlight',
-      'rgba(100, 255, 218, .1)'
-    )};
-    color: ${get(theme, 'palette.text.highlight', 'rgba(100, 255, 218, .1)')};
-  `}
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+`
+
+const activeSummary = css`
+  opacity: 1;
+  z-index: 2;
+  position: relative;
+  visibility: visible;
+`
+const inactiveSummary = css`
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+  visibility: hidden;
 `
 const Summary = styled.div`
   padding: 40px 20px;
-  ${({ theme }: { theme: Theme }) => `
+  transition: all 0.8s;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  ${({ theme, isActive }: { theme: Theme; isActive: boolean }) => `
+    ${isActive ? activeSummary : inactiveSummary}
     @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
         ul {
             display: block;

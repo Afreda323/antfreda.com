@@ -13,12 +13,13 @@ const JOBS: Array<Job> = [
     start: 'July 2017',
     end: 'Now',
     tasks: [
+      'Architected front end application scaffold/pipeline and UI component library using React and Typescript.',
       'Developed workflow automation web applications for internal Info-Security teams.',
       'Worked closely with costumers to gather requirements and ensure timely product delivery.',
-      'Architected front end application scaffold/pipeline and UI component library using React and Typescript.',
       'Led development of Mattermost(Enterprise slack alternative) integrations across multiple applications/processes.',
-      'Architected application state using React Context, Redux and ReduxSaga.',
-      'Developed Backend APIs using Express/Koa and MongoDB/mySQL'
+      'Architected/developed applications using React Context, Redux and Redux Saga.',
+      'Developed Backend APIs using Express/Koa and MongoDB/mySQL',
+      'Worked in an agile environment leveraging sprints, TDD, Gitflow.'
     ]
   },
   {
@@ -27,7 +28,15 @@ const JOBS: Array<Job> = [
     title: 'Web Developer',
     start: 'January 2017',
     end: 'July 2017',
-    tasks: []
+    tasks: [
+      'Created responsive websites using HTML5, CSS3, JavaScript and PHP.',
+      'Developed and maintained various projects using various',
+      'CMS including Custom CMS, Wordpress, Drupal and Joomla.',
+      'Worked with managers to create budget scopes for projects. ',
+      'Developed in-house web applications using ES6, Express and MongoDB.',
+      'Developed applications for client database visualization.',
+      'Developed job search React Native and Redux mobile application'
+    ]
   },
   {
     company: 'Freelance',
@@ -35,7 +44,12 @@ const JOBS: Array<Job> = [
     title: 'Web Developer',
     start: 'January 2015',
     end: 'January 2017',
-    tasks: []
+    tasks: [
+      'Led the development of client sites using HTML/CSS and JavaScript ',
+      'Developed web applications using React/Node.js stack. ',
+      'Developed mobile applications using React Native. ',
+      'Developed RESTful API’s using Express and MongoDB.'
+    ]
   }
 ]
 
