@@ -67,7 +67,7 @@ export const H3 = styled.h3`
       }
       @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
         font-size: 20px;
-    }
+      }
   `}
 `
 
@@ -107,11 +107,14 @@ export const Li = styled.li`
     line-height: 12px;
     ${({ theme }: Props) => `
       color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
+  `}
+  }
+  
+  ${({ theme }: Props) => `
       @media (max-width: ${get(theme, 'breakpoints.medium', '1300px')}) {
         width: 50%;
     }
   `}
-  }
 `
 
 export const A = styled.a`
