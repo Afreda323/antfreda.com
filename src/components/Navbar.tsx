@@ -30,11 +30,12 @@ class Navbar extends React.Component<{}, State> {
         </MenuButton>
         <Logo href="#top">_AFreda</Logo>
         <LinksWrap>
-          <Link href="#about">Top</Link>
           <Link href="#about">About</Link>
           <Link href="#exp">Experience</Link>
           <Link href="#work">Work</Link>
-          <Link href="#contact">Contact</Link>
+          <Link style={{ marginRight: 10 }} href="#contact">
+            Contact
+          </Link>
           <Spacer />
           <ResumeLink />
         </LinksWrap>
@@ -50,8 +51,8 @@ interface WrapperProps {
 
 const MenuButton = styled.button`
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   background-color: transparent;
   line-height: 1;
   cursor: pointer;
@@ -88,6 +89,11 @@ const MenuButton = styled.button`
   ${({ theme }: { theme: Theme }) => `
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
           display: inline-block;
+          background-color: ${get(
+            theme,
+            'palette.background.main',
+            'rgba(100, 255, 218, .1)'
+          )};
         }
     `}
 `
@@ -110,7 +116,7 @@ const Wrapper = styled.div<WrapperProps>`
     background-color: ${get(
       theme,
       'palette.background.dark',
-      'rgba(30, 33, 56, 0.99)'
+      'rgba(21, 23, 39, 0.99)'
     )};
     color: ${get(theme, 'palette.text.main', 'rgb(189, 201, 234)')};
   `}
@@ -118,7 +124,7 @@ const Wrapper = styled.div<WrapperProps>`
   ${({ theme, isActive }: WrapperProps) => `
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
             right: 0;
-            width: auto;
+            width: 250px;
             max-width: 100%;
             flex-direction: column;
             justify-content: flex-start;
@@ -149,11 +155,12 @@ const Logo = styled.a`
   text-decoration: none;
   font-family: 'Courier New', Courier, monospace !important;
   ${({ theme }: { theme: Theme }) => `
-      color: ${get(theme, 'palette.text.highlight', 'rgb(87, 220, 204);')};
+      color: ${get(theme, 'palette.text.highlight', 'rgb(87, 220, 204)')};
   `}
   ${({ theme }: { theme: Theme }) => `
         @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
-            display: none;
+            width: 100%;
+            padding: 20px; 
         }
     `}
 `
@@ -169,14 +176,14 @@ const Spacer = styled.div`
 `
 
 const Link = styled.a`
-  font-size: 13px;
+  font-size: 15px;
   display: inline-block;
   color: inherit;
   position: relative;
   cursor: pointer;
   text-decoration: none;
   padding: 12px 10px;
-  transition: color 0.2s;
+  transition: color 0.2s, background-color .2s;
 
   &:hover {
     ${({ theme }: { theme: Theme }) => `
@@ -189,6 +196,9 @@ const Link = styled.a`
           font-size: 20px;
           width: 100%;
           padding: 12px 60px 12px 20px;
+          &:hover {
+            background-color: ${get(theme, 'palette.background.highlight', 'rgb(87, 220, 204);')}
+          }
         }
     `}
 `

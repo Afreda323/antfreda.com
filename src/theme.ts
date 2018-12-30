@@ -1,3 +1,5 @@
+import get from 'lodash/get'
+
 export interface Theme {
   palette?: {
     white?: string
@@ -29,6 +31,10 @@ export interface Theme {
       dark: string
       highlight: string
     }
+    gradients: {
+      linear: string
+      radial: string
+    }
   }
   breakpoints?: {
     sm: string
@@ -37,6 +43,57 @@ export interface Theme {
   }
 }
 
-const theme: Theme = {}
+const theme: Theme = {
+  palette: {
+    white: '#fff',
+    black: '#000',
+    primary: {
+      light: 'string',
+      main: 'string',
+      dark: 'string'
+    },
+    secondary: {
+      light: 'string',
+      main: 'string',
+      dark: 'string'
+    },
+    error: {
+      light: 'string',
+      main: 'string',
+      dark: 'string'
+    },
+    text: {
+      light: 'rgb(230, 241, 255)',
+      main: 'rgb(143, 152, 177)',
+      dark: 'string',
+      highlight: 'rgb(100, 255, 218)'
+    },
+    background: {
+      light: 'rgb(45, 57, 82)',
+      main: 'rgba(21, 23, 39, 0.99)',
+      dark: 'rgba(14, 16, 27, 0.99)',
+      highlight: 'rgba(100, 255, 218, .1)'
+    },
+    gradients: {
+      radial: `radial-gradient(
+        ellipse at center, 
+        rgba(14, 16, 27, 0.99) 10%, 
+        rgba(21, 23, 39, 0.99) 50%, 
+        rgba(14, 16, 27, 0.99)
+      )`,
+      linear: `linear-gradient(
+        to top left, 
+        rgba(14, 16, 27, 0.99) 10%, 
+        rgba(21, 23, 39, 0.99) 50%, 
+        rgba(14, 16, 27, 0.99)
+      )`
+    }
+  },
+  breakpoints: {
+    sm: '1300px',
+    md: '1000px',
+    lg: '700px'
+  }
+}
 
 export default theme
