@@ -23,9 +23,9 @@ class Contact extends React.Component<{}, State> {
     success: false,
     errorMsg: '',
     form: {
-      name: 'fd',
-      email: 'abc@123.com',
-      message: 'fdf'
+      name: '',
+      email: '',
+      message: ''
     }
   }
 

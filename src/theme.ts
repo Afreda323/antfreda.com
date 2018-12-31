@@ -65,7 +65,7 @@ const theme: Theme = {
     },
     text: {
       light: 'rgb(230, 241, 255)',
-      main: 'rgb(143, 152, 177)',
+      main: 'rgb(165, 175, 202)',
       dark: 'rgb(75, 81, 97)',
       highlight: 'rgb(100, 255, 218)',
       error: 'rgb(251, 59, 59)'
