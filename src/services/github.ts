@@ -7,6 +7,9 @@ export interface Repo {
   homepage: string,
 }
 
+/**
+ * Fetch my profile from github
+ */
 export const fetchGithubProfile = async (): Promise<Array<Repo>> => {
   try {
     const res = await fetch(

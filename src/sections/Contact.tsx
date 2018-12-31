@@ -1,4 +1,3 @@
-// TODO: Implement Loader, submission logic
 import React from 'react'
 import styled from 'styled-components'
 import get from 'lodash/get'

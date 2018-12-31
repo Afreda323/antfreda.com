@@ -18,6 +18,10 @@ export interface Form {
   message: string
 }
 
+/**
+ * Submit form to lambda
+ * @param body - Form body
+ */
 export const submitContactForm = async (
   body: Form
 ): Promise<Array<Repo> | Error> => {

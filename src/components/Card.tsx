@@ -3,22 +3,42 @@ import styled from 'styled-components'
 import { GoLinkExternal, GoMarkGithub, GoFileCode } from 'react-icons/go'
 import { Theme } from '../theme'
 import get from 'lodash/get'
+import compose from 'lodash/fp/compose'
 import { Repo } from '../services/github'
 import { P, H4, A } from './Text'
+import { getColor } from '../services/langColor'
+
+/**
+ * Remove dashes from strings, replace with spaces
+ * @param str - string you want to alter
+ */
+const removeDashes = (str: string) => str.replace(/-/g, ' ')
+
+/**
+ * Add an ellipse to strings longer than 18 chars
+ * @param str - string you want to alter
+ */
+const addEllipse = (str: string) =>
+  str.length > 18 ? str.substr(0, 18) + '...' : str
 
 function Card({ repo }: { repo: Repo }) {
   return (
     <Wrapper>
       <div>
         <Top>
-          <GoFileCode />
+          <P title={repo.name} style={{ color: 'white' }}>
+            {compose(
+              addEllipse,
+              removeDashes
+            )(repo.name)}
+          </P>
           <Links>
             <A target="_blank" href={repo.html_url} title="Open Github">
               <GoMarkGithub />
             </A>
             {repo.homepage && (
               <A
-                style={{ marginLeft: 10 }}
+                style={{ marginLeft: 5 }}
                 target="_blank"
                 href={repo.homepage}
                 title="Open Website"
@@ -29,7 +49,6 @@ function Card({ repo }: { repo: Repo }) {
           </Links>
         </Top>
         <Middle>
-          <P style={{ color: 'white' }}>{repo.name}</P>
           <Desc>
             {repo.description || 'No description provided for this repo.'}
           </Desc>
@@ -38,7 +57,10 @@ function Card({ repo }: { repo: Repo }) {
 
       <Bottom>
         <H4>
-          Written in <Lang>{repo.language}</Lang>
+          Written in{' '}
+          <Lang style={{ color: getColor(repo.language) }}>
+            {repo.language}
+          </Lang>
         </H4>
       </Bottom>
     </Wrapper>
@@ -97,7 +119,7 @@ const Bottom = styled.div`
   padding: 20px 30px;
 `
 const Links = styled.div`
-  font-size: 30px;
+  font-size: 22px;
 `
 const Desc = styled.p`
   line-height: 1.3;
