@@ -185,7 +185,7 @@ const Link = styled.a`
   padding: 12px 10px;
   transition: color 0.2s, background-color .2s;
 
-  &:hover {
+  &:hover, &:focus {
     ${({ theme }: { theme: Theme }) => `
       color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
   `}

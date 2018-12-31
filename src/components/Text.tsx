@@ -58,7 +58,7 @@ export const H3 = styled.h3`
     width: 300px;
     background-color: ${get(
       theme,
-      'palette.background.light',
+      'palette.text.main',
       'rgb(45, 57, 82)'
     )};
     position: relative;
@@ -74,7 +74,7 @@ export const H3 = styled.h3`
             width: 300px;
             background-color: ${get(
               theme,
-              'palette.background.light',
+              'palette.text.main',
               'rgb(45, 57, 82)'
             )};
             position: relative;
@@ -152,7 +152,7 @@ export const A = styled.a.attrs({
   ${({ theme }: Props) => `
     color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
 `}
-  :hover {
+  :hover, :focus {
     opacity: 0.6;
   }
 `

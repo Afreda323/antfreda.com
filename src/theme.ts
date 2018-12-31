@@ -65,11 +65,11 @@ const theme: Theme = {
     text: {
       light: 'rgb(230, 241, 255)',
       main: 'rgb(143, 152, 177)',
-      dark: 'string',
+      dark: 'rgb(75, 81, 97)',
       highlight: 'rgb(100, 255, 218)'
     },
     background: {
-      light: 'rgb(45, 57, 82)',
+      light: 'rgb(26, 28, 45)',
       main: 'rgba(21, 23, 39, 0.99)',
       dark: 'rgba(14, 16, 27, 0.99)',
       highlight: 'rgba(100, 255, 218, .1)'

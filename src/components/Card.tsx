@@ -13,7 +13,7 @@ function Card({ repo }: { repo: Repo }) {
         <Top>
           <GoFileCode />
           <Links>
-            <A target="_blank" href={repo.html_url}>
+            <A target="_blank" href={repo.html_url} title="Open Github">
               <GoMarkGithub />
             </A>
             {repo.homepage && (
@@ -21,6 +21,7 @@ function Card({ repo }: { repo: Repo }) {
                 style={{ marginLeft: 10 }}
                 target="_blank"
                 href={repo.homepage}
+                title="Open Website"
               >
                 <GoLinkExternal />
               </A>
@@ -52,9 +53,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform .2s;
+  transition: transform 0.2s;
   :hover {
-      transform: translateY(-5px);
+    transform: translateY(-5px);
   }
 
   ${({ theme }: { theme: Theme }) => `
@@ -81,11 +82,11 @@ const Top = styled.div`
   padding: 20px;
 
   ${({ theme }: { theme: Theme }) => `
-  background: ${get(
-    theme,
-    'palette.gradients.linear',
-    'rgba(100, 255, 218, .1)'
-  )};
+    background: ${get(
+      theme,
+      'palette.gradients.linear',
+      'rgba(100, 255, 218, .1)'
+    )};
 `}
 `
 
