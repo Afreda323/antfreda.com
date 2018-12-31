@@ -24,6 +24,7 @@ export interface Theme {
       main: string
       dark: string
       highlight: string
+      error: string
     }
     background?: {
       light: string
@@ -66,7 +67,8 @@ const theme: Theme = {
       light: 'rgb(230, 241, 255)',
       main: 'rgb(143, 152, 177)',
       dark: 'rgb(75, 81, 97)',
-      highlight: 'rgb(100, 255, 218)'
+      highlight: 'rgb(100, 255, 218)',
+      error: 'rgb(251, 59, 59)'
     },
     background: {
       light: 'rgb(26, 28, 45)',

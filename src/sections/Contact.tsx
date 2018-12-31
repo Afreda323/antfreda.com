@@ -1,29 +1,27 @@
+// TODO: Implement Loader, submission logic
 import React from 'react'
 import styled from 'styled-components'
 import get from 'lodash/get'
-import { GoMail } from 'react-icons/go'
 import { Theme } from '../theme'
-import { submitContactForm } from '../services/contact'
-import { H3, P, A, H1 } from '../components/Text'
-import Loader from '../components/Loader'
+import { submitContactForm, Form } from '../services/contact'
+import { H3, P, Error } from '../components/Text'
 import Button from '../components/Button'
 import { Input, TextArea } from '../components/TextInput'
+import Loader from '../components/Loader'
 
 interface State {
   isLoading: boolean
   error: boolean
   errorMsg: string
-  form: {
-    name: string
-    email: string
-    message: string
-  }
+  form: Form
+  success: boolean
 }
 
 class Contact extends React.Component<{}, State> {
   state = {
     isLoading: false,
     error: false,
+    success: false,
     errorMsg: '',
     form: {
       name: 'fd',
@@ -55,21 +53,31 @@ class Contact extends React.Component<{}, State> {
     if (this.state.isLoading) {
       return
     }
+
+    this.setState({ isLoading: true, error: false, errorMsg: '' })
+
     try {
-      const res = await submitContactForm()
+      const res = await submitContactForm(this.state.form)
+      this.setState({ success: true })
     } catch (e) {
-      this.setState({ error: true, errorMsg: e.message })
+      return this.setState({
+        error: true,
+        errorMsg: e.message,
+        isLoading: false
+      })
     }
+
+    this.setState({ isLoading: false })
   }
 
   render() {
-    const { form, error, errorMsg, isLoading } = this.state
+    const { form, error, errorMsg, isLoading, success } = this.state
     return (
       <Wrapper id="contact">
         <Inner>
           <br />
           <br />
-          <Form onSubmit={this.submitForm}>
+          <ContactForm onSubmit={this.submitForm}>
             <TextWrap>
               <H3 block>Contact Me</H3>
               <br />
@@ -105,11 +113,23 @@ class Contact extends React.Component<{}, State> {
               onChange={this.updateForm}
               value={form.message}
             />
-            {error && <P>{errorMsg}</P>}
-            <ButtonWrap>
-              <Button>{isLoading ? 'Loading...' : 'Hit me up'}</Button>
-            </ButtonWrap>
-          </Form>
+            {error && (
+              <P>
+                <Error>{errorMsg}</Error>
+              </P>
+            )}
+            {isLoading && <Loader />}
+            {success ? (
+              <P>
+                Your message has beem delivered. Please allow up to 24 hours for
+                me to respond.
+              </P>
+            ) : (
+              <ButtonWrap>
+                <Button>{isLoading ? 'Loading...' : 'Hit me up!'}</Button>
+              </ButtonWrap>
+            )}
+          </ContactForm>
         </Inner>
       </Wrapper>
     )
@@ -150,7 +170,7 @@ const Inner = styled.div`
 `}
 `
 
-const Form = styled.form`
+const ContactForm = styled.form`
   margin: 0 auto;
   padding: 0 40px;
   border-radius: 3px;

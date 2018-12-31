@@ -12,12 +12,20 @@ export interface Error {
   message: string
 }
 
-export const submitContactForm = async (): Promise<Array<Repo> | Error> => {
+export interface Form {
+  name: string
+  email: string
+  message: string
+}
+
+export const submitContactForm = async (
+  body: Form
+): Promise<Array<Repo> | Error> => {
   return new Promise(async (resolve, reject) => {
     try {
       const res = await fetch(
         'https://gjv3pd3kck.execute-api.us-east-1.amazonaws.com/dev/sendMail',
-        { method: 'POST' }
+        { method: 'POST', body: JSON.stringify(body) }
       )
 
       if (!res.ok) {
@@ -28,7 +36,7 @@ export const submitContactForm = async (): Promise<Array<Repo> | Error> => {
       const json = await res.json()
       resolve(json)
     } catch (e) {
-      reject({message: "Something went wrong, please try again later."})
+      reject({ message: 'Something went wrong, please try again later.' })
     }
   })
 }

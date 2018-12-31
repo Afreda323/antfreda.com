@@ -4,7 +4,7 @@ import get from 'lodash/get'
 import { Theme } from '../theme'
 import { fetchGithubProfile, Repo } from '../services/github'
 import Card from '../components/Card'
-import { H3, P, A } from '../components/Text'
+import { H3, P, A, Error } from '../components/Text'
 import Loader from '../components/Loader'
 import Button from '../components/Button'
 
@@ -43,7 +43,7 @@ class Work extends React.Component<{}, State> {
       return <Loader />
     }
     if (error) {
-      return <P>Something went wrong fetching the repos.</P>
+      return <P><Error>Something went wrong fetching the repos.</Error></P>
     }
     if (data.length) {
       return (
