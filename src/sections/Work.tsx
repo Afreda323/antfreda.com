@@ -28,7 +28,6 @@ class Work extends React.Component<{}, State> {
       this.setState({ isLoading: true })
       const data: Repo[] = await fetchGithubProfile()
       this.setState({ isLoading: false, data })
-      console.log(data)
     } catch (e) {
       this.setState({ isLoading: false, error: true })
     }
@@ -44,7 +43,7 @@ class Work extends React.Component<{}, State> {
       return <Loader />
     }
     if (error) {
-      return <p>Error</p>
+      return <P>Something went wrong fetching the repos.</P>
     }
     if (data.length) {
       return (

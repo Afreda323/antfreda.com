@@ -28,7 +28,7 @@ class Navbar extends React.Component<{}, State> {
         <MenuButton onClick={() => this.toggleMenu(!isOpen)}>
           {!isOpen ? 'Menu' : 'Close'}
         </MenuButton>
-        <Logo href="#top">_AFreda</Logo>
+        <Logo onClick={() => this.toggleMenu(false)} href="#top">_AFreda</Logo>
         <LinksWrap>
           <Link onClick={() => this.toggleMenu(false)} href="#about">About</Link>
           <Link onClick={() => this.toggleMenu(false)} href="#exp">Experience</Link>

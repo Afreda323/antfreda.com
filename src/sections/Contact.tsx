@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 import { GoMail } from 'react-icons/go'
 import { Theme } from '../theme'
-import { fetchGithubProfile, Repo } from '../services/github'
+import { submitContactForm } from '../services/contact'
 import { H3, P, A, H1 } from '../components/Text'
 import Loader from '../components/Loader'
 import Button from '../components/Button'
@@ -46,47 +46,70 @@ class Contact extends React.Component<{}, State> {
     })
   }
 
+  /**
+   * Submit form to lambda
+   * @param e - event object
+   */
+  submitForm = async (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    if (this.state.isLoading) {
+      return
+    }
+    try {
+        const res = await submitContactForm()
+        console.log(res)
+    } catch(e) {
+        console.log(e)
+    }
+    console.log(this.state.form)
+  }
+
   render() {
-    const { form } = this.state
+    const { form, error, errorMsg, isLoading } = this.state
     return (
       <Wrapper id="contact">
         <Inner>
           <br />
           <br />
-          <Form>
-              
-              <TextWrap>
+          <Form onSubmit={this.submitForm}>
+            <TextWrap>
               <H3 block>Contact Me</H3>
               <br />
-              <br/>
-              <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non iure voluptatem voluptatibus iste magnam minus explicabo quidem quibusdam enim numquam! Nobis, illo nesciunt? Maxime debitis nemo, eius esse atque repudiandae.</P>
-              </TextWrap>
+              <br />
+              <P>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+                iure voluptatem voluptatibus iste magnam minus explicabo quidem
+                quibusdam enim numquam! Nobis, illo nesciunt? Maxime debitis
+                nemo, eius esse atque repudiandae.
+              </P>
+            </TextWrap>
 
-              <Input
-                label="Name"
-                placeholder="John Doe"
-                name="name"
-                type="text"
-                onChange={this.updateForm}
-                value={form.name}
-              />
-              <Input
-                label="Email Address"
-                placeholder="example@domain.com"
-                name="email"
-                type="email"
-                onChange={this.updateForm}
-                value={form.email}
-              />
-              <TextArea
-                placeholder="Your message here.."
-                label="Message"
-                name="message"
-                onChange={this.updateForm}
-                value={form.message}
-              />
-              <ButtonWrap>
-              <Button>Hit me up</Button>
+            <Input
+              label="Name"
+              placeholder="John Doe"
+              name="name"
+              type="text"
+              onChange={this.updateForm}
+              value={form.name}
+            />
+            <Input
+              label="Email Address"
+              placeholder="example@domain.com"
+              name="email"
+              type="email"
+              onChange={this.updateForm}
+              value={form.email}
+            />
+            <TextArea
+              placeholder="Your message here.."
+              label="Message"
+              name="message"
+              onChange={this.updateForm}
+              value={form.message}
+            />
+            {error && <P>{errorMsg}</P>}
+            <ButtonWrap>
+              <Button>{isLoading ? 'Loading...' : 'Hit me up'}</Button>
             </ButtonWrap>
           </Form>
         </Inner>
