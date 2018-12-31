@@ -37,9 +37,9 @@ export interface Theme {
     }
   }
   breakpoints?: {
-    sm: string
-    md: string
-    lg: string
+    small: string
+    medium: string
+    large: string
   }
 }
 
@@ -90,9 +90,9 @@ const theme: Theme = {
     }
   },
   breakpoints: {
-    sm: '1300px',
-    md: '1000px',
-    lg: '700px'
+    large: '1600px',
+    medium: '1200px',
+    small: '700px'
   }
 }
 
