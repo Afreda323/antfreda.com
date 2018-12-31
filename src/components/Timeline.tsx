@@ -6,7 +6,7 @@ import { Theme } from '../theme'
 
 export interface Job {
   company: string
-  companyLink: string
+  companyLink?: string
   title: string
   start: string
   end: string
@@ -59,8 +59,8 @@ class Timeline extends React.Component<Props, State> {
         isActive={i === this.state.activeIndex}
       >
         <P style={{ lineHeight: 1.2 }}>
-          <span style={{color: 'white'}}>{job.title}</span>{' '}
-          <A target="_blank" href={job.companyLink}>
+          <span style={{ color: 'white' }}>{job.title}</span>{' '}
+          <A target={job.companyLink ? '_blank' : '#'} href={job.companyLink}>
             @{job.company}
           </A>
           <br />
@@ -192,7 +192,7 @@ const Summary = styled.div`
   left: 0px;
   width: 100%;
   height: auto;
-  
+
   ${({ theme, isActive }: { theme: Theme; isActive: boolean }) => `
     ${isActive ? activeSummary : inactiveSummary}
     @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {

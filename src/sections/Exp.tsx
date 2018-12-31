@@ -40,7 +40,6 @@ const JOBS: Array<Job> = [
   },
   {
     company: 'Freelance',
-    companyLink: '#',
     title: 'Web Developer',
     start: 'January 2015',
     end: 'January 2017',

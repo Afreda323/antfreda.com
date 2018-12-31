@@ -51,15 +51,15 @@ interface WrapperProps {
 
 const MenuButton = styled.button`
   position: fixed;
-  top: 10px;
-  right: 10px;
+  bottom: 16px;
+  right: 16px;
   background-color: transparent;
   line-height: 1;
   cursor: pointer;
   margin-left: 10px;
-  font-size: 13px;
+  font-size: 16px;
   border-radius: 2px;
-  padding: 6px 15px;
+  padding: 10px 18px;
   text-decoration: none;
   transition: background-color 0.2s, box-shadow: .2s;
   margin-right: 5px;
