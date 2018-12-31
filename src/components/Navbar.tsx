@@ -30,10 +30,10 @@ class Navbar extends React.Component<{}, State> {
         </MenuButton>
         <Logo href="#top">_AFreda</Logo>
         <LinksWrap>
-          <Link href="#about">About</Link>
-          <Link href="#exp">Experience</Link>
-          <Link href="#work">Work</Link>
-          <Link style={{ marginRight: 10 }} href="#contact">
+          <Link onClick={() => this.toggleMenu(false)} href="#about">About</Link>
+          <Link onClick={() => this.toggleMenu(false)} href="#exp">Experience</Link>
+          <Link onClick={() => this.toggleMenu(false)} href="#work">Work</Link>
+          <Link onClick={() => this.toggleMenu(false)} style={{ marginRight: 10 }} href="#contact">
             Contact
           </Link>
           <Spacer />
