@@ -71,7 +71,7 @@ class Timeline extends React.Component<Props, State> {
         <br />
         <Ul>
           {job.tasks.map((task, i) => (
-            <Li key={`task-${i}`}>{task}</Li>
+            <Li key={`task-${i}`} style={{marginBottom: 14}}>{task}</Li>
           ))}
         </Ul>
       </Summary>
