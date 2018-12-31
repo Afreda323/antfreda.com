@@ -26,9 +26,9 @@ class Contact extends React.Component<{}, State> {
     error: false,
     errorMsg: '',
     form: {
-      name: '',
-      email: '',
-      message: ''
+      name: 'fd',
+      email: 'abc@123.com',
+      message: 'fdf'
     }
   }
 
@@ -56,12 +56,10 @@ class Contact extends React.Component<{}, State> {
       return
     }
     try {
-        const res = await submitContactForm()
-        console.log(res)
-    } catch(e) {
-        console.log(e)
+      const res = await submitContactForm()
+    } catch (e) {
+      this.setState({ error: true, errorMsg: e.message })
     }
-    console.log(this.state.form)
   }
 
   render() {

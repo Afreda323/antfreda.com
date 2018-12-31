@@ -13,15 +13,22 @@ export interface Error {
 }
 
 export const submitContactForm = async (): Promise<Array<Repo> | Error> => {
-  try {
-    const res = await fetch(
-      'https://gjv3pd3kck.execute-api.us-east-1.amazonaws.com/dev/sendMail',
-      { method: 'POST' }
-    )
-    const json = await await res.json()
-    return json
-  } catch (e) {
-    console.log(e)
-    return e
-  }
+  return new Promise(async (resolve, reject) => {
+    try {
+      const res = await fetch(
+        'https://gjv3pd3kck.execute-api.us-east-1.amazonaws.com/dev/sendMail',
+        { method: 'POST' }
+      )
+
+      if (!res.ok) {
+        const json = await res.json()
+        reject(json)
+      }
+
+      const json = await res.json()
+      resolve(json)
+    } catch (e) {
+      reject({message: "Something went wrong, please try again later."})
+    }
+  })
 }
