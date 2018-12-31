@@ -21,6 +21,19 @@ class Navbar extends React.Component<{}, State> {
     this.setState({ isOpen: bool })
   }
 
+  selectLink = (e: React.SyntheticEvent, link: string) => {
+    e.preventDefault()
+    this.toggleMenu(false)
+    const target = document.querySelector(link)
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+
   render() {
     const { isOpen } = this.state
     return (
@@ -28,12 +41,15 @@ class Navbar extends React.Component<{}, State> {
         <MenuButton onClick={() => this.toggleMenu(!isOpen)}>
           {!isOpen ? 'Menu' : 'Close'}
         </MenuButton>
-        <Logo onClick={() => this.toggleMenu(false)} href="#top">_AFreda</Logo>
+        <Logo onClick={e => this.selectLink(e, '#top')}>_AFreda</Logo>
         <LinksWrap>
-          <Link onClick={() => this.toggleMenu(false)} href="#about">About</Link>
-          <Link onClick={() => this.toggleMenu(false)} href="#exp">Experience</Link>
-          <Link onClick={() => this.toggleMenu(false)} href="#work">Work</Link>
-          <Link onClick={() => this.toggleMenu(false)} style={{ marginRight: 10 }} href="#contact">
+          <Link onClick={e => this.selectLink(e, '#about')}>About</Link>
+          <Link onClick={e => this.selectLink(e, '#exp')}>Experience</Link>
+          <Link onClick={e => this.selectLink(e, '#work')}>Work</Link>
+          <Link
+            onClick={e => this.selectLink(e, '#contact')}
+            style={{ marginRight: 10 }}
+          >
             Contact
           </Link>
           <Spacer />
@@ -183,9 +199,10 @@ const Link = styled.a`
   cursor: pointer;
   text-decoration: none;
   padding: 12px 10px;
-  transition: color 0.2s, background-color .2s;
+  transition: color 0.2s, background-color 0.2s;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     ${({ theme }: { theme: Theme }) => `
       color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
   `}
@@ -197,7 +214,11 @@ const Link = styled.a`
           width: 100%;
           padding: 12px 60px 12px 20px;
           &:hover {
-            background-color: ${get(theme, 'palette.background.highlight', 'rgb(87, 220, 204);')}
+            background-color: ${get(
+              theme,
+              'palette.background.highlight',
+              'rgb(87, 220, 204);'
+            )}
           }
         }
     `}
