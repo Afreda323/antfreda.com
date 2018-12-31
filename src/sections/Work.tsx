@@ -68,7 +68,7 @@ class Work extends React.Component<{}, State> {
           <br />
           {this.renderData()}
           <ButtonWrap>
-            <A>
+            <A target="_blank" href="https://github.com/Afreda323">
               <Button>View it all on Github</Button>
             </A>
           </ButtonWrap>

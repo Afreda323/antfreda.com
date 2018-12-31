@@ -144,9 +144,11 @@ export const Li = styled.li`
   `}
 `
 
-export const A = styled.a`
+export const A = styled.a.attrs({
+  rel: 'noopener noreferrer'
+})`
   text-decoration: none;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   ${({ theme }: Props) => `
     color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
 `}
