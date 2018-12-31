@@ -59,7 +59,7 @@ class Timeline extends React.Component<Props, State> {
         isActive={i === this.state.activeIndex}
       >
         <P style={{ lineHeight: 1.2 }}>
-          {job.title}{' '}
+          <span style={{color: 'white'}}>{job.title}</span>{' '}
           <A target="_blank" href={job.companyLink}>
             @{job.company}
           </A>
