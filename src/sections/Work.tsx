@@ -62,7 +62,7 @@ class Work extends React.Component<{}, State> {
     return (
       <Wrapper id="work">
         <Inner>
-          <H3>My Code</H3>
+          <H3 block>My Code</H3>
           <br />
           <br />
           {this.renderData()}

@@ -8,7 +8,7 @@ function About() {
   return (
     <Wrapper id="about">
       <Inner>
-        <H3>About Me</H3>
+        <H3 block>About Me</H3>
         <br />
         <br />
         <P>
