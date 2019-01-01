@@ -18,7 +18,7 @@ export interface Form {
   message: string
 }
 
-const SERVICE_URL = process.env.REACT_APP_SERVICE_URL
+const SERVICE_URL = process.env.REACT_APP_SERVICE_URL as string
 /**
  * Make sure name is less than 50 chars and more than 3
  * @param name - String you want to validate
