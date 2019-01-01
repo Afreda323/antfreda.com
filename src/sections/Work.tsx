@@ -12,13 +12,15 @@ interface State {
   isLoading: boolean
   data: Array<Repo>
   error: boolean
+  count: number
 }
 
 class Work extends React.Component<{}, State> {
   state = {
     isLoading: false,
     error: false,
-    data: [] as Array<Repo>
+    data: [] as Array<Repo>,
+    count: 6
   }
   /**
    * Fetches repo data from github
@@ -38,17 +40,21 @@ class Work extends React.Component<{}, State> {
    * render either cards, the error or the loading state
    */
   renderData() {
-    const { isLoading, error, data } = this.state
+    const { isLoading, error, data, count } = this.state
     if (isLoading) {
       return <Loader />
     }
     if (error) {
-      return <P><Error>Something went wrong fetching the repos.</Error></P>
+      return (
+        <P>
+          <Error>Something went wrong fetching the repos.</Error>
+        </P>
+      )
     }
     if (data.length) {
       return (
         <WorkWrap>
-          {data.map(repo => (
+          {data.slice(0, count).map(repo => (
             <Card key={repo.id} repo={repo} />
           ))}
         </WorkWrap>
@@ -56,6 +62,10 @@ class Work extends React.Component<{}, State> {
     }
 
     return <p>No repos found</p>
+  }
+
+  loadMore = () => {
+    this.setState(({ count }) => ({ count: count + 6 }))
   }
 
   render() {
@@ -67,6 +77,11 @@ class Work extends React.Component<{}, State> {
           <br />
           {this.renderData()}
           <ButtonWrap>
+            {this.state.count < 21 && (
+              <A style={{ marginRight: 15 }} onClick={this.loadMore}>
+                <Button>Load More</Button>
+              </A>
+            )}
             <A target="_blank" href="https://github.com/Afreda323">
               <Button>View it all on Github</Button>
             </A>

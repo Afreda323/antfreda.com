@@ -31,6 +31,12 @@ const colors: Colors = {
 
   Vue: {
     color: '#2c3e50'
+  },
+  Elm: {
+    color: '#60B5CC'
+  },
+  Dart: {
+    color: '#00B4AB'
   }
 }
 
@@ -39,5 +45,5 @@ const colors: Colors = {
  * @param lang - language string to get color for
  */
 export function getColor(lang: string): string {
-  return colors[lang].color || '#fff'
+  return colors[lang] ? colors[lang].color : '#fff'
 }

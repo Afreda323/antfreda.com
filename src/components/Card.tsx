@@ -12,7 +12,7 @@ import { getColor } from '../services/langColor'
  * Remove dashes from strings, replace with spaces
  * @param str - string you want to alter
  */
-const removeDashes = (str: string) => str.replace(/-/g, ' ')
+const removeDashes = (str: string) => str.replace(/(-|_)/g, ' ')
 
 /**
  * Add an ellipse to strings longer than 18 chars
