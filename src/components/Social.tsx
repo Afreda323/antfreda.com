@@ -1,13 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import get from 'lodash/get'
-import { FaTwitterSquare, FaGithubSquare, FaLinkedin } from 'react-icons/fa'
+import {
+  FaTwitterSquare,
+  FaGithubSquare,
+  FaLinkedin,
+  FaEnvelopeSquare
+} from 'react-icons/fa'
 import { Theme } from '../theme'
 import { A } from './Text'
 
 function Social() {
   return (
     <Icons>
+      <A href="mailto:anthonyfreda323@gmail.com">
+        <FaEnvelopeSquare />
+      </A>
       <A target="_blank" href="https://www.linkedin.com/in/antfreda323/">
         <FaLinkedin />
       </A>
@@ -28,7 +36,7 @@ const Icons = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: .8;
+  opacity: 0.8;
 
   ${({ theme }: { theme: Theme }) => `
   > a {
