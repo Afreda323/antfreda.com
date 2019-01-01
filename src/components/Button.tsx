@@ -25,7 +25,7 @@ export default styled.button`
     color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
   `}
 
-  :hover {
+  :hover, :focus {
     ${({ theme }: Props) => `
     background-color: ${get(
       theme,

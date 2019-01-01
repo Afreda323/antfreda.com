@@ -6,7 +6,7 @@ import { Theme } from '../theme'
 
 export interface Job {
   company: string
-  companyLink: string
+  companyLink?: string
   title: string
   start: string
   end: string
@@ -59,8 +59,8 @@ class Timeline extends React.Component<Props, State> {
         isActive={i === this.state.activeIndex}
       >
         <P style={{ lineHeight: 1.2 }}>
-          <span style={{color: 'white'}}>{job.title}</span>{' '}
-          <A target="_blank" href={job.companyLink}>
+          <span style={{ color: 'white' }}>{job.title}</span>{' '}
+          <A target={job.companyLink ? '_blank' : '#'} href={job.companyLink}>
             @{job.company}
           </A>
           <br />
@@ -71,7 +71,7 @@ class Timeline extends React.Component<Props, State> {
         <br />
         <Ul>
           {job.tasks.map((task, i) => (
-            <Li key={`task-${i}`}>{task}</Li>
+            <Li key={`task-${i}`} style={{marginBottom: 14}}>{task}</Li>
           ))}
         </Ul>
       </Summary>
@@ -90,12 +90,9 @@ class Timeline extends React.Component<Props, State> {
 
 const Wrapper = styled.div`
   display: flex;
+  border-radius: 3px;
+  box-shadow: rgba(2, 12, 27, 0.9) 0px 2px 4px;
   ${({ theme }: { theme: Theme }) => `
-    border: 1px solid ${get(
-      theme,
-      'palette.background.light',
-      'rgba(100, 255, 218, .1)'
-    )};
     background-color: ${get(
       theme,
       'palette.background.dark',
@@ -139,17 +136,19 @@ const activeCompany = (theme: Theme) => `
   )};
 `
 
-const Company = styled.div`
+const Company = styled.button`
   padding: 20px 20px;
   font-size: 15px;
   width: 150px;
   transition: background-color 0.2s, color 0.2s;
   cursor: pointer;
+  background: none;
+  border: none;
 
   ${({ theme, isActive }: { theme: Theme; isActive: boolean }) => `
       color: ${get(theme, 'palette.text.main', 'rgb(100, 255, 218)')};
       ${isActive ? activeCompany(theme) : ''}
-      :hover {
+      :hover, :focus {
         background-color: ${get(
           theme,
           'palette.background.highlight',
@@ -174,15 +173,6 @@ const Company = styled.div`
     `}
 `
 
-const fadeIn = keyframes`
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-`
-
 const activeSummary = css`
   opacity: 1;
   z-index: 2;
@@ -202,6 +192,7 @@ const Summary = styled.div`
   left: 0px;
   width: 100%;
   height: auto;
+
   ${({ theme, isActive }: { theme: Theme; isActive: boolean }) => `
     ${isActive ? activeSummary : inactiveSummary}
     @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {

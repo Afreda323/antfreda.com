@@ -56,11 +56,7 @@ export const H3 = styled.h3`
     display: block;
     height: 1px;
     width: 300px;
-    background-color: ${get(
-      theme,
-      'palette.background.light',
-      'rgb(45, 57, 82)'
-    )};
+    background-color: ${get(theme, 'palette.text.main', 'rgb(45, 57, 82)')};
     position: relative;
     margin: 0 20px;
 }
@@ -74,7 +70,7 @@ export const H3 = styled.h3`
             width: 300px;
             background-color: ${get(
               theme,
-              'palette.background.light',
+              'palette.text.main',
               'rgb(45, 57, 82)'
             )};
             position: relative;
@@ -149,10 +145,17 @@ export const A = styled.a.attrs({
 })`
   text-decoration: none;
   transition: opacity 0.2s;
+  cursor: pointer;
   ${({ theme }: Props) => `
     color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
 `}
-  :hover {
+  :hover, :focus {
     opacity: 0.6;
   }
+`
+
+export const Error = styled.span`
+  ${({ theme }: { theme: Theme }) => `
+    color: ${get(theme, 'palette.text.error', '')};
+`}
 `

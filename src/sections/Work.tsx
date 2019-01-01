@@ -4,7 +4,7 @@ import get from 'lodash/get'
 import { Theme } from '../theme'
 import { fetchGithubProfile, Repo } from '../services/github'
 import Card from '../components/Card'
-import { H3, P, A } from '../components/Text'
+import { H3, P, A, Error } from '../components/Text'
 import Loader from '../components/Loader'
 import Button from '../components/Button'
 
@@ -12,13 +12,15 @@ interface State {
   isLoading: boolean
   data: Array<Repo>
   error: boolean
+  count: number
 }
 
 class Work extends React.Component<{}, State> {
   state = {
     isLoading: false,
     error: false,
-    data: [] as Array<Repo>
+    data: [] as Array<Repo>,
+    count: 6
   }
   /**
    * Fetches repo data from github
@@ -28,7 +30,6 @@ class Work extends React.Component<{}, State> {
       this.setState({ isLoading: true })
       const data: Repo[] = await fetchGithubProfile()
       this.setState({ isLoading: false, data })
-      console.log(data)
     } catch (e) {
       this.setState({ isLoading: false, error: true })
     }
@@ -39,17 +40,21 @@ class Work extends React.Component<{}, State> {
    * render either cards, the error or the loading state
    */
   renderData() {
-    const { isLoading, error, data } = this.state
+    const { isLoading, error, data, count } = this.state
     if (isLoading) {
       return <Loader />
     }
     if (error) {
-      return <p>Error</p>
+      return (
+        <P>
+          <Error>Something went wrong fetching the repos.</Error>
+        </P>
+      )
     }
     if (data.length) {
       return (
         <WorkWrap>
-          {data.map(repo => (
+          {data.slice(0, count).map(repo => (
             <Card key={repo.id} repo={repo} />
           ))}
         </WorkWrap>
@@ -59,15 +64,24 @@ class Work extends React.Component<{}, State> {
     return <p>No repos found</p>
   }
 
+  loadMore = () => {
+    this.setState(({ count }) => ({ count: count + 6 }))
+  }
+
   render() {
     return (
       <Wrapper id="work">
         <Inner>
-          <H3>My Code</H3>
+          <H3 block>My Code</H3>
           <br />
           <br />
           {this.renderData()}
           <ButtonWrap>
+            {this.state.count < 21 && (
+              <A style={{ marginRight: 15 }} onClick={this.loadMore}>
+                <Button>Load More</Button>
+              </A>
+            )}
             <A target="_blank" href="https://github.com/Afreda323">
               <Button>View it all on Github</Button>
             </A>

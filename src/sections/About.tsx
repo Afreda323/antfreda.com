@@ -8,24 +8,13 @@ function About() {
   return (
     <Wrapper id="about">
       <Inner>
-        <H3>About Me</H3>
+        <H3 block>About Me</H3>
         <br />
         <br />
         <P>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
-          sit nisi laborum aspernatur itaque adipisci dolores tempore dolorem,
-          dolore odit explicabo tenetur magni sequi amet voluptate? Beatae
-          minima consequatur assumenda! Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Inventore, deserunt quis veniam, officiis debitis,
-          reiciendis quasi fuga similique sunt earum minus dolorem. Nesciunt
-          voluptatem fuga numquam culpa vero fugit iste.
-        </P>
-        <br />
-        <P>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta
-          fugiat, provident illo nesciunt perspiciatis repellendus reprehenderit
-          molestias minus corporis vitae. Ipsa dolor ab modi nihil doloribus
-          maiores nesciunt doloremque laboriosam?
+          Based in Charlotte, North Carolina, Anthony is a software engineer
+          with multiple years of experience working with both agencies and
+          Fortune 25 companies.  Anthony currently specializes in web application development and architecture using cutting edge technologies as well as tried and true development methodologies.
         </P>
         <br />
         <P>Things I have experience with:</P>
@@ -36,7 +25,9 @@ function About() {
           <Li>HTML | Pug</Li>
           <Li>CSS/Sass</Li>
           <Li>React | Redux</Li>
+          <Li>React Native</Li>
           <Li>Vue | Vuex</Li>
+          <Li>PWA</Li>
           <Li>Serverless Framework</Li>
           <Li>AWS</Li>
           <Li>Testing</Li>

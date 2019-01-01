@@ -29,7 +29,7 @@ function Header() {
             <A target="_blank" href="https://www.typescriptlang.org/">
               Typescript
             </A>{' '}
-            and all of their flavors. . When not at work I like to spend some
+            and all of their flavors. When not at work I like to spend some
             time trying to learn new technologies. I'm currently getting deep in
             the land of{' '}
             <A target="_blank" href="https://golang.org/">
