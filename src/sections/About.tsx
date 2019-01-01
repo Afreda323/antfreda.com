@@ -14,7 +14,9 @@ function About() {
         <P>
           Based in Charlotte, North Carolina, Anthony is a software engineer
           with multiple years of experience working with both agencies and
-          Fortune 25 companies.  Anthony currently specializes in web application development and architecture using cutting edge technologies as well as tried and true development methodologies.
+          Fortune 25 companies. Anthony currently specializes in web application
+          development and architecture using cutting edge technologies as well
+          as tried and true development methodologies.
         </P>
         <br />
         <P>Things I have experience with:</P>
@@ -38,6 +40,8 @@ function About() {
           <Li>Python</Li>
           <Li>Go</Li>
           <Li>C# w/ Unity</Li>
+          <Li>Elm</Li>
+          <Li>Dart/Flutter</Li>
         </Ul>
       </Inner>
     </Wrapper>
