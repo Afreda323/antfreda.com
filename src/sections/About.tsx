@@ -36,7 +36,9 @@ function About() {
           <Li>HTML | Pug</Li>
           <Li>CSS/Sass</Li>
           <Li>React | Redux</Li>
+          <Li>React Native</Li>
           <Li>Vue | Vuex</Li>
+          <Li>PWA</Li>
           <Li>Serverless Framework</Li>
           <Li>AWS</Li>
           <Li>Testing</Li>

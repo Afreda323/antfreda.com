@@ -101,7 +101,7 @@ const Top = styled.div`
   justify-content: space-between;
   font-size: 40px;
   align-items: center;
-  padding: 20px;
+  padding: 20px 30px;
 
   ${({ theme }: { theme: Theme }) => `
     background: ${get(
@@ -113,7 +113,7 @@ const Top = styled.div`
 `
 
 const Middle = styled.div`
-  padding: 20px 30px;
+  padding: 10px 30px;
 `
 const Bottom = styled.div`
   padding: 20px 30px;

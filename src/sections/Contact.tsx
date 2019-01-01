@@ -82,10 +82,10 @@ class Contact extends React.Component<{}, State> {
               <br />
               <br />
               <P>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-                iure voluptatem voluptatibus iste magnam minus explicabo quidem
-                quibusdam enim numquam! Nobis, illo nesciunt? Maxime debitis
-                nemo, eius esse atque repudiandae.
+                If you are in need of a website, web app, mobile app or even
+                some advice regarding software development/design, be sure to
+                full out the form. I will be sure to respond within 24 hours of
+                recieving the email.
               </P>
             </TextWrap>
 

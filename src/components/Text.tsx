@@ -145,6 +145,7 @@ export const A = styled.a.attrs({
 })`
   text-decoration: none;
   transition: opacity 0.2s;
+  cursor: pointer;
   ${({ theme }: Props) => `
     color: ${get(theme, 'palette.text.highlight', 'rgb(100, 255, 218)')};
 `}
