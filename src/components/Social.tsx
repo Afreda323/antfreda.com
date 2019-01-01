@@ -70,7 +70,7 @@ const Icons = styled.span`
     margin-top: 12px;
     margin-right: 2px;
   }
-    @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
+    @media (max-width: ${get(theme, 'breakpoints.medium', '1000px')}) {
         position: relative;
         flex-direction: row;
         align-items: center;

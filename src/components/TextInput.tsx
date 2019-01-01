@@ -54,6 +54,11 @@ const inputStyles = css`
     ::placeholder {
       color: ${get(theme, 'palette.text.dark', 'rgb(100, 255, 218)')};
     }
+    @media (max-width: ${get(theme, 'breakpoints.medium', '1000px')}) {
+        padding: 8px 16px;
+        line-height: 1.4;
+        font-size: 18px;
+      }
     @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
         padding: 8px 16px;
         line-height: 1.4;
