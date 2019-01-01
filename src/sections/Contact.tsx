@@ -161,7 +161,7 @@ const Inner = styled.div`
   width: 70%;
   ${({ theme }: { theme: Theme }) => `
     @media (max-width: ${get(theme, 'breakpoints.medium', '1200px')}) {
-        width: 80%;
+        width: 90%;
     }
     @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
         width: 100%;
@@ -176,7 +176,7 @@ const ContactForm = styled.form`
 
   ${({ theme }: { theme: Theme }) => `
     @media (max-width: ${get(theme, 'breakpoints.medium', '1200px')}) {
-        width: 80%;
+        width: 90%;
     }
     @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
         width: 100%;
