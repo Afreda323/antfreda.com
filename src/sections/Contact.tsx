@@ -91,6 +91,7 @@ class Contact extends React.Component<{}, State> {
 
             <Input
               label="Name"
+              required
               placeholder="John Doe"
               name="name"
               type="text"
@@ -99,6 +100,7 @@ class Contact extends React.Component<{}, State> {
             />
             <Input
               label="Email Address"
+              required
               placeholder="example@domain.com"
               name="email"
               type="email"
@@ -106,6 +108,7 @@ class Contact extends React.Component<{}, State> {
               value={form.email}
             />
             <TextArea
+              required
               placeholder="Your message here.."
               label="Message"
               name="message"

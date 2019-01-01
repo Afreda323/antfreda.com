@@ -10,6 +10,7 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   value?: string
   type?: string
   error?: string
+  required?: boolean
   placeholder?: string
 }
 
@@ -85,6 +86,7 @@ interface AreaProps extends React.HTMLAttributes<HTMLTextAreaElement> {
     value?: string
     type?: string
     error?: string
+    required?: boolean
     placeholder?: string
   }
 
