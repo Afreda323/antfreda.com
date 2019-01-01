@@ -144,6 +144,7 @@ const Company = styled.button`
   cursor: pointer;
   background: none;
   border: none;
+  text-align: left;
 
   ${({ theme, isActive }: { theme: Theme; isActive: boolean }) => `
       color: ${get(theme, 'palette.text.main', 'rgb(100, 255, 218)')};

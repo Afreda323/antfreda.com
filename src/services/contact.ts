@@ -18,6 +18,7 @@ export interface Form {
   message: string
 }
 
+const SERVICE_URL = process.env.REACT_APP_SERVICE_URL
 /**
  * Make sure name is less than 50 chars and more than 3
  * @param name - String you want to validate
@@ -58,10 +59,10 @@ export const submitContactForm = async (
       reject({ message: 'Invalid message provided.' })
 
     try {
-      const res = await fetch(
-        'https://gjv3pd3kck.execute-api.us-east-1.amazonaws.com/dev/sendMail',
-        { method: 'POST', body: JSON.stringify(body) }
-      )
+      const res = await fetch(SERVICE_URL, {
+        method: 'POST',
+        body: JSON.stringify(body)
+      })
 
       if (!res.ok) {
         const json = await res.json()
