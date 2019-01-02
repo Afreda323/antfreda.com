@@ -123,7 +123,7 @@ class Contact extends React.Component<{}, State> {
             {isLoading && <Loader />}
             {success ? (
               <P>
-                Your message has beem delivered. Please allow up to 24 hours for
+                Your message has been delivered. Please allow up to 24 hours for
                 me to respond.
               </P>
             ) : (
