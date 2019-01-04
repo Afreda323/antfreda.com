@@ -38,10 +38,12 @@ function About() {
           <Li>MongoDB</Li>
           <Li>SQL</Li>
           <Li>Python</Li>
+          <Li>Firebase</Li>
           <Li>Go</Li>
           <Li>C# w/ Unity</Li>
           <Li>Elm</Li>
           <Li>Dart/Flutter</Li>
+          <Li>Docker</Li>
         </Ul>
       </Inner>
     </Wrapper>
