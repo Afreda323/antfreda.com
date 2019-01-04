@@ -1,1 +1,2 @@
-# antfreda.com (wip)
+# antfreda.com
+personal site
