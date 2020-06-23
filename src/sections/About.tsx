@@ -38,6 +38,7 @@ function About() {
           <Li>MongoDB</Li>
           <Li>SQL</Li>
           <Li>Python</Li>
+          <Li>Ruby | Rails</Li>
           <Li>Firebase</Li>
           <Li>Go</Li>
           <Li>C# w/ Unity</Li>
