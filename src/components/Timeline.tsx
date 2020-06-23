@@ -121,6 +121,17 @@ const Companies = styled.div`
           'rgba(100, 255, 218, .1)'
         )};
       }
+    @media (max-width: ${get(theme, 'breakpoints.small', '700px')}) {
+        display: flex;
+        justify-content: stretch;
+        align-items: center;
+        border-right: none;
+        border-bottom: 1px solid ${get(
+          theme,
+          'palette.background.light',
+          'rgba(100, 255, 218, .1)'
+        )};
+      }
   `}
 `
 
