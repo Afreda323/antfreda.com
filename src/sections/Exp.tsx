@@ -13,7 +13,8 @@ const JOBS: Array<Job> = [
     start: "December 2019",
     end: "Now",
     tasks: [
-      "Coming soon...",
+      "More details coming soon...",
+      "See other jobs for exp.",
     ],
   },
   {
