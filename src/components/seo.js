@@ -34,6 +34,13 @@ const SEO = ({ title, description }) => {
       <meta property="twitter:title" content={seo.title} />
       <meta property="twitter:description" content={seo.description} />
       <meta name="twitter:creator" content={seo.twitterUsername} />
+
+      {/* Fonts */}
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cabin&family=Playfair+Display:wght@500&display=swap"
+        rel="stylesheet"
+      />
     </Helmet>
   );
 };

@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-moz-selection {
+  /* Code for Firefox */
+  @apply bg-indigo-200;
+}
+
+::selection {
+  @apply bg-indigo-200;
+}
+
+body {
+  @apply max-w-2xl mx-auto pt-24 px-4;
+}
+
+section {
+  @apply py-12;
+}
+
+h1,
+h2,
+h3 {
+  @apply font-serif;
+}
+
+h1 {
+  @apply text-7xl;
+}
+
+h2 {
+  @apply text-4xl overflow-x-hidden leading-tight;
+}
+
+.line-text {
+  @apply overflow-hidden;
+}
+
+.line-text:after {
+  @apply bg-gray-300 inline-block w-1/2 align-middle relative left-3;
+  height: 1px;
+  content: "";
+  margin-right: -50%;
+}
+
+p {
+  @apply text-lg leading-loose;
+}
