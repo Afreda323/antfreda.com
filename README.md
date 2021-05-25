@@ -1,2 +1,0 @@
-# antfreda.com
-personal site
