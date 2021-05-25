@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: "Anthony Freda",
+    title: "Title",
+    description: "Description.",
+    url: "https://www.antfreda.com",
+    twitterUsername: "@AnthonyFreda_",
   },
   plugins: [
     "gatsby-plugin-postcss",

@@ -1,10 +1,12 @@
 import * as React from "react";
+import Seo from "../components/seo";
 
 const IndexPage = () => {
   return (
     <main>
-      <title>Anthony Freda</title>
-      <p className="text-red-500">Hello</p>
+      <Seo />
+      <h1>Anthony Freda</h1>
+      <h2>Tech Lead</h2>
     </main>
   );
 };
