@@ -5,9 +5,6 @@ import Main from "../components/layout/Main";
 import Seo from "../components/seo";
 import Switch from "../components/Switch";
 
-const h2Base =
-  "text-2xl sm:text-3xl md:text-4xl leading-tight text-gray-500 dark:text-gray-400";
-
 const IndexPage = () => {
   const [darkMode, setDarkMode] = React.useState(true);
   React.useEffect(() => {
@@ -16,7 +13,7 @@ const IndexPage = () => {
   return (
     <>
       <Seo />
-      <div className="fixed top-0 right-0 m-4">
+      <div className="fixed top-0 right-0">
         <Switch isToggled={darkMode} onClick={() => setDarkMode(!darkMode)} />
       </div>
 

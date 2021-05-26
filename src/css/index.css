@@ -11,6 +11,26 @@
   @apply bg-red-200;
 }
 
+body::-webkit-scrollbar {
+  width: .5em;
+}
+
+body::-webkit-scrollbar-track {
+  @apply bg-gray-300;
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply bg-gray-600;
+}
+
+.dark body::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+.dark body::-webkit-scrollbar-thumb {
+  @apply bg-gray-600;
+}
+
 .dark ::-moz-selection {
   /* Code for Firefox */
   @apply bg-red-900;
