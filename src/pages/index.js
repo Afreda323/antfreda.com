@@ -22,10 +22,14 @@ const IndexPage = () => {
     localStorage.setItem(DARK_MODE, darkMode);
   }, [darkMode]);
 
+  const skillsHalf = Math.ceil(data.skills.length / 2);
+  const skillsCol1 = data.skills.slice(0, skillsHalf);
+  const skillsCol2 = data.skills.slice(skillsHalf);
+
   return (
     <>
       <Seo />
-      <div className="fixed top-0 right-0">
+      <div className="fixed bottom-0 right-0">
         <Switch isToggled={darkMode} onClick={() => setDarkMode(!darkMode)} />
       </div>
 
@@ -99,18 +103,30 @@ const IndexPage = () => {
                 Microsoft for dynamic nature, the language.
               </p>
               <h3 className="text-xl mb-2 text-gray-500 dark:text-gray-400">
-                Things I Like:
+                Some of the Tools I'm Using:
               </h3>
-              <ul className="md:flex">
-                {data.skills.map((skill) => (
-                  <li key={`skill_${skill}`} className="mr-12 sm:text-lg">
-                    <span className="text-red-600 dark:text-red-400 inline-block mr-2">
-                      &#187;
-                    </span>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
+              <div className="md:flex">
+                <div>
+                  {skillsCol1.map((skill) => (
+                    <p key={`skill_${skill}`} className="mr-12 sm:text-lg">
+                      <span className="text-red-600 dark:text-red-400 inline-block mr-2">
+                        &#187;
+                      </span>
+                      {skill}
+                    </p>
+                  ))}
+                </div>
+                <div>
+                  {skillsCol2.map((skill) => (
+                    <p key={`skill_${skill}`} className="mr-12 sm:text-lg">
+                      <span className="text-red-600 dark:text-red-400 inline-block mr-2">
+                        &#187;
+                      </span>
+                      {skill}
+                    </p>
+                  ))}
+                </div>
+              </div>
             </section>
             {/* Experience */}
             <section
@@ -167,7 +183,9 @@ const IndexPage = () => {
           </main>
           {/* Footer */}
           <footer>
-            <p className={`text-sm sm:text-base sm:leading-relaxed pb-2`}>
+            <p
+              className={`text-sm sm:text-base sm:leading-relaxed pb-2 text-gray-500 dark:text-gray-400`}
+            >
               &copy; {new Date().getFullYear()}
             </p>
           </footer>
