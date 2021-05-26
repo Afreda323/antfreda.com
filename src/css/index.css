@@ -4,11 +4,20 @@
 
 ::-moz-selection {
   /* Code for Firefox */
-  @apply bg-indigo-200;
+  @apply bg-red-200;
 }
 
 ::selection {
-  @apply bg-indigo-200;
+  @apply bg-red-200;
+}
+
+.dark ::-moz-selection {
+  /* Code for Firefox */
+  @apply bg-red-900;
+}
+
+.dark ::selection {
+  @apply bg-red-900;
 }
 
 section {
@@ -18,7 +27,8 @@ section {
 h1,
 h2,
 h3,
-a {
+a,
+button {
   @apply font-serif;
 }
 
@@ -27,7 +37,7 @@ a {
 }
 
 .line-text:after {
-  @apply bg-gray-500 inline-block w-1/2 align-middle relative left-3;
+  @apply bg-gray-500 inline-block w-1/4 align-middle relative left-3;
   height: 1px;
   content: "";
   margin-right: -50%;
@@ -38,6 +48,8 @@ a {
 }
 
 a:hover,
-a:focus {
+a:focus,
+button:hover,
+button:focus {
   @apply underline cursor-pointer;
 }
