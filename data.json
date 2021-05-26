@@ -1,0 +1,29 @@
+{
+  "skills": ["1", "2", "3"],
+  "jobs": [
+    {
+      "title": "Lead Engineer",
+      "company": {
+        "name": "Movement Mortgage",
+        "website": "movement.com"
+      },
+      "start": "April 2021",
+      "end": "Present",
+      "achievements": ["coming soon"]
+    }
+  ],
+  "links": [
+    {
+      "href": "mailto:anthonyfreda323@gmail.com",
+      "label": "anthonyfreda323@gmail.com"
+    },
+    {
+      "href": "https://github.com/Afreda323",
+      "label": "github.com/Afreda323"
+    },
+    {
+      "href": "https://linkedin.com/in/antfreda323",
+      "label": "linkedin.com/in/antfreda323"
+    }
+  ]
+}
