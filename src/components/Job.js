@@ -17,12 +17,12 @@ import PropTypes from "prop-types";
 export default function Job(props) {
   const [expanded, setExpanded] = useState(false);
   return (
-    <div className={`mb-${props.achievements.length ? "12" : "6"}`}>
-      <h2 className="leading-none sm:leading-tight md:leading-tight text-xl sm:text-2xl md:text-3xl text-gray-500 dark:text-gray-400 mb-2 sm:mb-0">
+    <div className={`${props.achievements.length ? "mb-12" : "sm:mb-6 mb-2"}`}>
+      <h2 className="leading-none sm:leading-tight md:leading-tight text-xl sm:text-2xl md:text-3xl text-gray-500 dark:text-gray-400">
         {props.title}
         <a
           tabIndex={0}
-          className="text-red-600 dark:text-red-400 block sm:inline-block"
+          className="text-red-600 dark:text-red-400"
           target="_blank"
           rel="noopener noreferrer"
           href={props.company.website}
