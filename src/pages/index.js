@@ -2,26 +2,9 @@ import * as React from "react";
 import Seo from "../components/seo";
 import Switch from "../components/Switch";
 import Job from "../components/Job";
-import data from "../../data.json";
-
-const DARK_MODE = "darkMode";
-const getDarkMode = () => {
-  const darkMode = localStorage.getItem(DARK_MODE);
-  if (darkMode) {
-    return JSON.parse(darkMode);
-  }
-
-  return true;
-};
+import data from "../data.json";
 
 const IndexPage = () => {
-  const [darkMode, setDarkMode] = React.useState(getDarkMode());
-
-  React.useEffect(() => {
-    document.querySelector("html").className = darkMode ? "dark" : "";
-    localStorage.setItem(DARK_MODE, darkMode);
-  }, [darkMode]);
-
   const skillsHalf = Math.ceil(data.skills.length / 2);
   const skillsCol1 = data.skills.slice(0, skillsHalf);
   const skillsCol2 = data.skills.slice(skillsHalf);
@@ -29,9 +12,7 @@ const IndexPage = () => {
   return (
     <>
       <Seo />
-      <div className="fixed bottom-0 right-0">
-        <Switch isToggled={darkMode} onClick={() => setDarkMode(!darkMode)} />
-      </div>
+      <Switch />
 
       <div className="dark:bg-gray-900 bg-gray-100 text-gray-700 dark:text-gray-300 lowercase">
         <div className="max-w-2xl mx-6 md:ml-36">

@@ -1,15 +1,31 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-export default function Switch(props) {
+export default function Switch() {
+  const DARK_MODE = "darkMode";
+  const getDarkMode = () => {
+    const darkMode = localStorage.getItem(DARK_MODE);
+    if (darkMode) {
+      return JSON.parse(darkMode);
+    }
+
+    return true;
+  };
+
+  const [darkMode, setDarkMode] = React.useState(getDarkMode());
+
+  React.useEffect(() => {
+    document.querySelector("html").className = darkMode ? "dark" : "";
+    localStorage.setItem(DARK_MODE, darkMode);
+  }, [darkMode]);
+
   return (
-    <>
+    <div className="fixed bottom-0 right-0">
       <button
         className="w-full h-full p-4 cursor-pointer"
         aria-label="Color mode"
-        onClick={props.onClick}
+        onClick={() => setDarkMode(!darkMode)}
       >
-        {props.isToggled ? (
+        {darkMode ? (
           <svg
             className="h-6 w-6 text-gray-400"
             fill="none"
@@ -39,11 +55,6 @@ export default function Switch(props) {
           </svg>
         )}
       </button>
-    </>
+    </div>
   );
 }
-
-Switch.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  isToggled: PropTypes.bool.isRequired,
-};
