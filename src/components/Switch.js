@@ -3,6 +3,7 @@ import React from "react";
 export default function Switch() {
   const DARK_MODE = "darkMode";
   const getDarkMode = () => {
+    if (!localStorage) return true;
     const darkMode = localStorage.getItem(DARK_MODE);
     if (darkMode) {
       return JSON.parse(darkMode);
