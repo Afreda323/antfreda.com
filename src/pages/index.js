@@ -14,7 +14,7 @@ const IndexPage = () => {
       <Seo />
       <Switch />
 
-      <div className="dark:bg-gray-900 bg-gray-100 text-gray-700 dark:text-gray-300 lowercase">
+      <div className="dark:bg-gray-900 bg-gray-200 text-gray-700 dark:text-gray-300 lowercase">
         <div className="max-w-2xl mx-6 md:ml-36">
           {/* Header */}
           <header className="min-h-screen flex flex-col justify-center py-12">
@@ -34,10 +34,10 @@ const IndexPage = () => {
               </a>
             </h2>
             <p className={`sm:text-lg sm:leading-relaxed mb-12`}>
-              Node JS framework that a generator. D3. Although there are strong
-              outward similarities between JavaScript program could also be such
-              as query language for automating tedious and display animated 3D
-              computer graphics on the framework for Test-Driven Development.
+              I am a self-taught senior software engineer based in Charlotte,
+              north carolina. I have multiple years of experience working in
+              various environments from small local agencies to Fortune 25
+              companies.
             </p>
             <p className="text-lg sm:text-xl">
               <a
@@ -76,12 +76,11 @@ const IndexPage = () => {
                 About Me
               </h2>
               <p className={`sm:text-lg sm:leading-relaxed mb-6`}>
-                Node JS framework that a generator. D3. Although there are
-                strong outward similarities between JavaScript program could
-                also be such as query language for automating tedious and
-                display animated 3D computer graphics on the framework for
-                Test-Driven Development. Yandex for dynamic web. Hoisting is by
-                Microsoft for dynamic nature, the language.
+                I specialize in the development of scalable web applications. I
+                spend most of my free time researching and experimenting with
+                new technology. when not sitting at my computer writing code, I
+                can be found at one of the many breweries in charlotte, at the
+                gym, or on my couch watching some netflix.
               </p>
               <h3 className="text-xl mb-2 text-gray-500 dark:text-gray-400">
                 Some of the Tools I'm Using:
@@ -119,13 +118,12 @@ const IndexPage = () => {
               >
                 Experience
               </h2>
-              <p className={`sm:text-lg sm:leading-relaxed mb-6`}>
-                Node JS framework that a generator. D3. Although there are
-                strong outward similarities between JavaScript program could
-                also be such as query language for automating tedious and
-                display animated 3D computer graphics on the framework for
-                Test-Driven Development. Yandex for dynamic web. Hoisting is by
-                Microsoft for dynamic nature, the language.
+              <p className={`sm:text-lg sm:leading-relaxed mb-12`}>
+                My career has placed me at some great places, and has given me
+                the chance to work with and learn from some awesome people. I've
+                been lucky enough to have had the opportunity to work with both
+                battle hardened software and continue to to stay on the cutting
+                edge with new up and coming technology.
               </p>
               {data.jobs.map((job) => (
                 <Job key={`${job.title}_${job.company.name}`} {...job} />
@@ -140,12 +138,8 @@ const IndexPage = () => {
               <h2
                 className={`text-2xl sm:text-3xl md:text-4xl leading-tight text-gray-500 dark:text-gray-400 mb-6 line-text`}
               >
-                Get In Touch
+                Contact Me
               </h2>
-              <p className={`sm:text-lg sm:leading-relaxed mb-6`}>
-                Node JS framework that a generator. D3. Although there are
-                strong outward similarities between JavaScript.
-              </p>
               <p>
                 {data.links.map((link) => (
                   <a
