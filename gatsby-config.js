@@ -5,9 +5,5 @@ module.exports = {
     url: "https://www.antfreda.com",
     twitterUsername: "@AnthonyFreda_",
   },
-  plugins: [
-    "gatsby-plugin-postcss",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
-  ],
+  plugins: ["gatsby-plugin-postcss", "gatsby-plugin-react-helmet"],
 };
