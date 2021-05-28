@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function Switch() {
-  const DARK_MODE = "darkMode";
-  const getDarkMode = () => {
-    if (!localStorage) return true;
+  const [darkMode, setDarkMode] = React.useState(true);
+
+  useEffect(() => {
+    const DARK_MODE = "darkMode";
     const darkMode = localStorage.getItem(DARK_MODE);
     if (darkMode) {
-      return JSON.parse(darkMode);
+      setDarkMode(JSON.parse(darkMode));
     }
 
-    return true;
-  };
+    setDarkMode(true);
+  }, []);
 
-  const [darkMode, setDarkMode] = React.useState(getDarkMode());
-
-  React.useEffect(() => {
+  useEffect(() => {
     document.querySelector("html").className = darkMode ? "dark" : "";
     localStorage.setItem(DARK_MODE, darkMode);
   }, [darkMode]);
