@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
 export default function Switch() {
+  const DARK_MODE = "darkMode";
   const [darkMode, setDarkMode] = React.useState(true);
 
   useEffect(() => {
-    const DARK_MODE = "darkMode";
     const darkMode = localStorage.getItem(DARK_MODE);
     if (darkMode) {
       setDarkMode(JSON.parse(darkMode));
