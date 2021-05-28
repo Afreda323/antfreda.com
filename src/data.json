@@ -1,0 +1,108 @@
+{
+  "skills": [
+    "JavaScript/TypeScript",
+    "Tailwind",
+    "React",
+    "Go",
+    "Node",
+    "Serverless Framework",
+    "Docker"
+  ],
+  "jobs": [
+    {
+      "title": "Lead Engineer",
+      "company": {
+        "name": "Movement Mortgage",
+        "website": "https://movement.com"
+      },
+      "start": "April 2021",
+      "end": "Present",
+      "achievements": ["more info coming soon"]
+    },
+    {
+      "title": "Senior Software Engineer",
+      "company": {
+        "name": "Diligent",
+        "website": "https://diligent.com"
+      },
+      "start": "December 2019",
+      "end": "March 2021",
+      "achievements": [
+        "Led development of micro-frontend integrations across various products using both React.js and Angular.",
+        "Developed large scale React applications with TypeScript the scaled to over 200,000 customers.",
+        "Worked on development of various event based distributed microservices using tools including Go/Golang and Node.js",
+        "Assisted in the development of a company wide UI component library.",
+        "Scaffolded scalable Next.js and Typescript architecture for greenfield product development.",
+        "Participated in code reviews and enforced development best practices.",
+        "Worked with Ops and Product teams to ensure timely product delivery and customer satisfaction."
+      ]
+    },
+    {
+      "title": "AVP; Software Engineer",
+      "company": {
+        "name": "Bank of America",
+        "website": "https://bankofamerica.com/"
+      },
+      "start": "January 2018",
+      "end": "November 2019",
+      "achievements": [
+        "Awarded Gold and Bronze awards for outstanding performance.",
+        "Architected front end application scaffold/pipeline and UI component library using React and Typescript.",
+        "Developed workflow automation web applications and analytics dashboards for internal Information-Security teams.",
+        "Developed analytics dashboards",
+        "Worked closely with customers to gather requirements and ensure timely product delivery.",
+        "Led development of Mattermost(Enterprise slack alternative) and Jira integrations across multiple applications/processes.",
+        "Architected/developed client side applications using React, Redux, Redux Saga and Styled Components.",
+        "Developed server side APIs using Express/Koa and MongoDB/MySQL.",
+        "Worked in an agile environment leveraging sprints and Gitflow.",
+        "Led code reviews and enforced development best practices.",
+        "Held product demonstrations in front of customers and stakeholders.",
+        "Trained junior/mid level developers on new technologies."
+      ]
+    },
+    {
+      "title": "Software Engineer",
+      "company": {
+        "name": "Bank of America",
+        "website": "https://bankofamerica.com/"
+      },
+      "start": "July 2017",
+      "end": "January 2018",
+      "achievements": []
+    },
+    {
+      "title": "Web Developer",
+      "company": {
+        "name": "Burke",
+        "website": "https://weareburke.com/"
+      },
+      "start": "February 2017",
+      "end": "July 2017",
+      "achievements": []
+    },
+    {
+      "title": "Freelance Developer",
+      "company": {
+        "name": "antfreda.com",
+        "website": "https://antfreda.com/"
+      },
+      "start": "July 2015",
+      "end": "July 2017",
+      "achievements": []
+    }
+  ],
+  "links": [
+    {
+      "href": "mailto:anthonyfreda323@gmail.com",
+      "label": "anthonyfreda323@gmail.com"
+    },
+    {
+      "href": "https://github.com/Afreda323",
+      "label": "github.com/Afreda323"
+    },
+    {
+      "href": "https://linkedin.com/in/antfreda323",
+      "label": "linkedin.com/in/antfreda323"
+    }
+  ]
+}

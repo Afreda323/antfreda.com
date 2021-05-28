@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-moz-selection {
+  /* Code for Firefox */
+  @apply bg-red-200;
+}
+
+::selection {
+  @apply bg-red-200;
+}
+
+body::-webkit-scrollbar {
+  width: .5em;
+}
+
+body::-webkit-scrollbar-track {
+  @apply bg-gray-300;
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply bg-gray-600;
+}
+
+.dark body::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+.dark body::-webkit-scrollbar-thumb {
+  @apply bg-gray-600;
+}
+
+.dark ::-moz-selection {
+  /* Code for Firefox */
+  @apply bg-red-900;
+}
+
+.dark ::selection {
+  @apply bg-red-900;
+}
+
+section {
+  @apply py-12;
+}
+
+h1,
+h2,
+h3,
+a,
+button {
+  @apply font-serif;
+}
+
+.line-text {
+  @apply overflow-hidden;
+}
+
+.line-text:after {
+  @apply bg-gray-500 inline-block w-1/4 align-middle relative left-3;
+  height: 1px;
+  content: "";
+  margin-right: -50%;
+}
+
+.dark .line-text:after {
+  @apply bg-gray-400;
+}
+
+a:hover,
+a:focus,
+button:hover,
+button:focus {
+  @apply underline cursor-pointer;
+}
