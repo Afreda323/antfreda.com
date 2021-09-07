@@ -17,7 +17,14 @@
       },
       "start": "April 2021",
       "end": "Present",
-      "achievements": ["more info coming soon"]
+      "achievements": [
+        "Led screening and interview process of new development hires.",
+        "Developed in-house SDLC process.",
+        "Led code reviews and enforced development best practices.",
+        "Led application migration from JavaScript to TypeScript.",
+        "Architected and developed internal CRM software with React, Redux and Redux Saga.",
+        "Developed REST based microservices written in Node.js and deployed to Azure.",
+      ]
     },
     {
       "title": "Senior Software Engineer",
