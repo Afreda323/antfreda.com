@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Anthony Freda | Software Engineer",
-    description: "Description.",
+    title: "Anthony Freda | Senior Software Engineer",
+    description: "Senior Engineer with experience in modern full stack software development.",
     url: "https://www.antfreda.com",
     twitterUsername: "@AnthonyFreda_",
   },
