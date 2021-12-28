@@ -25,7 +25,7 @@ const IndexPage = () => {
               <span>{data.jobs[0].title}</span>
               <a
                 tabIndex={0}
-                className="text-red-600 dark:text-red-400"
+                className="text-red-600 dark:text-red-400 uppercase font-mono"
                 target="_blank"
                 rel="noopener noreferrer"
                 href={data.jobs[0].company.website}

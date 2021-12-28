@@ -10,13 +10,23 @@
   ],
   "jobs": [
     {
-      "title": "Lead Engineer",
+      "title": "Senior Engineer",
+      "company": {
+        "name": "P00LS",
+        "website": "https://p00ls.io"
+      },
+      "start": "December 2021",
+      "end": "Present",
+      "achievements": ["coming soon...."]
+    },
+    {
+      "title": "Lead Software Engineer",
       "company": {
         "name": "Movement Mortgage",
         "website": "https://movement.com"
       },
       "start": "April 2021",
-      "end": "Present",
+      "end": "December 2021",
       "achievements": [
         "Led screening and interview process of new development hires.",
         "Developed in-house SDLC process.",

@@ -27,7 +27,12 @@ export default function Job(props) {
           rel="noopener noreferrer"
           href={props.company.website}
         >
-          @{props.company.name}
+          @
+          {props.company.name === "P00LS" ? (
+            <span className="font-mono uppercase">{props.company.name}</span>
+          ) : (
+            props.company.name
+          )}
         </a>
       </h2>
       <p className="sm:text-lg mb-4">
