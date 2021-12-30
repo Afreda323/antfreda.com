@@ -18,7 +18,7 @@ const IndexPage = () => {
         <div className="max-w-2xl mx-6 md:ml-36">
           {/* Header */}
           <header className="min-h-screen flex flex-col justify-center py-12">
-            <h1 className="text-5xl sm:text-7xl">Anthony Freda</h1>
+            <h1 className="text-4xl sm:text-7xl">Anthony Freda</h1>
             <h2
               className={`text-2xl sm:text-3xl md:text-4xl text-slate-500 dark:text-slate-400 mb-8`}
             >

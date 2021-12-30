@@ -22,7 +22,7 @@ export default function Job(props) {
         {props.title}
         <a
           tabIndex={0}
-          className="text-rose-600 dark:text-rose-400"
+          className="text-rose-600 dark:text-rose-400 block sm:inline-block"
           target="_blank"
           rel="noopener noreferrer"
           href={props.company.website}
@@ -30,7 +30,7 @@ export default function Job(props) {
           @{props.company.name}
         </a>
       </h2>
-      <p className="sm:text-lg mb-4 font-mono tracking-tighter">
+      <p className="text-sm sm:text-lg mb-4 font-mono tracking-tighter">
         {props.start} – {props.end}
       </p>
       <ul className="mb-4">
