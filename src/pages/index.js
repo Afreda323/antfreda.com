@@ -158,9 +158,9 @@ const IndexPage = () => {
         {/* Footer */}
         <footer>
           <p
-            className={`text-sm sm:text-base leading-relaxed sm:leading-loose pb-2 text-slate-500 dark:text-slate-400`}
+            className={`text-sm sm:text-base flex items-center pb-2 text-slate-500 dark:text-slate-400 `}
           >
-            &copy; {new Date().getFullYear()}
+            &copy; <span className="font-mono">{new Date().getFullYear()}</span>
           </p>
         </footer>
       </div>
