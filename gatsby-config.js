@@ -5,7 +5,7 @@ module.exports = {
       "Senior Engineer with experience in modern full stack software development.",
     url: "https://www.antfreda.com",
     twitterUsername: "@AnthonyFreda_",
-    image: "https://avatars.githubusercontent.com/u/17534701?v=4",
+    image: "https://i.ibb.co/jGmrw5c/me.jpg",
   },
   plugins: ["gatsby-plugin-postcss", "gatsby-plugin-react-helmet"],
 };
