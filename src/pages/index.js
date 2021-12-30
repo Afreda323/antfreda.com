@@ -160,7 +160,8 @@ const IndexPage = () => {
           <p
             className={`text-sm sm:text-base flex items-center pb-2 text-slate-500 dark:text-slate-400 `}
           >
-            &copy; <span className="font-mono">{new Date().getFullYear()}</span>
+            &copy;{" "}
+            <span className="font-mono ml-1">{new Date().getFullYear()}</span>
           </p>
         </footer>
       </div>
