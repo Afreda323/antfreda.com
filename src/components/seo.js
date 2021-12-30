@@ -38,6 +38,18 @@ const SEO = ({ title, description }) => {
       <meta name="twitter:creator" content={seo.twitterUsername} />
       <meta property="twitter:image" content={seo.image} />
 
+      {/* BG */}
+      <meta
+        name="theme-color"
+        media="(prefers-color-scheme: light)"
+        content="#cbd5e1"
+      />
+      <meta
+        name="theme-color"
+        media="(prefers-color-scheme: dark)"
+        content="#0f172a"
+      />
+
       {/* Fonts */}
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link
