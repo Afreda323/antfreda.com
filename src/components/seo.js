@@ -13,6 +13,7 @@ const SEO = ({ title, description }) => {
     description: description || site.siteMetadata.defaultDescription,
     url: `${site.siteMetadata.siteUrl}${pathname}`,
     twitterUsername: site.siteMetadata.twitterUsername,
+    image: site.siteMetadata.image,
   };
 
   return (
@@ -27,6 +28,7 @@ const SEO = ({ title, description }) => {
       <meta property="og:url" content={seo.url} />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
+      {seo.image && <meta property="og:image" content={seo.image} />}
 
       {/* Twitter  */}
       <meta property="twitter:card" content="summary" />
@@ -34,11 +36,12 @@ const SEO = ({ title, description }) => {
       <meta property="twitter:title" content={seo.title} />
       <meta property="twitter:description" content={seo.description} />
       <meta name="twitter:creator" content={seo.twitterUsername} />
+      {seo.image && <meta property="twitter:image" content={seo.image} />}
 
       {/* Fonts */}
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Cabin&family=Playfair+Display:wght@500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cabin&family=Space+Mono&display=swap"
         rel="stylesheet"
       />
     </Helmet>

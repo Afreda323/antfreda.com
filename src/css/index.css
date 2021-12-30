@@ -2,13 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  transition: background-color 0.2s ease-in-out;
+}
 ::-moz-selection {
   /* Code for Firefox */
-  @apply bg-red-200;
+  @apply bg-rose-200;
 }
 
 ::selection {
-  @apply bg-red-200;
+  @apply bg-rose-200;
 }
 
 body::-webkit-scrollbar {
@@ -16,28 +19,28 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  @apply bg-gray-300;
+  @apply bg-slate-300;
 }
 
 body::-webkit-scrollbar-thumb {
-  @apply bg-gray-600;
+  @apply bg-slate-600;
 }
 
 .dark body::-webkit-scrollbar-track {
-  @apply bg-gray-900;
+  @apply bg-slate-900;
 }
 
 .dark body::-webkit-scrollbar-thumb {
-  @apply bg-gray-600;
+  @apply bg-slate-600;
 }
 
 .dark ::-moz-selection {
   /* Code for Firefox */
-  @apply bg-red-900;
+  @apply bg-rose-900;
 }
 
 .dark ::selection {
-  @apply bg-red-900;
+  @apply bg-rose-900;
 }
 
 section {
@@ -49,7 +52,7 @@ h2,
 h3,
 a,
 button {
-  @apply font-serif;
+  @apply font-mono tracking-tighter;
 }
 
 .line-text {
@@ -57,14 +60,14 @@ button {
 }
 
 .line-text:after {
-  @apply bg-gray-500 inline-block w-1/4 align-middle relative left-3;
+  @apply bg-slate-500 inline-block w-1/4 align-middle relative left-3;
   height: 1px;
   content: "";
   margin-right: -50%;
 }
 
 .dark .line-text:after {
-  @apply bg-gray-400;
+  @apply bg-slate-400;
 }
 
 a:hover,

@@ -18,35 +18,30 @@ export default function Job(props) {
   const [expanded, setExpanded] = useState(false);
   return (
     <div className={`${props.achievements.length ? "mb-12" : "sm:mb-6 mb-2"}`}>
-      <h2 className="leading-none sm:leading-tight md:leading-tight text-xl sm:text-2xl md:text-3xl text-gray-500 dark:text-gray-400">
+      <h2 className="leading-none sm:leading-tight md:leading-tight text-xl sm:text-2xl md:text-3xl text-slate-500 dark:text-slate-400">
         {props.title}
         <a
           tabIndex={0}
-          className="text-red-600 dark:text-red-400"
+          className="text-rose-600 dark:text-rose-400"
           target="_blank"
           rel="noopener noreferrer"
           href={props.company.website}
         >
-          @
-          {props.company.name === "P00LS" ? (
-            <span className="font-mono uppercase">{props.company.name}</span>
-          ) : (
-            props.company.name
-          )}
+          @{props.company.name}
         </a>
       </h2>
-      <p className="sm:text-lg mb-4">
+      <p className="sm:text-lg mb-4 font-mono tracking-tighter">
         {props.start} – {props.end}
       </p>
-      <ul className="mb-2">
+      <ul className="mb-4">
         {props.achievements
           .slice(0, expanded ? props.achievements.length : 4)
           .map((ach, i) => (
             <li
-              className="mr-12 mb-2 sm:text-lg"
+              className="mr-12 mb-4 sm:text-lg"
               key={`${props.company.name}_ach_${i}`}
             >
-              <span className="text-red-600 dark:text-red-400 inline-block mr-2">
+              <span className="text-rose-600 dark:text-rose-400 inline-block mr-2">
                 &#187;
               </span>
               {ach}
@@ -57,9 +52,9 @@ export default function Job(props) {
         <div>
           <button
             onClick={() => setExpanded(!expanded)}
-            className="text-red-600 dark:text-red-400 sm:inline-block block mb-2 sm:mb-2 mr-12"
+            className="text-rose-600 dark:text-rose-400 sm:inline-block block mb-2 sm:mb-2 mr-12"
           >
-            {expanded ? "View Less" : "View More"}
+            {expanded ? "view less" : "view more"}
           </button>
         </div>
       )}

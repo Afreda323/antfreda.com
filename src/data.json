@@ -6,7 +6,8 @@
     "Go",
     "Node",
     "Serverless Framework",
-    "Docker"
+    "Docker",
+    "Web3"
   ],
   "jobs": [
     {
@@ -20,7 +21,7 @@
       "achievements": ["coming soon...."]
     },
     {
-      "title": "Lead Software Engineer",
+      "title": "Lead Engineer",
       "company": {
         "name": "Movement Mortgage",
         "website": "https://movement.com"

@@ -19,15 +19,15 @@ export default function Switch() {
   }, [darkMode]);
 
   return (
-    <div className="fixed bottom-0 right-0">
+    <div className="fixed top-0 right-0">
       <button
-        className="w-full h-full p-4 cursor-pointer"
+        className="py-4 p-2 cursor-pointer"
         aria-label="Color mode"
         onClick={() => setDarkMode(!darkMode)}
       >
         {darkMode ? (
           <svg
-            className="h-6 w-6 text-gray-400"
+            className="h-8 w-8 text-amber-300"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -41,7 +41,7 @@ export default function Switch() {
           </svg>
         ) : (
           <svg
-            className="h-6 w-6 text-gray-400"
+            className="h-8 w-8 text-sky-600"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
