@@ -18,7 +18,7 @@ const NotFoundPage = () => {
             </h2>
             <Link
               tabIndex={0}
-              className="text-rose-600 dark:text-rose-400 text-lg sm:text-xl"
+              className="text-teal-600 dark:text-teal-500 text-lg sm:text-xl"
               to="/"
             >
               Go home

@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: "'Cabin', sans-serif",
-        mono: "'Space Mono', monospace",
+        sans: "'Titillium Web', sans-serif",
+        display: "'Kdam Thmor Pro', sans-serif",
       },
     },
   },

@@ -10,21 +10,21 @@ const IndexPage = () => {
   const skillsCol2 = data.skills.slice(skillsHalf);
 
   return (
-    <div className="dark:bg-slate-900 dark:bg-opacity-100 bg-slate-300 bg-opacity-75 text-slate-700 dark:text-slate-300 tracking-widest lowercase">
+    <div className="dark:bg-black bg-gradient-to-br dark:from-black dark:to-slate-900 dark:bg-opacity-100  from-slate-300 to-white text-slate-700 dark:text-slate-300 tracking-widest">
       <Seo />
       <Switch />
 
       <div className="max-w-2xl mx-6 md:ml-36">
         {/* Header */}
         <header className="min-h-screen flex flex-col justify-center py-12">
-          <h1 className="text-4xl sm:text-7xl">Anthony Freda</h1>
+          <h1 className="text-4xl sm:text-7xl leading-none">Anthony Freda</h1>
           <h2
-            className={`text-2xl sm:text-3xl md:text-4xl text-slate-500 dark:text-slate-400 mb-8`}
+            className={`text-2xl sm:text-3xl md:text-4xl leading-none text-slate-500 dark:text-slate-400 mb-8`}
           >
             <span>{data.jobs[0].title}</span>
             <a
               tabIndex={0}
-              className="text-rose-600 dark:text-rose-400"
+              className="text-teal-600 dark:text-teal-500"
               target="_blank"
               rel="noopener noreferrer"
               href={data.jobs[0].company.website}
@@ -41,21 +41,21 @@ const IndexPage = () => {
           <p className="text-lg sm:text-xl">
             <a
               tabIndex={0}
-              className="text-rose-600 dark:text-rose-400 sm:inline-block block mb-2 sm:mb-2 mr-12"
+              className="text-teal-600 dark:text-teal-500 sm:inline-block block mb-2 sm:mb-2 mr-12"
               href="#about"
             >
               About me
             </a>
             <a
               tabIndex={0}
-              className="text-rose-600 dark:text-rose-400 sm:inline-block block mb-2 sm:mb-2 mr-12"
+              className="text-teal-600 dark:text-teal-500 sm:inline-block block mb-2 sm:mb-2 mr-12"
               href="#experience"
             >
               Experience
             </a>
             <a
               tabIndex={0}
-              className="text-rose-600 dark:text-rose-400 sm:inline-block block mb-2 sm:mb-2 mr-12"
+              className="text-teal-600 dark:text-teal-500 sm:inline-block block mb-2 sm:mb-2 mr-12"
               href="#contact"
             >
               Contact
@@ -88,7 +88,7 @@ const IndexPage = () => {
               <div>
                 {skillsCol1.map((skill) => (
                   <p key={`skill_${skill}`} className="mr-12 sm:text-lg">
-                    <span className="text-rose-600 dark:text-rose-400 inline-block mr-2">
+                    <span className="text-teal-600 dark:text-teal-500 inline-block mr-2">
                       &#187;
                     </span>
                     {skill}
@@ -98,7 +98,7 @@ const IndexPage = () => {
               <div>
                 {skillsCol2.map((skill) => (
                   <p key={`skill_${skill}`} className="mr-12 sm:text-lg">
-                    <span className="text-rose-600 dark:text-rose-400 inline-block mr-2">
+                    <span className="text-teal-600 dark:text-teal-500 inline-block mr-2">
                       &#187;
                     </span>
                     {skill}
@@ -146,7 +146,7 @@ const IndexPage = () => {
                   tabIndex={0}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-rose-600 dark:text-rose-400 block mb-2 md:mb-4 mr-12"
+                  className="text-teal-600 dark:text-teal-500 block mb-2 md:mb-4 mr-12"
                   href={link.href}
                 >
                   {link.label}
@@ -161,7 +161,9 @@ const IndexPage = () => {
             className={`text-sm sm:text-base flex items-center pb-2 text-slate-500 dark:text-slate-400 `}
           >
             &copy;{" "}
-            <span className="font-mono ml-1">{new Date().getFullYear()}</span>
+            <span className="font-display tracking-tighter ml-1">
+              {new Date().getFullYear()}
+            </span>
           </p>
         </footer>
       </div>

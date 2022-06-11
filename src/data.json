@@ -1,24 +1,32 @@
 {
   "skills": [
-    "JavaScript/TypeScript",
+    "TypeScript",
     "Tailwind",
+    "Next.js",
     "React",
-    "Go",
+    "React Native",
     "Node",
-    "Serverless Framework",
-    "Docker",
-    "Web3"
+    "GraphQL",
+    "Firebase"
   ],
   "jobs": [
     {
       "title": "Senior Engineer",
       "company": {
         "name": "P00LS",
-        "website": "https://p00ls.io"
+        "website": "https://launchpad.p00ls.io"
       },
       "start": "December 2021",
       "end": "Present",
-      "achievements": ["coming soon...."]
+      "achievements": [
+        "Led screening and interview process of new development hires.",
+        "Architected and Developed in-house CMS with Next.js, TypeScript and Firebase.",
+        "Developed consumer facing application with gamified ERC20 token earning system with React, Next.js, TypeScript and Firebase.",
+        "Led development of token claiming system in Next.js and TypeScript that interacts directly with Ethereum blockchain.",
+        "Developed a dynamic localization and accessibility system to be used across all applications. ",
+        "Used Tailwind to apply uniform UX across all products.",
+        "Managed deployments to development and production environments on Google Cloud."
+      ]
     },
     {
       "title": "Lead Engineer",
