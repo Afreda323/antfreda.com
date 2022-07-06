@@ -13,11 +13,21 @@
     {
       "title": "Senior Engineer",
       "company": {
+        "name": "1v1Me",
+        "website": "https://1v1me.com"
+      },
+      "start": "June 2022",
+      "end": "Present",
+      "achievements": ["Coming Soon..."]
+    },
+    {
+      "title": "Senior Software Engineer",
+      "company": {
         "name": "P00LS",
         "website": "https://launchpad.p00ls.io"
       },
       "start": "December 2021",
-      "end": "Present",
+      "end": "June 2022",
       "achievements": [
         "Led screening and interview process of new development hires.",
         "Architected and Developed in-house CMS with Next.js, TypeScript and Firebase.",
