@@ -18,7 +18,20 @@
       },
       "start": "June 2022",
       "end": "Present",
-      "achievements": ["Coming Soon..."]
+      "achievements": [
+        "Accelerated 0-1 product development for a user-facing web application using Next.js, TypeScript, and Tailwind, successfully scaling to over 20,000 new users per month.",
+        "Engineered innovative features enabling users to compete in various video games for monetary rewards.",
+        "Crafted functionalities allowing users to stake on the outcomes of professional esports matches, adding an exciting dimension to the user experience.",
+        "Developed an engaging bracketed tournament feature, fostering a competitive environment for users.",
+        "Implemented seamless CI/CD for web app rollouts utilizing GitHub Actions and Vercel, ensuring efficient and consistent updates.",
+        "Constructed a versatile internal tools application using React and TypeScript, streamlining internal processes and workflows.",
+        "Employed Electron to develop Windows and Mac desktop applications, complete with a custom auto-updating system for optimal user experiences.",
+        "Managed end-to-end deployments and software upgrades for desktop applications, maintaining consistent performance and reliability.",
+        "Actively participated in feature planning and project scoping discussions, contributing valuable insights and expertise.",
+        "Seamlessly integrated with popular sports and competitive games, including Call of Duty, Apex Legends, and Fortnite, broadening the platform's appeal to a diverse range of gaming enthusiasts.",
+        "Skillfully integrated with third-party payment processors, ensuring secure and efficient transactions for users across the platform.",
+        "Implemented an immersive live match viewing experience, complete with the ability to switch between user perspectives and engage in real-time chat with fellow spectators, fostering a dynamic and interactive community atmosphere."
+      ]
     },
     {
       "title": "Senior Software Engineer",
@@ -29,13 +42,13 @@
       "start": "December 2021",
       "end": "June 2022",
       "achievements": [
-        "Led screening and interview process of new development hires.",
-        "Architected and Developed in-house CMS with Next.js, TypeScript and Firebase.",
-        "Developed consumer facing application with gamified ERC20 token earning system with React, Next.js, TypeScript and Firebase.",
-        "Led development of token claiming system in Next.js and TypeScript that interacts directly with Ethereum blockchain.",
-        "Developed a dynamic localization and accessibility system to be used across all applications. ",
-        "Used Tailwind to apply uniform UX across all products.",
-        "Managed deployments to development and production environments on Google Cloud."
+        "Spearheaded the selection and interview process for top-tier development talent, ensuring a robust pipeline of skilled professionals.",
+        "Designed and engineered a bespoke CMS using Next.js, TypeScript, and Firebase, streamlining content management and increasing productivity.",
+        "Crafted an engaging, consumer-facing application featuring a gamified ERC20 token earning system, utilizing React, Next.js, TypeScript, and Firebase.",
+        "Pioneered the development of an innovative token claiming system, leveraging Next.js and TypeScript to enable seamless interaction with the Ethereum blockchain.",
+        "Implemented a versatile localization and accessibility framework, enhancing user experience and inclusivity across all applications.",
+        "Employed Tailwind CSS to establish a consistent and visually appealing UX throughout all product offerings.",
+        "Orchestrated seamless deployments to both development and production environments on Google Cloud, ensuring optimal performance and reliability."
       ]
     },
     {
@@ -47,12 +60,12 @@
       "start": "April 2021",
       "end": "December 2021",
       "achievements": [
-        "Led screening and interview process of new development hires.",
-        "Developed in-house SDLC process.",
-        "Led code reviews and enforced development best practices.",
-        "Led application migration from JavaScript to TypeScript.",
-        "Architected and developed internal CRM software with React, Redux and Redux Saga.",
-        "Developed REST based microservices written in Node.js and deployed to Azure."
+        "Directed the screening and interview process for development hires, fostering a talented and well-rounded team.",
+        "Devised a comprehensive in-house SDLC process, optimizing software development and ensuring timely project completion.",
+        "Conducted thorough code reviews and championed adherence to development best practices, maintaining high-quality code standards.",
+        "Conceived and engineered a custom CRM solution, employing React, Redux, and Redux Saga to enhance internal workflow efficiency.",
+        "Spearheaded the successful migration of applications from JavaScript to TypeScript, improving code maintainability and scalability.",
+        "Crafted REST-based microservices in Node.js, expertly deploying them to Azure for streamlined application integration and robust performance."
       ]
     },
     {
@@ -64,13 +77,13 @@
       "start": "December 2019",
       "end": "March 2021",
       "achievements": [
-        "Led development of micro-frontend integrations across various products using both React.js and Angular.",
-        "Developed large scale React applications with TypeScript the scaled to over 200,000 customers.",
-        "Worked on development of various event based distributed microservices using tools including Go/Golang and Node.js",
-        "Assisted in the development of a company wide UI component library.",
-        "Scaffolded scalable Next.js and Typescript architecture for greenfield product development.",
-        "Participated in code reviews and enforced development best practices.",
-        "Worked with Ops and Product teams to ensure timely product delivery and customer satisfaction."
+        "Championed the creation of micro-frontend integrations across diverse products, leveraging the power of React.js and Angular for seamless user experiences.",
+        "Engineered expansive React applications with TypeScript, expertly scaling to accommodate over 200,000 satisfied customers.",
+        "Contributed to the development of various microservices, utilizing cutting-edge tools such as Go/Golang and Node.js for optimal performance.",
+        "Aided in the construction of a cohesive, company-wide UI component library, streamlining design and enhancing consistency.",
+        "Established a robust and scalable Next.js and TypeScript architecture, laying the foundation for successful greenfield product development.",
+        "Actively participated in code reviews, upholding development best practices and maintaining high-quality standards.",
+        "Collaborated with Operations and Product teams, ensuring timely product delivery and outstanding customer satisfaction."
       ]
     },
     {
@@ -82,18 +95,19 @@
       "start": "January 2018",
       "end": "November 2019",
       "achievements": [
-        "Awarded Gold and Bronze awards for outstanding performance.",
-        "Architected front end application scaffold/pipeline and UI component library using React and Typescript.",
-        "Developed workflow automation web applications and analytics dashboards for internal Information-Security teams.",
-        "Developed analytics dashboards",
-        "Worked closely with customers to gather requirements and ensure timely product delivery.",
-        "Led development of Mattermost(Enterprise slack alternative) and Jira integrations across multiple applications/processes.",
-        "Architected/developed client side applications using React, Redux, Redux Saga and Styled Components.",
-        "Developed server side APIs using Express/Koa and MongoDB/MySQL.",
-        "Worked in an agile environment leveraging sprints and Gitflow.",
-        "Led code reviews and enforced development best practices.",
-        "Held product demonstrations in front of customers and stakeholders.",
-        "Trained junior/mid level developers on new technologies."
+        "Earned prestigious Gold and Bronze accolades for exceptional performance and dedication.",
+        "Spearheaded the development of scalable Next.js and GraphQL-based UIs, enhancing user experiences and application efficiency.",
+        "Designed front-end application scaffolding, pipelines, and UI component libraries using React and TypeScript, optimizing project workflows.",
+        "Engineered workflow automation web applications and analytical dashboards for internal Information Security teams, streamlining processes.",
+        "Crafted insightful analytics dashboards, providing valuable data-driven insights.",
+        "Collaborated closely with customers to gather requirements and guarantee timely product delivery, ensuring satisfaction.",
+        "Pioneered the development of Mattermost and Jira integrations across multiple applications and processes, boosting productivity.",
+        "Conceived and developed client-side applications using Next.js, React, Redux, Redux Saga, and CSS-in-JS libraries, for a seamless user experience.",
+        "Created server-side APIs using Express/Koa and MongoDB/MySQL, enhancing application functionality and performance.",
+        "Thrived in an agile environment, skillfully utilizing sprints and Gitflow to drive project success.",
+        "Conducted meticulous code reviews and enforced development best practices, maintaining high-quality standards.",
+        "Presented captivating product demonstrations to customers and stakeholders, showcasing application features and benefits.",
+        "Mentored junior and mid-level developers on emerging technologies, fostering a culture of continuous learning and growth."
       ]
     },
     {
