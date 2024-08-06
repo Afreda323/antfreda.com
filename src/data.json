@@ -1,15 +1,32 @@
 {
   "skills": [
     "TypeScript",
-    "Tailwind",
-    "Next.js",
     "React",
-    "React Native",
-    "Node",
+    "Next.js",
+    "Node.js",
+    "Python",
+    "Golang",
     "GraphQL",
-    "Firebase"
+    "Firebase",
+    "MySQL",
+    "CI/CD",
   ],
   "jobs": [
+    {
+      "title": "Senior Software Engineer",
+      "company": {
+        "name": "DigitalOcean",
+        "website": "https://digitalocean.com"
+      },
+      "start": "January 2024",
+      "end": "Present",
+      "achievements": [
+        "Designed and built a generative AI agent platform using Python, MySQL, Golang, and TypeScript/React.",
+        "Developed a versatile, embeddable chatbot widget with React and TypeScript.",
+        "Transformed complex GPU workflows from JavaScript to TypeScript/tRPC, enhancing ML task automation.",
+        "Implemented robust CI/CD pipelines with GitHub Actions and Go workflows."
+      ]
+    },
     {
       "title": "Senior Engineer",
       "company": {
@@ -17,7 +34,7 @@
         "website": "https://1v1me.com"
       },
       "start": "June 2022",
-      "end": "Present",
+      "end": "January 2024",
       "achievements": [
         "Accelerated 0-1 product development for a user-facing web application using Next.js, TypeScript, and Tailwind, successfully scaling to over 20,000 new users per month.",
         "Engineered innovative features enabling users to compete in various video games for monetary rewards.",
