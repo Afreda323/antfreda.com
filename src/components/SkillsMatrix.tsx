@@ -145,6 +145,11 @@ export const groups: Group[] = [
         tags: ["recent"],
       },
       {
+        title: "NestJS",
+        icon: <SiNodedotjs />,
+        tags: ["recent"],
+      },
+      {
         title: "REST APIs",
         icon: <SiExpress />,
         tags: ["recent"],
@@ -182,6 +187,7 @@ export const groups: Group[] = [
         icon: <SiOpensearch />,
         tags: ["recent"],
       },
+      { title: "Embeddings", icon: <SiOpenai />, tags: ["recent"] },
       { title: "Algolia", icon: <SiAlgolia />, tags: [] },
     ],
   },
