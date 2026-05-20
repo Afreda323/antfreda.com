@@ -51,30 +51,37 @@ export function RevealContainer({
 
 export function Reveal({
   i = 0,
-  as: Tag = "div",
   className = "",
   children,
-  delay, // optional extra delay (ms)
+  delay,
 }: {
-  i?: number; // index in the group for staggering
-  as?: keyof JSX.IntrinsicElements;
+  i?: number;
   className?: string;
   children: React.ReactNode;
   delay?: number;
 }) {
   const { inView, stagger } = React.useContext(RevealCtx);
+  const [reducedMotion, setReducedMotion] = React.useState(true);
   const computedDelay = (delay ?? 0) + i * stagger;
+
+  React.useEffect(() => {
+    setReducedMotion(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }, []);
+
+  const visible = reducedMotion || inView;
 
   return (
     <div
-      className={`will-change-transform transition duration-500 ease-out
-                  ${
-                    inView
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-2"
-                  }
-                  ${className}`}
-      style={{ transitionDelay: `${computedDelay}ms` }}
+      className={`${
+        reducedMotion
+          ? ""
+          : "will-change-transform transition duration-500 ease-out motion-reduce:transition-none"
+      } ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+      } ${className}`}
+      style={reducedMotion ? undefined : { transitionDelay: `${computedDelay}ms` }}
     >
       {children}
     </div>
