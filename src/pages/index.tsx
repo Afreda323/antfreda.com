@@ -1,5 +1,7 @@
 import React from "react";
 import Head from "next/head";
+import BookFolio from "@/components/BookFolio";
+import CommandPalette from "@/components/CommandPalette";
 import ReadingProgress from "@/components/ReadingProgress";
 import SectionNav from "@/components/SectionNav";
 import { Reveal, RevealContainer } from "@/components/Reveal";
@@ -111,12 +113,14 @@ function Bullets({ items }: { items: string[] }) {
 }
 
 function Chapter({
+  id,
   title,
   company,
   titleRole,
   dates,
   items,
 }: {
+  id: string;
   title: string;
   company: string;
   titleRole: string;
@@ -124,7 +128,10 @@ function Chapter({
   items: string[];
 }) {
   return (
-    <section className="chapter-block -mx-3 break-inside-avoid rounded-sm px-3 py-2 transition-colors duration-300">
+    <section
+      id={id}
+      className="chapter-block -mx-3 scroll-mt-20 break-inside-avoid rounded-sm px-3 py-2 transition-colors duration-300"
+    >
       <header className="mb-4 flex flex-col gap-1 border-b border-[var(--book-rule)] pb-3 sm:flex-row sm:items-baseline sm:justify-between">
         <div>
           <p className="font-sans text-[0.65rem] uppercase tracking-[0.28em] text-[var(--book-muted)]">
@@ -157,13 +164,18 @@ export default function Home() {
       </a>
       <ReadingProgress />
       <SectionNav />
+      <BookFolio />
+      <CommandPalette />
 
       <main
         id="main"
         className="mx-auto max-w-[42rem] px-6 pb-20 pt-14 sm:px-10 sm:pt-20"
       >
         <RevealContainer>
-          <header className="mb-14 border-b border-[var(--book-rule)] pb-10 text-center sm:text-left">
+          <header
+            id="title"
+            className="mb-14 scroll-mt-20 border-b border-[var(--book-rule)] pb-10 text-center sm:text-left"
+          >
             <Reveal i={0}>
               <p className="font-sans text-[0.7rem] uppercase tracking-[0.35em] text-[var(--book-muted)]">
                 Staff Software Engineer
@@ -225,7 +237,11 @@ export default function Home() {
         </RevealContainer>
 
         <RevealContainer>
-          <section id="summary" aria-labelledby="summary-heading" className="scroll-mt-20">
+          <section
+            id="summary"
+            aria-labelledby="summary-heading"
+            className="scroll-mt-20"
+          >
             <Reveal i={0}>
               <SectionTitle id="summary-heading">Summary</SectionTitle>
             </Reveal>
@@ -289,6 +305,7 @@ export default function Home() {
           <div className="mt-10 space-y-12">
             <Reveal i={1}>
             <Chapter
+              id="chapter-yum"
               title="I"
               company="Yum Brands"
               titleRole="Lead Software Engineer"
@@ -307,6 +324,7 @@ export default function Home() {
 
             <Reveal i={2}>
             <Chapter
+              id="chapter-do"
               title="II"
               company="DigitalOcean"
               titleRole="Senior Software Engineer II (Tech Lead)"
@@ -327,6 +345,7 @@ export default function Home() {
 
             <Reveal i={3}>
             <Chapter
+              id="chapter-1v1me"
               title="III"
               company="1V1ME"
               titleRole="Senior Software Engineer"
@@ -345,6 +364,7 @@ export default function Home() {
 
             <Reveal i={4}>
             <Chapter
+              id="chapter-pools"
               title="IV"
               company="P00LS"
               titleRole="Senior Software Engineer"
@@ -359,6 +379,7 @@ export default function Home() {
 
             <Reveal i={5}>
             <Chapter
+              id="chapter-movement"
               title="V"
               company="Movement Mortgage"
               titleRole="Lead Software Engineer"
@@ -373,6 +394,7 @@ export default function Home() {
 
             <Reveal i={6}>
             <Chapter
+              id="chapter-diligent"
               title="VI"
               company="Diligent Corporation"
               titleRole="Senior Software Engineer"
@@ -386,6 +408,7 @@ export default function Home() {
 
             <Reveal i={7}>
             <Chapter
+              id="chapter-bofa"
               title="VII"
               company="Bank of America"
               titleRole="AVP, Senior Software Engineer"
@@ -398,7 +421,10 @@ export default function Home() {
             </Reveal>
 
             <Reveal i={8}>
-            <section className="border-t border-[var(--book-rule)] pt-8">
+            <section
+              id="chapter-earlier"
+              className="scroll-mt-20 border-t border-[var(--book-rule)] pt-8"
+            >
               <h3 className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[var(--book-muted)]">
                 Earlier experience
               </h3>
@@ -416,6 +442,19 @@ export default function Home() {
 
         <footer className="no-print mt-16 border-t border-[var(--book-rule)] pt-8 font-sans text-[0.7rem] text-[var(--book-muted)]">
           <p>© {new Date().getFullYear()} Anthony Freda</p>
+          <p className="mt-2">
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-cmdk"))}
+              className="book-link rounded-sm text-[var(--book-muted)] hover:text-[var(--book-ink)]"
+            >
+              <span className="uppercase tracking-[0.18em]">Table of contents</span>
+              <span className="mx-1.5 text-[var(--book-rule)]" aria-hidden>
+                ·
+              </span>
+              <kbd className="font-sans text-[0.65rem] tracking-wide">⌘K</kbd>
+            </button>
+          </p>
           <ThemeColophon />
         </footer>
       </main>

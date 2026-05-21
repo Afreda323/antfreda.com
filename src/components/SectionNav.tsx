@@ -1,36 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useScrollSpy } from "@/hooks/use-scroll-spy";
 
 const sections = [
   { id: "summary", label: "Summary" },
   { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
+  { id: "chapter-yum", label: "Ch. I" },
+  { id: "chapter-do", label: "Ch. II" },
+  { id: "chapter-1v1me", label: "Ch. III" },
+  { id: "chapter-pools", label: "Ch. IV" },
+  { id: "chapter-movement", label: "Ch. V" },
+  { id: "chapter-diligent", label: "Ch. VI" },
+  { id: "chapter-bofa", label: "Ch. VII" },
 ] as const;
 
+const sectionIds = sections.map((s) => s.id);
+
 export default function SectionNav() {
-  const [active, setActive] = useState<string>("summary");
-
-  useEffect(() => {
-    const elements = sections
-      .map((s) => document.getElementById(s.id))
-      .filter(Boolean) as HTMLElement[];
-
-    if (!elements.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target.id) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.25, 0.5, 1] }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const active = useScrollSpy(sectionIds);
 
   return (
     <nav
