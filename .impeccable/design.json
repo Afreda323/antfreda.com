@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-24T21:07:17+00:00",
+  "generatedAt": "2026-10-25T17:05:07+00:00",
   "title": "Design System: Anthony Freda, the booster pack",
   "extensions": {
     "colorMeta": {
@@ -18,7 +18,7 @@
           "#ccc6d7",
           "#f2ebfd"
         ],
-        "purpose": "The page, html background, theme-color and stuck header."
+        "purpose": "The page, html background, theme-color, stuck header and the phone inspect bar. Dark only: there is no light theme."
       },
       "ground-2": {
         "role": "neutral",
@@ -98,23 +98,23 @@
           "#f8bc73",
           "#feebd5"
         ],
-        "purpose": "The one accent: every Email me, Rip here, focus ring, selection, rarity note."
+        "purpose": "The one accent: every Email me, Rip here, focus ring, selection, rarity note; the middle stop of the foil button ramp."
       },
       "lamp-hover": {
         "role": "primary",
         "displayName": "Lamp Hover",
-        "canonical": "oklch(89.0% 0.088 72.4)",
+        "canonical": "#ffca86",
         "tonalRamp": [
-          "#130900",
-          "#352001",
-          "#5b3a02",
-          "#805821",
-          "#a37a44",
-          "#c79c66",
-          "#edc089",
-          "#ffebd4"
+          "#1f1100",
+          "#522e00",
+          "#8f5000",
+          "#cc7300",
+          "#ff940a",
+          "#ffaf47",
+          "#ffce8f",
+          "#ffefdb"
         ],
-        "purpose": "Hover step of the primary button."
+        "purpose": "Middle stop of the brighter hover ramp on primary buttons."
       },
       "ink": {
         "role": "neutral",
@@ -130,7 +130,7 @@
           "#d0c8bc",
           "#f5ede1"
         ],
-        "purpose": "Headings, current-employer wordmark, chip text."
+        "purpose": "Headings, current-employer wordmark, the DigitalOcean scope line."
       },
       "ink-soft": {
         "role": "neutral",
@@ -162,7 +162,7 @@
           "#d1c2de",
           "#f5e9fe"
         ],
-        "purpose": "Dates, labels, hints, footer."
+        "purpose": "Dates, labels, the pack hint, the inspect count, the footer."
       },
       "cream": {
         "role": "neutral",
@@ -226,7 +226,7 @@
           "#d0bef6",
           "#f1ebff"
         ],
-        "purpose": "The shared card back."
+        "purpose": "The card back's frame, around the back illustration and the AF medallion."
       },
       "pack-print": {
         "role": "neutral",
@@ -392,7 +392,61 @@
         "role": "neutral",
         "displayName": "Rule",
         "canonical": "rgba(247, 239, 227, 0.14)",
-        "purpose": "Row dividers, stuck-header hairline, chip outlines."
+        "purpose": "Row and skills dividers, stuck-header hairline, inspect footer line."
+      },
+      "lamp-highlight": {
+        "role": "primary",
+        "displayName": "Lamp Highlight",
+        "canonical": "#ffdcae",
+        "tonalRamp": [
+          "#1f1100",
+          "#522e00",
+          "#8f5100",
+          "#cc7400",
+          "#ff950a",
+          "#ffb047",
+          "#ffcf8f",
+          "#fff0db"
+        ],
+        "purpose": "Top stop of the foil button ramp."
+      },
+      "lamp-lip": {
+        "role": "primary",
+        "displayName": "Lamp Lip",
+        "canonical": "#f0a654",
+        "tonalRamp": [
+          "#1c1002",
+          "#4b2b07",
+          "#834a0c",
+          "#bc6a10",
+          "#eb8a1e",
+          "#f0a756",
+          "#f6c998",
+          "#fceede"
+        ],
+        "purpose": "Bottom stop of the foil button ramp: the darker lower lip."
+      },
+      "keyline-gold": {
+        "role": "tertiary",
+        "displayName": "Keyline Gold",
+        "canonical": "#ecd39a",
+        "tonalRamp": [
+          "#1a1305",
+          "#45340d",
+          "#785a17",
+          "#ac8120",
+          "#d8a531",
+          "#e2bc64",
+          "#edd6a1",
+          "#f9f2e1"
+        ],
+        "purpose": "The gold keyline just inside every card frame."
+      },
+      "chip-fill": {
+        "role": "neutral",
+        "displayName": "Chip Fill",
+        "canonical": "rgba(247, 239, 227, 0.06)",
+        "purpose": "Soft fill of secondary buttons and the inspect Close."
       }
     },
     "typographyMeta": {
@@ -402,23 +456,19 @@
       },
       "display": {
         "displayName": "Display",
-        "purpose": "The Contact heading in the closing band."
+        "purpose": "The Say hello heading in the closing band."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Section titles; inspect h2 at clamp(2rem, 3.4vw, 3rem)."
+        "purpose": "Section titles (Recent work, Experience, Cards, About me, Skills); inspect h2 at clamp(2rem, 3.4vw, 3rem)."
       },
       "title": {
         "displayName": "Title",
         "purpose": "Company names in experience rows."
       },
-      "tile-quote": {
-        "displayName": "Tile quote",
-        "purpose": "Quoted outcomes on highlight tiles."
-      },
       "card-name": {
         "displayName": "Card name",
-        "purpose": "The big name on every card; nothing sits above it."
+        "purpose": "The big name on every card, with the stat top-right; nothing sits above it."
       },
       "card-move": {
         "displayName": "Card move",
@@ -434,15 +484,23 @@
       },
       "lead": {
         "displayName": "Lead",
-        "purpose": "About copy."
+        "purpose": "Experience leads, about copy, the ask subline."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Nav, hints, counters; buttons at 700 17px."
+        "purpose": "Nav, hints, counters, Copy and compact buttons; standard buttons at 700 17px."
       },
       "pack-label": {
         "displayName": "Pack label",
         "purpose": "Title pill and pack foot; the only uppercase tracked text."
+      },
+      "tile-headline": {
+        "displayName": "Tile headline",
+        "purpose": "The written headline on a recent-work tile; larger on the 2x2 tile, smaller on squares."
+      },
+      "opening-line": {
+        "displayName": "Opening line",
+        "purpose": "The one-sentence line under the pack."
       }
     },
     "shadows": [
@@ -453,28 +511,33 @@
       },
       {
         "name": "card-drop",
-        "value": "0 2px 0 rgba(255,255,255,0.25) inset, 0 18px 40px -18px rgba(0,0,0,0.7), 0 4px 10px rgba(0,0,0,0.35)",
+        "value": "inset 0 0 0 0.35cqw rgba(255,255,255,0.35), inset 0 -0.6cqw 1cqw rgba(0,0,0,0.18), 0 18px 40px -18px rgba(0,0,0,0.7), 0 4px 10px rgba(0,0,0,0.35)",
         "purpose": "Every card face and back."
       },
       {
-        "name": "lamp-lift",
-        "value": "0 10px 30px -10px rgba(255,170,80,0.55)",
-        "purpose": "Primary buttons at rest."
+        "name": "foil-key",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.65), inset 0 -2px 0 rgba(150,80,20,0.35), 0 1px 0 rgba(0,0,0,0.35), 0 10px 22px -12px rgba(0,0,0,0.75)",
+        "purpose": "Primary buttons: a raised foil key with a bright top edge and a darker lip."
       },
       {
-        "name": "lamp-lift-hover",
-        "value": "0 16px 36px -12px rgba(255,170,80,0.7)",
-        "purpose": "Primary buttons on hover."
+        "name": "foil-key-pressed",
+        "value": "inset 0 2px 3px rgba(120,60,10,0.35), 0 1px 0 rgba(0,0,0,0.3)",
+        "purpose": "Primary buttons while pressed."
+      },
+      {
+        "name": "soft-chip",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.08), inset 0 0 0 1px rgba(247,239,227,0.2)",
+        "purpose": "Secondary buttons and the inspect Close; edge to 0.36 on hover."
       },
       {
         "name": "tile",
         "value": "0 1px 0 rgba(255,255,255,0.06) inset, 0 24px 40px -28px rgba(0,0,0,0.9)",
-        "purpose": "Highlight tiles."
+        "purpose": "Recent-work tiles."
       },
       {
         "name": "band",
         "value": "inset 0 1px 0 rgba(255,255,255,0.08), 0 40px 80px -40px rgba(0,0,0,0.9)",
-        "purpose": "The Contact band."
+        "purpose": "The Say hello band."
       },
       {
         "name": "held-card",
@@ -484,7 +547,7 @@
       {
         "name": "secret-glow",
         "value": "drop-shadow(0 0 28px rgba(255,200,90,1)) drop-shadow(0 0 60px rgba(255,120,200,0.6))",
-        "purpose": "The secret rare while face down."
+        "purpose": "The secret rare while face down; during the hush each heartbeat grows it (20px + beat*50px)."
       }
     ],
     "motion": [
@@ -536,7 +599,7 @@
       {
         "name": "card-flip",
         "value": "700ms ease-spring",
-        "purpose": "The secret rare turning over."
+        "purpose": "The secret rare's 3D flip (Chrome and Firefox desktop)."
       },
       {
         "name": "secret-shake",
@@ -554,6 +617,41 @@
         "purpose": "WebGL card fronts rising from the mouth."
       },
       {
+        "name": "button-glint",
+        "value": "700ms ease-out",
+        "purpose": "One white glint crosses a button on hover."
+      },
+      {
+        "name": "tear-pulse",
+        "value": "1.1s run, 2.6s cycle",
+        "purpose": "Heart-monitor pulse along the sealed pack's tear line; gone once touched."
+      },
+      {
+        "name": "gl-give-up",
+        "value": "2500ms",
+        "purpose": "If the 3D pack has not drawn, the flat pack shows."
+      },
+      {
+        "name": "secret-slow-throw",
+        "value": "900ms cubic-bezier(0.2, 0.7, 0.4, 1)",
+        "purpose": "The throw before the secret rare; the room hushes."
+      },
+      {
+        "name": "secret-heartbeat",
+        "value": "7 beats at 250-2580ms, turn at 2820ms; 420ms pulse each",
+        "purpose": "Face-down secret rare beats like a heart, with thump and buzz."
+      },
+      {
+        "name": "secret-shock",
+        "value": "900ms ease-out",
+        "purpose": "Ring of light crossing the screen on the payoff."
+      },
+      {
+        "name": "turn-2d",
+        "value": "220ms squeeze + 420ms spring out",
+        "purpose": "The secret rare's 2D turn on phones and Safari."
+      },
+      {
         "name": "header-drop",
         "value": "260ms ease-out",
         "purpose": "Header sticks past 70% of the viewport."
@@ -561,7 +659,7 @@
       {
         "name": "reduced-motion",
         "value": "prefers-reduced-motion: reduce",
-        "purpose": "No WebGL, no rip theatrics, no sound or buzz, instant turn, idle and entrance animations off."
+        "purpose": "No WebGL, no rip theatrics, no sound or buzz; the secret rare keeps the hush, loses the heartbeat and turns instantly; idle, entrance and button glint off."
       }
     ],
     "breakpoints": [
@@ -570,8 +668,12 @@
         "value": "860px"
       },
       {
-        "name": "tablet-legacy",
-        "value": "861px-1160px"
+        "name": "nav-tight",
+        "value": "1080px"
+      },
+      {
+        "name": "narrow",
+        "value": "480px"
       }
     ]
   },
@@ -580,17 +682,25 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Email me: the one lamp-amber action.",
+      "description": "Email me: foil-struck lamp pill, one glint on hover, pressed state. Tiers 60/52/44.",
       "html": "<button class=\"ds-btn\">Email me</button>",
-      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;border-radius:999px;background:#ffc37a;color:#20182a;font:700 17px/1 Onest,system-ui,sans-serif;cursor:pointer;box-shadow:0 10px 30px -10px rgba(255,170,80,.55);transition:transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms ease-out,background 160ms}.ds-btn:hover{transform:translateY(-2px);background:#ffd29a;box-shadow:0 16px 36px -12px rgba(255,170,80,.7)}.ds-btn:active{transform:scale(.98)}.ds-btn:focus-visible{outline:2px solid #ffc37a;outline-offset:3px}"
+      "css": ".ds-btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;border-radius:999px;background:linear-gradient(180deg,#ffdcae 0%,#ffc37a 46%,#f0a654 100%);color:#20182a;font:700 17px/1 Onest,system-ui,sans-serif;letter-spacing:-.005em;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -2px 0 rgba(150,80,20,.35),0 1px 0 rgba(0,0,0,.35),0 10px 22px -12px rgba(0,0,0,.75);transition:transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms ease-out}.ds-btn::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 48%,transparent 62%);transform:translateX(-120%);pointer-events:none}.ds-btn:hover{transform:translateY(-1px);background:linear-gradient(180deg,#ffe3bb 0%,#ffca86 46%,#f4ad5c 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -2px 0 rgba(150,80,20,.3),0 1px 0 rgba(0,0,0,.35),0 16px 28px -14px rgba(0,0,0,.8)}.ds-btn:hover::after{transform:translateX(120%);transition:transform 700ms cubic-bezier(.16,1,.3,1)}.ds-btn:active{transform:translateY(1px);box-shadow:inset 0 2px 3px rgba(120,60,10,.35),0 1px 0 rgba(0,0,0,.3)}.ds-btn:focus-visible{outline:3px solid #ffc37a;outline-offset:3px}"
     },
     {
-      "name": "Quiet Button",
+      "name": "Secondary Button",
       "kind": "button",
       "refersTo": "button-quiet",
-      "description": "Secondary action: See all cards, Rip another pack, inspect arrows.",
-      "html": "<button class=\"ds-btn-quiet\">See all cards</button>",
-      "css": ".ds-btn-quiet{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;border-radius:999px;background:transparent;color:#f7efe3;font:700 17px/1 Onest,system-ui,sans-serif;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(247,239,227,.4);transition:background 160ms,box-shadow 220ms}.ds-btn-quiet:hover{background:rgba(247,239,227,.08);box-shadow:inset 0 0 0 1.5px rgba(247,239,227,.7)}.ds-btn-quiet:focus-visible{outline:2px solid #ffc37a;outline-offset:3px}"
+      "description": "Soft chip: See all cards, Next card, cards-row and inspect arrows.",
+      "html": "<button class=\"ds-btn-quiet\">Next card</button>",
+      "css": ".ds-btn-quiet{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;border-radius:999px;background:rgba(247,239,227,.06);color:#f7efe3;font:700 17px/1 Onest,system-ui,sans-serif;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(247,239,227,.2);transition:background 160ms,box-shadow 220ms}.ds-btn-quiet:hover{background:rgba(247,239,227,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),inset 0 0 0 1px rgba(247,239,227,.36)}.ds-btn-quiet:active{background:rgba(247,239,227,.05);box-shadow:inset 0 1px 2px rgba(0,0,0,.4),inset 0 0 0 1px rgba(247,239,227,.2)}.ds-btn-quiet:focus-visible{outline:3px solid #ffc37a;outline-offset:3px}"
+    },
+    {
+      "name": "Inspect Close",
+      "kind": "button",
+      "refersTo": "button-close",
+      "description": "Top-right x on inspect; first in focus order.",
+      "html": "<button class=\"ds-x\" aria-label=\"Close\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"><path d=\"M6 6l12 12M18 6L6 18\"/></svg></button>",
+      "css": ".ds-x{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:999px;color:#f7efe3;background:rgba(247,239,227,.08);box-shadow:inset 0 0 0 1px rgba(247,239,227,.2);cursor:pointer;transition:background 160ms}.ds-x:hover{background:rgba(247,239,227,.16)}.ds-x:focus-visible{outline:3px solid #ffc37a;outline-offset:3px}"
     },
     {
       "name": "Sticky Header",
@@ -598,7 +708,7 @@
       "refersTo": "header-stuck",
       "description": "Name left; Experience, Cards, Contact, sound and a small Email me once stuck.",
       "html": "<header class=\"ds-top\"><a class=\"ds-top-name\" href=\"#\">Anthony Freda</a><nav><a href=\"#\">Experience</a><a href=\"#\">Cards</a><a href=\"#\">Contact</a><a class=\"ds-top-cta\" href=\"#\">Email me</a></nav></header>",
-      "css": ".ds-top{display:flex;align-items:center;justify-content:space-between;padding:12px 32px;background:#16111d;box-shadow:0 1px 0 rgba(247,239,227,.14);font-family:Onest,system-ui,sans-serif}.ds-top-name{font:700 18px/1 'Bricolage Grotesque',system-ui,sans-serif;color:#f7efe3;text-decoration:none;letter-spacing:-.01em}.ds-top nav{display:flex;align-items:center;gap:26px;font-weight:600;font-size:15px}.ds-top nav a{color:#d7cadd;text-decoration:none}.ds-top nav a:hover{color:#f7efe3}.ds-top nav a.ds-top-cta{display:inline-flex;align-items:center;min-height:38px;padding:0 18px;border-radius:999px;background:#ffc37a;color:#20182a}.ds-top nav a:focus-visible{outline:2px solid #ffc37a;outline-offset:3px;border-radius:6px}"
+      "css": ".ds-top{display:flex;align-items:center;justify-content:space-between;padding:12px 32px;background:#16111d;box-shadow:0 1px 0 rgba(247,239,227,.14);font-family:Onest,system-ui,sans-serif}.ds-top-name{font:700 18px/1 'Bricolage Grotesque',system-ui,sans-serif;color:#f7efe3;text-decoration:none;letter-spacing:-.01em}.ds-top nav{display:flex;align-items:center;gap:26px;font-weight:600;font-size:15px}.ds-top nav a{color:#d7cadd;text-decoration:none}.ds-top nav a:hover{color:#f7efe3}.ds-top nav a.ds-top-cta{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:linear-gradient(180deg,#ffdcae,#ffc37a 46%,#f0a654);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -2px 0 rgba(150,80,20,.3);color:#20182a}.ds-top nav a:focus-visible{outline:2px solid #ffc37a;outline-offset:3px;border-radius:6px}"
     },
     {
       "name": "Experience Tag",
@@ -609,55 +719,48 @@
       "css": ".ds-tag{display:inline-block;padding:5px 11px;border-radius:999px;font:600 .82rem/1.3 Onest,system-ui,sans-serif;color:color-mix(in oklab,#17a898 45%,#fff);background:color-mix(in oklab,#17a898 16%,#16111d)}"
     },
     {
-      "name": "Skill Chip",
-      "kind": "chip",
-      "refersTo": "skill-chip",
-      "description": "Neutral chip in the Skills section.",
-      "html": "<span class=\"ds-chip\">TypeScript</span>",
-      "css": ".ds-chip{display:inline-block;padding:7px 13px;border-radius:999px;font:600 .92rem/1.3 Onest,system-ui,sans-serif;color:#f7efe3;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(247,239,227,.14)}"
-    },
-    {
       "name": "Card",
       "kind": "card",
       "refersTo": "card-frame",
-      "description": "The collectible card: name row, art window, role strip, body, foot. Platform type shown; no rarity on employer cards.",
-      "html": "<div class=\"ds-card\"><div class=\"ds-card-in\"><div class=\"ds-card-top\"><b>Yum Brands</b><i></i></div><div class=\"ds-card-art\"></div><p class=\"ds-card-role\"><span>Lead Software Engineer</span><span>2025 – now</span></p><p class=\"ds-card-flavor\">Leading zero-to-one development of a federated GraphQL inventory platform.</p><p class=\"ds-card-foot\"><span>03/12</span><span>AF set</span></p></div></div>",
-      "css": ".ds-card{--f:#17a898;container-type:inline-size;width:240px;aspect-ratio:63/88;border-radius:4.6cqw;padding:3.4cqw;background:linear-gradient(135deg,rgba(255,255,255,.35),transparent 30%,rgba(0,0,0,.12) 70%,rgba(255,255,255,.2)),var(--f);box-shadow:0 2px 0 rgba(255,255,255,.25) inset,0 18px 40px -18px rgba(0,0,0,.7),0 4px 10px rgba(0,0,0,.35);color:#20182a;font-family:Onest,system-ui,sans-serif;transition:transform 320ms cubic-bezier(.16,1,.3,1)}.ds-card:hover{transform:translateY(-10px) rotate(-2deg)}.ds-card-in{height:100%;display:grid;grid-template-rows:auto auto auto 1fr auto;border-radius:2.6cqw;background:linear-gradient(180deg,#fff9ee,#fbf3e3 40%,#f4e8d2);padding:2.6cqw 3.2cqw 2.2cqw;overflow:hidden}.ds-card-top{display:flex;align-items:center;gap:2cqw}.ds-card-top b{flex:1;font:800 7.4cqw/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 85,'opsz' 36;letter-spacing:-.02em}.ds-card-top i{width:7.6cqw;height:7.6cqw;border-radius:50%;background:var(--f)}.ds-card-art{margin-top:1.8cqw;aspect-ratio:3/2;border-radius:1.4cqw;background:linear-gradient(160deg,#3a2650,#c86b3c);box-shadow:0 0 0 .7cqw rgba(255,255,255,.85),0 0 0 1.2cqw color-mix(in oklab,var(--f) 70%,#000)}.ds-card-role{display:flex;justify-content:space-between;margin:2.6cqw 0 0;padding:.9cqw 2cqw;border-radius:1.6cqw;background:color-mix(in oklab,var(--f) 22%,#fff);font-size:2.9cqw;font-weight:700}.ds-card-flavor{margin:2.2cqw 0 0;font-size:3.15cqw;line-height:1.32;font-style:italic;color:#5b4d63}.ds-card-foot{display:flex;justify-content:space-between;margin:0;font-size:2.5cqw;font-weight:700;color:#5b4d63}"
+      "description": "The printed card: foil frame, gold keyline, paper-grain panel, name with stat top-right, 4:3 art window, caption strip, body, foot. Platform type shown; no rarity on employer cards.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-in\"><div class=\"ds-card-top\"><b>Yum Brands</b><em>2025 – now</em><i></i></div><div class=\"ds-card-art\"></div><p class=\"ds-card-role\">Lead Software Engineer</p><p class=\"ds-card-flavor\">Leading zero-to-one development of a federated GraphQL inventory platform.</p><p class=\"ds-card-foot\"><span>03/12</span><span class=\"ds-card-set\">AF</span></p></div></div>",
+      "css": ".ds-card{--f:#17a898;container-type:inline-size;width:240px;aspect-ratio:63/88;border-radius:4.6cqw;padding:2.8cqw;background:repeating-linear-gradient(135deg,rgba(255,255,255,.09) 0 .35cqw,transparent .35cqw 1.1cqw),linear-gradient(160deg,rgba(255,255,255,.5),rgba(255,255,255,.05) 28%,rgba(0,0,0,.18) 55%,rgba(255,255,255,.22) 82%,rgba(0,0,0,.2)),var(--f);box-shadow:inset 0 0 0 .35cqw rgba(255,255,255,.35),inset 0 -.6cqw 1cqw rgba(0,0,0,.18),0 18px 40px -18px rgba(0,0,0,.7),0 4px 10px rgba(0,0,0,.35);color:#20182a;font-family:Onest,system-ui,sans-serif;transition:transform 320ms cubic-bezier(.16,1,.3,1)}.ds-card:hover{transform:translateY(-10px) rotate(-2deg)}.ds-card-in{height:100%;display:grid;grid-template-rows:auto auto auto 1fr auto;border-radius:2.6cqw;background:radial-gradient(circle,rgba(120,90,60,.06) .18cqw,transparent .22cqw) 0 0/1.2cqw 1.2cqw,linear-gradient(180deg,#fffaf0,#fbf3e3 45%,#f2e5cc);box-shadow:0 0 0 .45cqw #ecd39a,0 0 0 .75cqw color-mix(in oklab,var(--f) 55%,#000);padding:2.2cqw 2.6cqw 2cqw;overflow:hidden}.ds-card-top{display:flex;align-items:center;gap:1.6cqw}.ds-card-top b{flex:1;font:800 7.4cqw/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 85,'opsz' 36;letter-spacing:-.02em}.ds-card-top em{font:800 3.4cqw/1 'Bricolage Grotesque',system-ui,sans-serif;font-style:normal;font-variation-settings:'wdth' 85;color:color-mix(in oklab,var(--f) 50%,#000)}.ds-card-top i{width:7.6cqw;height:7.6cqw;border-radius:50%;background:var(--f)}.ds-card-art{margin-top:1.4cqw;aspect-ratio:4/3;border-radius:1cqw;background:linear-gradient(160deg,#3a2650,#c86b3c);box-shadow:0 0 0 .6cqw #f7e9c4,0 0 0 1.05cqw color-mix(in oklab,var(--f) 60%,#000),0 1.4cqw 2cqw -.8cqw rgba(0,0,0,.45)}.ds-card-role{margin:2.2cqw 0 0;padding:.8cqw 2cqw;border-radius:99px;text-align:center;font-size:2.7cqw;font-weight:700;font-style:italic;color:color-mix(in oklab,var(--f) 40%,#20182a);background:linear-gradient(90deg,transparent,color-mix(in oklab,var(--f) 22%,#fff) 15% 85%,transparent)}.ds-card-flavor{margin:2.2cqw 0 0;font-size:3.15cqw;line-height:1.32;font-style:italic;color:#5b4d63}.ds-card-foot{display:flex;justify-content:space-between;align-items:center;margin:0;font-size:2.7cqw;font-weight:700;color:#5b4d63}.ds-card-set{display:inline-grid;place-items:center;min-width:5.6cqw;height:3.6cqw;padding:0 1cqw;border-radius:99px;font:800 2.3cqw/1 'Bricolage Grotesque',system-ui,sans-serif;color:#fff8ea;background:linear-gradient(160deg,#6a5a78,#2b1d45)}"
     },
     {
-      "name": "Highlight Tile",
+      "name": "Recent Work Tile",
       "kind": "card",
       "refersTo": "highlight-tile",
-      "description": "A quoted resume outcome on its card's art; opens the card.",
-      "html": "<button class=\"ds-tile\"><span class=\"ds-tile-line\">Technical lead on the GenAI agent platform, guiding engineers and shaping the roadmap.</span><span class=\"ds-tile-meta\">DigitalOcean · 2024 – 2025</span></button>",
-      "css": ".ds-tile{position:relative;display:grid;align-content:end;gap:8px;width:320px;height:220px;padding:22px;border:0;border-radius:20px;overflow:hidden;text-align:left;cursor:pointer;color:#f7efe3;background:linear-gradient(180deg,rgba(14,10,20,0) 25%,rgba(14,10,20,.6) 55%,rgba(14,10,20,.94)),linear-gradient(160deg,#2d4a7a,#1b1430);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 24px 40px -28px rgba(0,0,0,.9);transition:transform 320ms cubic-bezier(.16,1,.3,1),box-shadow 320ms ease-out}.ds-tile:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 34px 50px -28px rgba(0,0,0,.95)}.ds-tile:focus-visible{outline:3px solid #ffc37a;outline-offset:4px}.ds-tile-line{font:800 1.25rem/1.12 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 90,'opsz' 36;letter-spacing:-.015em}.ds-tile-meta{font:600 .9rem/1.3 Onest,system-ui,sans-serif;color:#d7cadd}"
+      "description": "A written headline and a supporting line on the card's own art; opens the card.",
+      "html": "<button class=\"ds-tile\"><span class=\"ds-tile-line\">Tech lead on the GenAI agent platform</span><span class=\"ds-tile-sub\">Worked across DigitalOcean's entire AI platform: agents, function calling, retrieval and evaluations.</span><span class=\"ds-tile-meta\">DigitalOcean · 2024 – 2025</span></button>",
+      "css": ".ds-tile{position:relative;display:grid;align-content:end;gap:8px;width:360px;height:260px;padding:22px;border:0;border-radius:20px;overflow:hidden;text-align:left;cursor:pointer;color:#f7efe3;background:linear-gradient(180deg,rgba(14,10,20,0) 15%,rgba(14,10,20,.7) 50%,rgba(14,10,20,.96)),linear-gradient(160deg,#2d4a7a,#1b1430);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 24px 40px -28px rgba(0,0,0,.9);transition:transform 320ms cubic-bezier(.16,1,.3,1),box-shadow 320ms ease-out}.ds-tile:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 34px 50px -28px rgba(0,0,0,.95)}.ds-tile:focus-visible{outline:3px solid #ffc37a;outline-offset:4px}.ds-tile-line{max-width:16ch;font:800 1.6rem/1.08 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 90,'opsz' 36;letter-spacing:-.015em;text-shadow:0 1px 12px rgba(10,6,16,.7)}.ds-tile-sub{max-width:40ch;font:400 1rem/1.4 Onest,system-ui,sans-serif;color:color-mix(in oklab,#f7efe3 88%,transparent)}.ds-tile-meta{font:600 .9rem/1.3 Onest,system-ui,sans-serif;color:color-mix(in oklab,#f7efe3 82%,transparent)}"
     },
     {
       "name": "Experience Row",
       "kind": "custom",
       "refersTo": "xp-row",
-      "description": "Dates, company and type-tinted role, lead, disclosure, tags, the job's art crop.",
-      "html": "<div class=\"ds-xp\"><p class=\"ds-xp-dates\">2024 – 2025</p><div><h3><span class=\"ds-xp-co\">DigitalOcean</span> <span class=\"ds-xp-role\">Senior Software Engineer II</span></h3><p class=\"ds-xp-lead\">Technical lead on the GenAI agent platform, guiding engineers and shaping the roadmap.</p></div><div class=\"ds-xp-art\"></div></div>",
-      "css": ".ds-xp{--t:#7d5cff;display:grid;grid-template-columns:7rem 1fr 140px;gap:8px 28px;padding:30px 0;border-top:1px solid rgba(247,239,227,.14);font-family:Onest,system-ui,sans-serif;color:#f7efe3;transition:background 220ms}.ds-xp:hover{background:color-mix(in oklab,var(--t) 8%,transparent)}.ds-xp p{margin:0}.ds-xp h3{margin:0}.ds-xp-dates{padding-top:6px;color:#a99bb5;font-weight:600;font-size:.95rem;font-variant-numeric:tabular-nums}.ds-xp-co{font:800 1.8rem/1.05 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 88,'opsz' 36;letter-spacing:-.02em}.ds-xp-role{font-weight:600;font-size:1rem;color:color-mix(in oklab,var(--t) 55%,#fff)}.ds-xp-lead{margin-top:10px!important;color:#d7cadd;max-width:62ch}.ds-xp-art{aspect-ratio:3/2;border-radius:12px;background:linear-gradient(160deg,#1d2a5a,#4a3a8a);box-shadow:0 0 0 2px color-mix(in oklab,var(--t) 70%,transparent),0 16px 24px -16px rgba(0,0,0,.8);transition:transform 320ms cubic-bezier(.16,1,.3,1)}.ds-xp:hover .ds-xp-art{transform:translateY(-3px)}"
+      "description": "Dates, company and type-tinted role, the confirmed scope line (DigitalOcean), lead, disclosure, tags, the job's art crop.",
+      "html": "<div class=\"ds-xp\"><p class=\"ds-xp-dates\">2024 – 2025</p><div><h3><span class=\"ds-xp-co\">DigitalOcean</span> <span class=\"ds-xp-role\">Senior Software Engineer II</span></h3><p class=\"ds-xp-scope\">Worked across DigitalOcean's entire AI platform: agents, function calling, retrieval and evaluations.</p><p class=\"ds-xp-lead\">Technical lead on the GenAI agent platform, guiding engineers and shaping the roadmap.</p></div><div class=\"ds-xp-art\"></div></div>",
+      "css": ".ds-xp{--t:#7d5cff;display:grid;grid-template-columns:7rem 1fr 140px;gap:8px 28px;padding:30px 0;border-top:1px solid rgba(247,239,227,.14);font-family:Onest,system-ui,sans-serif;color:#f7efe3;transition:background 220ms}.ds-xp:hover{background:color-mix(in oklab,var(--t) 8%,transparent)}.ds-xp p{margin:0}.ds-xp h3{margin:0}.ds-xp-dates{padding-top:6px;color:#a99bb5;font-weight:600;font-size:.95rem;font-variant-numeric:tabular-nums}.ds-xp-co{font:800 1.8rem/1.05 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 88,'opsz' 36;letter-spacing:-.02em}.ds-xp-role{font-weight:600;font-size:1rem;color:color-mix(in oklab,var(--t) 55%,#fff)}.ds-xp-lead{margin-top:10px!important;color:#d7cadd;max-width:62ch}.ds-xp-art{aspect-ratio:3/2;border-radius:12px;background:linear-gradient(160deg,#1d2a5a,#4a3a8a);box-shadow:0 0 0 2px color-mix(in oklab,var(--t) 70%,transparent),0 16px 24px -16px rgba(0,0,0,.8);transition:transform 320ms cubic-bezier(.16,1,.3,1)}.ds-xp:hover .ds-xp-art{transform:translateY(-3px)}.ds-xp-scope{margin-top:10px!important;font-weight:600;color:#f7efe3;max-width:62ch}"
     },
     {
-      "name": "Contact Band",
+      "name": "Say Hello Band",
       "kind": "custom",
       "refersTo": "contact-band",
-      "description": "The closing ask: one primary Email me, the address, secondary links.",
-      "html": "<section class=\"ds-band\"><h2>Contact</h2><p>Email is the fastest way to reach me.</p><a class=\"ds-band-btn\" href=\"#\">Email me</a></section>",
-      "css": ".ds-band{padding:56px;border-radius:28px;color:#f7efe3;font-family:Onest,system-ui,sans-serif;background:radial-gradient(60% 80% at 80% 40%,rgba(255,190,120,.18),transparent 70%),linear-gradient(160deg,#2a1f36,#1a1422);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 40px 80px -40px rgba(0,0,0,.9)}.ds-band h2{margin:0;font:800 4.5rem/.9 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 86,'opsz' 96;letter-spacing:-.035em}.ds-band p{margin:16px 0 28px;font-size:1.2rem;color:#d7cadd}.ds-band-btn{display:inline-flex;align-items:center;min-height:60px;padding:0 36px;border-radius:999px;background:#ffc37a;color:#20182a;font:700 19px/1 Onest,system-ui,sans-serif;text-decoration:none;box-shadow:0 10px 30px -10px rgba(255,170,80,.55);transition:transform 220ms cubic-bezier(.16,1,.3,1),background 160ms}.ds-band-btn:hover{transform:translateY(-2px);background:#ffd29a}.ds-band-btn:focus-visible{outline:2px solid #ffc37a;outline-offset:3px}"
+      "description": "The closing ask: one big Email me, the address with Copy, then the footer bar.",
+      "html": "<section class=\"ds-band\"><h2>Say hello</h2><p>Email is the fastest way to reach me.</p><div class=\"ds-band-row\"><a class=\"ds-band-btn\" href=\"#\">Email me</a><a class=\"ds-band-mail\" href=\"#\">hello@example.com</a><button class=\"ds-band-copy\">Copy</button></div><div class=\"ds-band-bar\"><span>© Anthony Freda</span><span><a href=\"#\">LinkedIn</a><a href=\"#\">GitHub</a><button>Rip another pack</button></span></div></section>",
+      "css": ".ds-band{padding:56px;border-radius:28px;color:#f7efe3;font-family:Onest,system-ui,sans-serif;background:linear-gradient(160deg,#2a1f36,#1a1422);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 40px 80px -40px rgba(0,0,0,.9)}.ds-band h2{margin:0;font:800 4.5rem/.9 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 86,'opsz' 96;letter-spacing:-.035em}.ds-band p{margin:16px 0 28px;font-size:1.2rem;color:#d7cadd}.ds-band-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}.ds-band-btn{display:inline-flex;align-items:center;min-height:60px;padding:0 36px;border-radius:999px;background:linear-gradient(180deg,#ffdcae,#ffc37a 46%,#f0a654);color:#20182a;font:700 19px/1 Onest,system-ui,sans-serif;text-decoration:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -2px 0 rgba(150,80,20,.35),0 10px 22px -12px rgba(0,0,0,.75)}.ds-band-btn:focus-visible{outline:3px solid #ffc37a;outline-offset:3px}.ds-band-mail{color:#f7efe3;font-weight:600}.ds-band-copy{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:rgba(247,239,227,.06);box-shadow:inset 0 0 0 1px rgba(247,239,227,.2);color:#f7efe3;font:600 15px/1 Onest,system-ui,sans-serif;cursor:pointer}.ds-band-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:40px;color:#a99bb5;font-size:.92rem}.ds-band-bar span{display:inline-flex;gap:20px;align-items:center}.ds-band-bar a,.ds-band-bar button{color:#d7cadd;font:600 .92rem/1 Onest,system-ui,sans-serif;background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:.25em;cursor:pointer}"
     }
   ],
   "narrative": {
     "northStar": "One Pack Under the Lamp",
-    "overview": "The first viewport is a night table with one warm lamp over it, and on it a sealed foil booster pack printed with the page's h1 (the name) and the title. The visitor rips it open. Twelve collectible cards, one per resume section, rise out of the pack and are flicked through one at a time. Then the spectacle stops. Everything below the pack is a calm, scannable landing page on the same plum-black ground. It sells in a fixed order: who he has shipped for, the highlights, the experience, one plain ask, about, skills, the full set, and a closing Contact band. On that page the colour comes from the card art and the six type colours. The chrome stays dark and quiet, and one lamp-amber accent marks every action.\n\nThere are two registers. The pack and the reveal are violent, glossy and physical: foil, crinkle, light, shards and haptics. The page under them is editorial and restrained: rows, rules, tags and quotes. The cards join the two registers, because the same card face appears in the reveal, in the set row, in inspect and in the Contact band. All content is real HTML and is server-rendered under the pack, so the page is complete without WebGL, without JavaScript motion, and on paper.\n\nThe world refuses the one-page scroll of hero, about, timeline and contact. It also refuses synthwave and neon, generic dark-neon glow, and any Pokémon trade dress (no yellow border, no logos, no names).",
+    "overview": "The first viewport is a night table with one warm lamp over it, and on it a sealed foil booster pack printed with the page's h1 (the name) and the title. The visitor rips it open. Twelve collectible cards, one per resume section, rise out of the pack and are flicked through one at a time. Then the spectacle stops. Everything below the pack is a calm, scannable landing page on the same plum-black ground. It sells in a fixed order: where he has worked, four pieces of recent work, the experience, one plain ask, the cards, about me, skills, and a closing Say hello band. On that page the colour comes from the card art and the six type colours. The chrome stays dark and quiet, and one lamp-amber accent marks every action.\n\nThere are two registers. The pack and the reveal are violent, glossy and physical: foil, crinkle, light, shards, a heartbeat and haptics. The page under them is editorial and restrained: rows, rules, tags and plain lists. The cards join the two registers, because the same printed card face appears in the reveal, in inspect and in the Say hello band, and the cards row shows each card as art and name. All content is real HTML and is server-rendered under the pack, so the page is complete without WebGL, without JavaScript motion, and on paper.\n\nThe world is dark only: there is no light theme (`color-scheme: dark`, theme-color the ground). It refuses the one-page scroll of hero, about, timeline and contact. It also refuses synthwave and neon, generic dark-neon glow, and any Pokémon trade dress (no yellow border, no logos, no names).",
     "keyCharacteristics": [
-      "A plum-black ground (never pure black) with a single warm lamp pool behind the pack.",
-      "One accent, lamp amber, used for every primary action, the focus ring and the selection.",
+      "A plum-black ground (never pure black), dark only, with a single warm lamp pool behind the pack.",
+      "One accent, lamp amber, struck like foil on every primary action, and used for the focus ring and the selection.",
       "Six card type colours carry all the hue below the fold, through card frames, row tints, tags and art borders.",
       "Bricolage Grotesque, heavy and narrowed on its width axis, for every name and heading; Onest for everything you read.",
-      "A WebGL foil pack that tears for real, and a reveal where every card comes out face up except the secret rare.",
+      "A WebGL foil pack that tears for real, and a reveal where every card comes out face up except the secret rare, which gets a build-up and a payoff.",
+      "Cards are printed objects: foil frame, gold keyline, paper grain, and art with a print finish.",
       "Every card opens into inspect, which shows a big tilting card beside its full text."
     ],
     "rules": [
@@ -673,7 +776,7 @@
       },
       {
         "name": "The Narrow Heavy Rule",
-        "body": "Display type is always weight 800 with `wdth` between 75 and 90. Bricolage is never set at its default width or a light weight.",
+        "body": "Display type is weight 700–800 with `wdth` between 75 and 90. Bricolage is never set at its default width or a light weight.",
         "section": "typography"
       },
       {
@@ -683,27 +786,31 @@
       },
       {
         "name": "The One Light Rule",
-        "body": "Every highlight and spill is warm and comes from the lamp or from inside the pack. Cool light appears only as the violet and teal rim lights in WebGL.",
+        "body": "Every highlight and spill is warm and comes from the lamp or from inside the pack. The lamp is one warm radial layer; there is no second, coloured lamp layer. Cool light appears only as the violet and teal rim lights in WebGL and in the secret rare's rainbow foil.",
         "section": "elevation"
       }
     ],
     "dos": [
       "Do keep lamp amber as the one accent, on Email me, focus, selection and rarity notes only.",
+      "Do strike primary buttons as foil (ramp, top edge, lower lip, one glint on hover) and keep secondaries as soft chips, on the 60/52/44 tiers.",
       "Do colour anything that belongs to a job through its card type (`--t` / `--frame`) and OKLab mixes of it.",
-      "Do size everything on a card in `cqw`, so one card face serves the reveal, the set row, inspect and the Contact band.",
-      "Do set display type in Bricolage 800 narrowed (`wdth` 80–90), and read-text in Onest.",
-      "Do keep every claim word for word from the approved resume copy. Highlight tiles are quotes, not paraphrases.",
-      "Do bring cards out face up. Only the secret rare arrives face down and turns.",
+      "Do size everything on a card in `cqw`, so one card face serves the reveal, the cards row, inspect and the band.",
+      "Do give every mailto the subject \"Hello from antfreda.com\" (`src/lib/contact.ts`).",
+      "Do set display type in Bricolage 700–800 narrowed (`wdth` 75–90), and read-text in Onest.",
+      "Do trace every claim to the approved resume copy or a fact Anthony confirmed (`Chapter.scope`). Tile headlines are plain restatements, never new claims.",
+      "Do run new card art through `scripts/print-finish.mjs` so it reads as printed.",
+      "Do bring cards out face up. Only the secret rare arrives face down, with its build-up and payoff.",
       "Do keep the spectacle above the fold and the page below it calm, scannable and complete as HTML, with no WebGL, under reduced motion and in print.",
       "Do keep one working Email me reachable at all times: hero, sticky header or dock, the ask and the band."
     ],
     "donts": [
-      "Don't ever print the dog's name, in copy, alt text, labels or metadata. Call it a French bulldog.",
+      "Don't print the dog's name anywhere except the About me line (`profile.home` in `resume.ts`). Copy, alt text, labels and metadata call it a French bulldog.",
       "Don't write corny copy. Use plain, direct, first-person wording close to the resume, with no puns, no game-speak and no hype.",
       "Don't give an employer card a rarity. Only the player card is rare and only the Contact card is the secret rare.",
       "Don't put a line, kicker or eyebrow above a card name or a section title.",
       "Don't use Pokémon trade dress: no yellow border, logos or names.",
-      "Don't go synthwave, neon or generic dark-glow. The light is one warm lamp.",
+      "Don't go synthwave, neon or generic dark-glow. The light is one warm lamp, with no coloured second lamp layer.",
+      "Don't add a light theme. The world is dark only.",
       "Don't add a second accent colour, or give a decorative element a hue of its own.",
       "Don't use pure black for the ground or hard offset shadows anywhere.",
       "Don't autoplay sound, or play any sound or vibration under reduced motion or when muted.",

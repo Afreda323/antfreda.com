@@ -101,6 +101,8 @@ export function Reveal({ onDone, calm }: Props) {
 
   /** The secret rare's arrival: sparkle, a buzz, and foil out of both sides of the card. */
   function celebrate(rarity: string) {
+    // the room lights back up even with reduced motion: the hush is state, not decoration
+    if (rarity === "secret") setHush(false);
     if (calm) return;
     const el = top.current;
     const r = el?.getBoundingClientRect();
