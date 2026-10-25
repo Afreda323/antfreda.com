@@ -214,9 +214,10 @@ export function Collection({ onOpen }: { onOpen: (i: number) => void }) {
                 <span className="set-name">{c.name}</span>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={c.art} alt="" loading="lazy" decoding="async" />
+                {/* two fixed lines on every card: the role, then the dates (kept even when a card has none) */}
                 <span className="set-meta">
-                  {c.role}
-                  {c.stat ? <span>{c.stat}</span> : null}
+                  <span className="set-role">{c.role}</span>
+                  <span className="set-stat">{c.stat || "\u00a0"}</span>
                 </span>
               </span>
             </button>
