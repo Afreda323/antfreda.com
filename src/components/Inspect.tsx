@@ -65,7 +65,7 @@ export function Inspect({ index, onClose, onStep }: { index: number; onClose: ()
         </svg>
       </button>
       <div className="inspect-panel">
-        <div className="inspect-card" key={card.id}>
+        <div className="inspect-card" key={card.id} aria-hidden={card.rarity === "secret" ? undefined : true}>
           {card.rarity === "secret" ? (
             <Holo card={card} index={index} live headingLevel={3} interactive />
           ) : (

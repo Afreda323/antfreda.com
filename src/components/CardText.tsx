@@ -104,7 +104,8 @@ export function CardText({ id, headingLevel = 3 }: { id: string; headingLevel?: 
         {meta(c.bullets.length ? c.role : null, c.dates)}
       </div>
       <div className="text-body">
-        {lead ? <p className="text-lead">{lead}</p> : null}
+        {c.scope ? <p className="text-lead">{c.scope}</p> : null}
+        {lead ? <p className={c.scope ? undefined : "text-lead"}>{lead}</p> : null}
         {rest.length ? (
           <ul>
             {rest.map((b) => (

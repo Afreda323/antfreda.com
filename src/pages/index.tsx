@@ -4,7 +4,7 @@ import Head from "next/head";
 import { cards } from "@/content/cards";
 import { chapters, profile, skills } from "@/content/resume";
 import { Holo } from "@/components/Holo";
-import { About, Collection, Experience, Highlights, Proof } from "@/components/Sections";
+import { About, Collection, Experience, Highlights, Proof, Skills } from "@/components/Sections";
 import { Inspect } from "@/components/Inspect";
 import { Pack } from "@/components/Pack";
 import { Reveal } from "@/components/Reveal";
@@ -110,21 +110,25 @@ function useReducedMotion() {
 
 /** Copies the address, for desktops without a mail app; says so when it has. */
 function CopyEmail() {
-  const [done, setDone] = React.useState(false);
+  const [state, setState] = React.useState<"idle" | "done" | "failed">("idle");
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(profile.email);
-      setDone(true);
-      window.setTimeout(() => setDone(false), 2200);
+      setState("done");
     } catch {
-      setDone(false);
+      // no clipboard access: select the address so a keyboard copy works, and say so
+      const a = document.querySelector(".close-email");
+      if (a) window.getSelection()?.selectAllChildren(a);
+      setState("failed");
     }
+    window.setTimeout(() => setState("idle"), 2600);
   };
+  const label = state === "done" ? "Copied" : state === "failed" ? "Selected, copy it" : "Copy";
   return (
-    <button type="button" className="copy-btn" onClick={copy} aria-label={done ? "Email address copied" : "Copy email address"}>
-      <span aria-hidden>{done ? "Copied" : "Copy"}</span>
+    <button type="button" className="copy-btn" onClick={copy} aria-label={state === "idle" ? "Copy email address" : label}>
+      <span aria-hidden>{label}</span>
       <span className="sr-only" aria-live="polite">
-        {done ? "Copied" : ""}
+        {state === "done" ? "Email address copied" : state === "failed" ? "Couldn't copy; the address is selected" : ""}
       </span>
     </button>
   );
@@ -220,7 +224,7 @@ export default function Home() {
     const t = window.setTimeout(() => {
       setGlGaveUp(true);
       root.classList.remove("gl-wait");
-    }, 7000);
+    }, 2500);
     return () => window.clearTimeout(t);
   }, [glReady, use3d]);
   const use3dRef = React.useRef(use3d);
@@ -288,16 +292,22 @@ export default function Home() {
           </div>
           <div className="opening-copy">
             <p className="opening-line">{profile.line}</p>
+            {/* who, where now, and the AI proof, in the resume's own words */}
+            <p className="opening-facts">
+              Now leading platform work and AI adoption at {chapters[0].company}. Before that, technical lead on the GenAI agent platform at {chapters[1].company}.
+            </p>
             <div className="actions">
               <a className="btn" href={MAILTO}>
                 Email me
               </a>
-              <a className="link" href={profile.linkedin} rel="me noopener" target="_blank">
-                LinkedIn
-              </a>
-              <a className="link" href={profile.github} rel="me noopener" target="_blank">
-                GitHub
-              </a>
+              <span className="actions-links">
+                <a className="link" href={profile.linkedin} rel="me noopener" target="_blank">
+                  LinkedIn
+                </a>
+                <a className="link" href={profile.github} rel="me noopener" target="_blank">
+                  GitHub
+                </a>
+              </span>
             </div>
           </div>
         </section>
@@ -329,6 +339,7 @@ export default function Home() {
         </section>
         <Collection onOpen={openCard} />
         <About />
+        <Skills />
       </main>
 
       <footer id="contact" className="close" ref={closeRef}>
@@ -349,28 +360,31 @@ export default function Home() {
               <CopyEmail />
             </span>
           </div>
-          <p className="close-links">
+        </div>
+        {/* the band asks once; the profile links and the second pack live in the footer bar */}
+        <div className="close-bar">
+          <span>
+            © {new Date().getFullYear()} {profile.name} · Charlotte, NC
+          </span>
+          <span className="close-bar-links">
             <a href={profile.linkedin} rel="me noopener" target="_blank">
               LinkedIn
             </a>
             <a href={profile.github} rel="me noopener" target="_blank">
               GitHub
             </a>
-          </p>
-          <button
-            type="button"
-            className="text-btn close-again"
-            onClick={() => {
-              ripAnother();
-              window.scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" });
-            }}
-          >
-            Rip another pack
-          </button>
+            <button
+              type="button"
+              className="text-btn"
+              onClick={() => {
+                ripAnother();
+                window.scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" });
+              }}
+            >
+              Rip another pack
+            </button>
+          </span>
         </div>
-        <p className="close-bar">
-          © {new Date().getFullYear()} {profile.name} · Charlotte, NC
-        </p>
       </footer>
 
       <a className="dock btn" href={MAILTO} data-hidden={!pastHero || closeNear || askNear || inspecting !== null || undefined}>

@@ -204,12 +204,21 @@ export function Reveal({ onDone, calm }: Props) {
     el.style.transition = "none";
     el.style.transform = `translateX(${d.dx}px) rotate(${d.dx * 0.06}deg)`;
   };
-  const onUp = () => {
+  // the browser took the gesture (a scroll): spring back, never advance
+  const onCancel = () => {
+    drag.current = null;
+    const el = top.current;
+    if (el) {
+      el.style.transition = "transform 380ms var(--ease-spring)";
+      el.style.transform = "";
+    }
+  };
+  const onUp = (e?: React.PointerEvent) => {
     const d = drag.current;
     drag.current = null;
     const el = top.current;
     if (!d) return;
-    if (Math.abs(d.dx) < 6) return next(-1);
+    if (Math.abs(d.dx) < 6) return e && Math.abs(e.clientY - d.y) > 10 ? onCancel() : next(-1);
     if (!last && face === "front" && (Math.abs(d.dx) > 110 || Math.abs(d.v) > 0.7)) return next(d.dx > 0 ? 1 : -1);
     // not far enough: spring back to the stack
     if (el) {
@@ -253,7 +262,7 @@ export function Reveal({ onDone, calm }: Props) {
         )}
       </div>
 
-      <div className="reveal-stack" onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}>
+      <div className="reveal-stack" onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onCancel}>
         {/* the pile shakes on its own layer, so the stack's entrance never replays */}
         <div className="reveal-pile">
         {visible
@@ -303,15 +312,21 @@ export function Reveal({ onDone, calm }: Props) {
             </button>
           </>
         ) : (
-          <p className="reveal-hint">
-            {face === "back" ? (
-              "Tap to turn it over"
-            ) : (
-              <>
-                Tap or flick the card away<span className="hint-keys">, or press the right arrow key</span>
-              </>
-            )}
-          </p>
+          <>
+            <p className="reveal-hint">
+              {face === "back" ? (
+                "Tap to turn it over"
+              ) : (
+                <>
+                  Tap or flick the card away<span className="hint-keys">, or press the right arrow key</span>
+                </>
+              )}
+            </p>
+            {/* a real control for screen readers, switches and anyone who would rather press than flick */}
+            <button type="button" className="btn btn-quiet reveal-next" onClick={() => next(1)}>
+              {face === "back" ? "Turn it over" : "Next card"}
+            </button>
+          </>
         )}
       </div>
     </div>

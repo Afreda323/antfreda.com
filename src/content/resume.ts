@@ -94,6 +94,8 @@ export type Chapter = {
   role: string;
   dates: string;
   bullets: string[];
+  /** The breadth of the role, confirmed by Anthony (not a resume bullet). */
+  scope?: string;
   landmark?: Landmark;
 };
 
@@ -119,6 +121,8 @@ export const chapters: Chapter[] = [
     role: "Senior Software Engineer II",
     dates: "2024 – 2025",
     landmark: "lighthouse",
+    // confirmed by Anthony, 2026-10-25: he worked across the whole AI platform, not one feature
+    scope: "Worked across DigitalOcean's entire AI platform: agents, function calling, retrieval and evaluations.",
     bullets: [
       "Technical lead on the GenAI agent platform, guiding engineers and shaping the roadmap.",
       "Personally implemented hybrid search and query expansion for RAG capabilities released to customers.",

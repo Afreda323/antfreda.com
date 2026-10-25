@@ -256,8 +256,7 @@ main:focus {
   z-index: -1;
   inset: -25% -10% 0;
   background:
-    radial-gradient(34% 44% at 50% 42%, rgba(255, 196, 128, 0.34), rgba(255, 170, 90, 0.1) 50%, transparent 74%),
-    radial-gradient(60% 60% at 50% 60%, rgba(120, 70, 160, 0.2), transparent 70%);
+    radial-gradient(34% 44% at 50% 42%, rgba(255, 196, 128, 0.34), rgba(255, 170, 90, 0.1) 50%, transparent 74%);
   pointer-events: none;
 }
 .opening-pack {
@@ -1539,9 +1538,6 @@ html.kick main {
     justify-content: center;
     margin-top: 12px;
   }
-  .actions .btn {
-    display: none;
-  }
   .pack {
     height: min(58svh, 500px);
   }
@@ -2698,8 +2694,12 @@ html.kick main {
 
 /* ---------- Pack loading: one pack, never two ---------- */
 /* until the 3D pack draws, the flat one is held back and a quiet foil blank stands in its place */
-html.gl-wait .pack:not(.is-gl) .pack-tilt > * {
+/* while the 3D pack loads, only the art layers wait: the name and title (the h1) stay readable on the blank */
+html.gl-wait .pack:not(.is-gl) :is(.pack-art, .pack-sheen, .pack-crimp, .pack-gash, .pack-light, .pack-inside) {
   opacity: 0 !important;
+}
+html.gl-wait .pack:not(.is-gl) .pack-print {
+  background: transparent;
 }
 html.gl-wait .pack:not(.is-gl) {
   animation: none;
@@ -3372,13 +3372,6 @@ html.gl-wait .pack:not(.is-gl)::after {
   }
 }
 
-/* the first screen always carries the primary action; the dock only takes over once the hero is behind you */
-@media (max-width: 860px) {
-  .actions .btn {
-    display: inline-flex;
-  }
-}
-
 /* the 2D turn (phones, Safari): no rotateY and no backface; each state shows exactly one face,
    and the swap happens while the card is squeezed to zero width, so it is never seen */
 .reveal[data-flip="2d"] .flip,
@@ -3589,4 +3582,226 @@ textarea {
   .inspect-foot {
     padding-inline: max(var(--gutter), calc((100vw - 560px) / 2));
   }
+}
+.xp-scope {
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--ink);
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+.tile-sq .tile-sub {
+  display: block;
+  font-size: 0.95rem;
+}
+
+/* ---------- Under the pack: who, where now, how to reach ---------- */
+/* the hint belongs to the pack: small and muted, so it never reads as the pitch's first sentence */
+.pack-hint {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+.opening-copy {
+  margin-top: 44px;
+  gap: 8px;
+  max-width: 36rem;
+}
+.opening-line {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-variation-settings: "wdth" 90, "opsz" 36;
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 30ch;
+  text-wrap: balance;
+}
+.opening-facts {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 44ch;
+  text-wrap: balance;
+}
+.actions {
+  margin-top: 16px;
+  gap: 12px 20px;
+}
+.actions-links {
+  display: inline-flex;
+  gap: 20px;
+}
+.actions .link {
+  font-size: 15px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+@media (max-width: 860px) {
+  .opening-copy {
+    margin-top: 40px;
+  }
+  .opening-line {
+    font-size: 1.2rem;
+  }
+  .opening-facts {
+    font-size: 14.5px;
+  }
+  .actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .actions .btn {
+    width: min(100%, 340px);
+  }
+  .actions-links {
+    justify-content: center;
+  }
+}
+
+/* ---------- Buttons: three tiers (60 big, 52 standard, 44 compact) ---------- */
+.btn-small,
+.top-cta {
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: 15px;
+}
+.copy-btn {
+  min-height: 44px;
+  padding: 0 18px;
+  font: 600 15px/1 var(--font-text), sans-serif;
+}
+/* the last reveal card: two equal halves, the ask first */
+.reveal-actions:has(> .btn) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: min(100%, 420px);
+  margin-inline: auto;
+}
+.reveal-actions > .btn {
+  width: 100%;
+}
+.reveal-actions {
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.reveal-next {
+  min-height: 44px;
+  padding: 0 22px;
+  font-size: 15px;
+}
+/* ---------- Close band: one ask, then the footer bar ---------- */
+.close-actions .close-email {
+  font-family: var(--font-text), sans-serif;
+  font-weight: 600;
+}
+.close-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 24px;
+}
+.close-bar-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 20px;
+}
+.close-bar-links a,
+.close-bar-links .text-btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.close-bar-links .text-btn {
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+/* ---------- Experience rows: one link style, on one line ---------- */
+.xp-more summary,
+.xp-card-link {
+  font: 700 0.95rem/1.2 var(--font-text), sans-serif;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--t) 70%, transparent);
+  text-underline-offset: 0.3em;
+}
+.xp-more,
+.xp-card-link {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-top: 12px;
+  margin-right: 20px;
+}
+.xp-more[open] {
+  display: block;
+}
+/* single-word last lines */
+.xp-lead,
+.xp-bullets li,
+.xp-more li,
+.about-copy p {
+  text-wrap: pretty;
+}
+/* ---------- Skills: a plain list ---------- */
+.skills-list {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 100px var(--gutter) 0;
+}
+.skills-list dl {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+}
+.skills-list dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+  gap: 4px 32px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+}
+.skills-list dt {
+  font-weight: 700;
+  color: var(--ink);
+}
+.skills-list dd {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+@media (max-width: 860px) {
+  .skills-list {
+    padding-top: 72px;
+  }
+  .skills-list dl > div {
+    grid-template-columns: 1fr;
+  }
+}
+/* desktop full rows open the card from their art; the text link is for compact rows and phones */
+@media (min-width: 861px) {
+  .xp-row:not(.is-compact) .xp-card-link {
+    display: none;
+  }
+}
+/* the loading blank sits under the name, not over it */
+.pack::after {
+  z-index: -1;
+}
+/* the hint reads above its button, centred */
+.reveal .reveal-actions:not(:has(> .btn)) {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 8px;
 }

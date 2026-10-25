@@ -30,9 +30,8 @@ export function Highlights({ onOpen }: { onOpen: (i: number) => void }) {
   const yum = job("yum");
   const docn = job("digitalocean");
 
-  // headlines lead with scope and leadership; a short line under the big two. The full bullets are one tap away in each card.
+  // headlines lead with scope and leadership; each line under them is the resume's own words (or a scope Anthony confirmed).
   // every tile has its own art
-  const v1 = job("1v1me");
   const tiles = [
     {
       id: "digitalocean",
@@ -40,7 +39,7 @@ export function Highlights({ onOpen }: { onOpen: (i: number) => void }) {
       art: "/art/digitalocean.webp",
       pos: "50% 40%",
       title: "Tech lead on the GenAI agent platform",
-      sub: "The whole AI platform at DigitalOcean: agents, function calling, retrieval and evaluations.",
+      sub: docn.scope,
       line: docn.bullets[0],
       meta: `${docn.company} · ${docn.dates}`,
     },
@@ -50,12 +49,12 @@ export function Highlights({ onOpen }: { onOpen: (i: number) => void }) {
       art: "/art/yum.webp",
       pos: "50% 38%",
       title: "Leading a zero-to-one platform",
-      sub: "Federated GraphQL inventory platform at Yum Brands, headed for stores in 2027.",
+      sub: "A federated GraphQL inventory platform, ahead of planned store production use in 2027.",
       line: yum.bullets[0],
       meta: `${yum.company} · ${yum.dates}`,
     },
-    { id: "yum", size: "sq", art: "/art/yum-kitchen.webp", pos: "50% 50%", title: "Drove AI across the team", line: yum.bullets[1], meta: yum.company },
-    { id: "1v1me", size: "sq", art: "/art/1v1me.webp", pos: "50% 45%", title: "Real-time match viewing", line: v1.bullets[0], meta: v1.company },
+    { id: "yum", size: "sq", art: "/art/yum-kitchen.webp", pos: "50% 50%", title: "Drove AI across the team", sub: "Every engineer now uses AI daily.", line: yum.bullets[2], meta: yum.company },
+    { id: "yum", size: "sq", art: "/art/yum-review.webp", pos: "50% 50%", title: "Shipped AI pull-request review", sub: "With final human sign-off.", line: yum.bullets[4], meta: yum.company },
   ];
   return (
     <section id="highlights" className="highlights" aria-labelledby="highlights-title">
@@ -65,7 +64,7 @@ export function Highlights({ onOpen }: { onOpen: (i: number) => void }) {
       <ul className="bento">
         {tiles.map((t) => (
           <li key={t.id + t.line} className={`tile tile-${t.size}`}>
-            <button type="button" className="tile-btn" onClick={() => onOpen(indexOf(t.id))} aria-label={`${t.line}. Open the ${cards[indexOf(t.id)].name} card`}>
+            <button type="button" className="tile-btn" onClick={() => onOpen(indexOf(t.id))} aria-label={`${t.title}. ${t.line.replace(/\.$/, "")}. Open the ${cards[indexOf(t.id)].name} card`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={t.art} alt="" loading="lazy" decoding="async" style={{ objectPosition: t.pos }} />
               <span className="tile-text">
@@ -128,6 +127,7 @@ export function Experience({ onOpen }: { onOpen: (i: number) => void }) {
                     </span>
                   ) : null}
                 </h3>
+                {c.scope ? <p className="xp-scope">{c.scope}</p> : null}
                 {!compact && lead ? <p className="xp-lead">{lead}</p> : null}
                 {!c.bullets.length ? (
                   <ul className="xp-roles">
@@ -136,7 +136,8 @@ export function Experience({ onOpen }: { onOpen: (i: number) => void }) {
                     ))}
                   </ul>
                 ) : null}
-                {compact && hidden.length && hidden.length <= 2 ? (
+                {/* one or two lines are shown, never hidden behind a tap */}
+                {hidden.length && hidden.length <= 2 ? (
                   <ul className="xp-bullets">
                     {hidden.map((b) => (
                       <li key={b}>{b}</li>
@@ -242,6 +243,25 @@ export function About() {
         ))}
         <p className="about-home">{profile.home}</p>
       </div>
+    </section>
+  );
+}
+
+/** Skills, as a plain list a keyword-skimming hiring manager can read on a phone. */
+export function Skills() {
+  return (
+    <section id="skills" className="skills-list" aria-labelledby="skills-title">
+      <h2 id="skills-title" className="section-title">
+        Skills
+      </h2>
+      <dl>
+        {skills.map((g) => (
+          <div key={g.group}>
+            <dt>{g.group}</dt>
+            <dd>{g.items.join(" · ")}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 }
