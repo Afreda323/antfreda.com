@@ -15,8 +15,17 @@ type Props = { onDone: () => void; calm: boolean };
  * burst. The last card stays: it is the contact card.
  */
 export function Reveal({ onDone, calm }: Props) {
+  // phones and Safari (WebKit ignores backface-visibility on faces with their own layers, so the
+  // mirrored front shows through the back) skip the flip: the secret rare lands face up and celebrates
+  const flips = React.useMemo(() => {
+    if (typeof window === "undefined") return true;
+    const phone = window.matchMedia("(max-width: 860px), (hover: none)").matches;
+    const webkit = /^((?!chrome|chromium|crios|fxios|edg|android).)*safari/i.test(navigator.userAgent);
+    return !phone && !webkit;
+  }, []);
+  const turns = (n: number) => flips && needsTurn(n);
   const [i, setI] = React.useState(0);
-  const [face, setFace] = React.useState<"back" | "front">(() => (needsTurn(0) ? "back" : "front"));
+  const [face, setFace] = React.useState<"back" | "front">(() => (turns(0) ? "back" : "front"));
   /** A throw in flight: input waits until the card has left. */
   const flying = React.useRef(false);
   const stage = React.useRef<HTMLDivElement>(null);
@@ -41,10 +50,15 @@ export function Reveal({ onDone, calm }: Props) {
   function turn() {
     if (face === "front") return;
     setFace("front");
+    celebrate(card.rarity);
+  }
+
+  /** The secret rare's arrival: sparkle, a buzz, and foil out of both sides of the card. */
+  function celebrate(rarity: string) {
     if (calm) return;
     const el = top.current;
     const r = el?.getBoundingClientRect();
-    if (card.rarity === "secret") {
+    if (rarity === "secret") {
       sparkle("secret");
       buzz([30, 60, 30, 60, 120]);
       if (r) {
@@ -73,7 +87,9 @@ export function Reveal({ onDone, calm }: Props) {
     const advance = () => {
       flying.current = false;
       setI(n);
-      setFace(needsTurn(n) ? "back" : "front");
+      setFace(turns(n) ? "back" : "front");
+      // no flip on phones: the celebration fires once the card has settled in the top spot
+      if (!turns(n) && cards[n].rarity === "secret") window.setTimeout(() => celebrate("secret"), 280);
     };
     const el = top.current;
     if (calm || !el) return advance();
@@ -182,7 +198,7 @@ export function Reveal({ onDone, calm }: Props) {
           .reverse()
           .map(({ c, idx, pos }) => {
             const isTop = pos === "top";
-            const f = isTop ? face : needsTurn(idx) ? "back" : "front";
+            const f = isTop ? face : turns(idx) ? "back" : "front";
             return (
               <div
                 key={c.id}
