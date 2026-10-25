@@ -3371,3 +3371,30 @@ html.gl-wait .pack:not(.is-gl)::after {
     transform: none;
   }
 }
+
+/* the first screen always carries the primary action; the dock only takes over once the hero is behind you */
+@media (max-width: 860px) {
+  .actions .btn {
+    display: inline-flex;
+  }
+}
+
+/* the flip shows one face at a time, swapping at the edge-on midpoint of the 700ms turn.
+   iOS Safari ignores backface-visibility on faces with their own layers (the holo's canvas,
+   the glow filter), which let the mirrored front show through the back. */
+.flip-back {
+  visibility: hidden;
+  transition: visibility 0s linear 350ms;
+}
+.flip-front {
+  visibility: visible;
+  transition: visibility 0s linear 350ms;
+}
+.reveal-card[data-face="back"] .flip-back {
+  visibility: visible;
+  transition: none;
+}
+.reveal-card[data-face="back"] .flip-front {
+  visibility: hidden;
+  transition: none;
+}
