@@ -1,28 +1,29 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Bricolage_Grotesque, Onest } from "next/font/google";
 
-const serif = Cormorant_Garamond({
+/* Card names and display: a chunky, characterful grotesk that reads like
+   printed card lettering at small sizes and like a logo at large ones. */
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-serif",
-  weight: ["400", "500", "600", "700"],
+  weight: "variable",
+  axes: ["wdth", "opsz"],
+  variable: "--font-display",
   display: "swap",
 });
 
-const sans = Source_Sans_3({
+/* Body and card rules text: compact, clear at 11px on a card face. */
+const text = Onest({
   subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-text",
   display: "swap",
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <div className={`${serif.variable} ${sans.variable} font-serif antialiased`}>
-        <Component {...pageProps} />
-      </div>
-    </ThemeProvider>
+    <div className={`${display.variable} ${text.variable} app`}>
+      <Component {...pageProps} />
+    </div>
   );
 }

@@ -1,0 +1,6 @@
+{
+  "prompt": "A cosy two-storey suburban house at dusk with warm glowing windows, a winding path, a mailbox and a small tree, the first stars out. PS2-era video game screenshot, early-2000s 3D game engine render, low polygon count with visible facets, soft hand-painted low-resolution textures, gouraud shading, warm bloom glow and soft distance fog, vivid saturated colours, cinematic three-quarter camera, a rich, detailed, inviting scene, landscape 3:2 composition with the subject centred and clear margin on all sides, no text, no letters, no numbers, no logos, no UI, no HUD, no watermark, no border",
+  "tool": "codex image_generation",
+  "reference": null,
+  "note": "Exact generation prompt kept in assets-src/cards (not served)."
+}

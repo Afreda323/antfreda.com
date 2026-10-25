@@ -1,0 +1,6 @@
+{
+  "prompt": "A quiet tree-lined neighbourhood street at golden hour under huge old willow oaks whose branches meet overhead, a brick sidewalk, porch lights coming on, a small modern city skyline glowing at the end of the street. No people, no animals. PS2-era video game screenshot, early-2000s 3D game engine render, low polygon count with visible facets, soft hand-painted low-resolution textures, gouraud shading, warm bloom glow and soft distance fog, vivid saturated colours, cinematic three-quarter camera, a rich, detailed, inviting scene, the subject centred and clear margin on all sides, no text, no letters, no numbers, no logos, no UI, no HUD, no watermark, no border ",
+  "tool": "codex image_generation",
+  "reference": null,
+  "note": "Exact generation prompt kept in assets-src/cards (not served)."
+}

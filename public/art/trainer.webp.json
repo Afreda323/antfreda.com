@@ -1,0 +1,6 @@
+{
+  "prompt": "The dog is a blue-grey French bulldog exactly like the reference image: blue-grey coat, a thin white stripe down the chest, a grey chin the same colour as her coat, tall upright bat ears with pink insides, dark round eyes. the dog sits proudly on a cluttered developer desk at night beside a glowing laptop, a coffee mug and a small desk plant, warm desk-lamp light, cosy bedroom-office behind her. PS2-era video game screenshot, early-2000s 3D game engine render, low polygon count with visible facets, soft hand-painted low-resolution textures, gouraud shading, warm bloom glow and soft distance fog, vivid saturated colours, cinematic three-quarter camera, a rich, detailed, inviting scene, landscape 3:2 composition with the subject centred and clear margin on all sides, no text, no letters, no numbers, no logos, no UI, no HUD, no watermark, no border",
+  "tool": "codex image_generation",
+  "reference": "../../assets-src/concepts/dog.png",
+  "note": "Exact generation prompt kept in assets-src/cards (not served)."
+}

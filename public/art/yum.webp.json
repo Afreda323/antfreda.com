@@ -1,0 +1,6 @@
+{
+  "prompt": "An American roadside fast-food strip at dusk off a two-lane highway: several small generic drive-thru restaurants and a couple of food trucks side by side across one shared parking lot, all linked to each other by long strings of warm bulb lights overhead, cars waiting in the drive-thru lanes, a tall blank pole sign with no lettering, power lines, a pickup truck, a gas station in the distance. PS2-era video game screenshot, early-2000s 3D game engine render, low polygon count with visible facets, soft hand-painted low-resolution textures, gouraud shading, warm bloom glow and soft distance fog, vivid saturated colours, cinematic three-quarter camera, a rich, detailed, inviting scene, the subject centred and clear margin on all sides, no text, no letters, no numbers, no logos, no UI, no HUD, no watermark, no border ",
+  "tool": "codex image_generation",
+  "reference": null,
+  "note": "Exact generation prompt kept in assets-src/cards (not served)."
+}

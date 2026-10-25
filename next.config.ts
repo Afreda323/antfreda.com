@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const config: NextConfig = {
   reactStrictMode: true,
-  experimental: { turbopackScopeHoisting: false },
+  poweredByHeader: false,
+  devIndicators: false,
+  images: { formats: ["image/avif", "image/webp"] },
 };
 
-export default nextConfig;
+export default config;

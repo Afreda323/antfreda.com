@@ -1,0 +1,6 @@
+{
+  "prompt": "The back of a collectible trading card, pure ornamental art: a deep plum-violet cosmic energy swirl spiralling into a calm, empty, softly glowing amber core in the exact centre, fine concentric rings and radiating light streaks, scattered tiny sparkles, rich symmetrical composition, the centre third left empty and smooth for an emblem to be printed later. PS2-era video game screenshot, early-2000s 3D game engine render, low polygon count with visible facets, soft hand-painted low-resolution textures, gouraud shading, warm bloom glow and soft distance fog, vivid saturated colours, cinematic three-quarter camera, a rich, detailed, inviting scene, the subject centred and clear margin on all sides, no text, no letters, no numbers, no logos, no UI, no HUD, no watermark, no border portrait 2:3, perfectly symmetrical left to right, edge to edge, no card border drawn",
+  "tool": "codex image_generation",
+  "reference": null,
+  "note": "Exact generation prompt kept in assets-src/cards (not served)."
+}

@@ -1,463 +1,393 @@
-import React from "react";
+import * as React from "react";
+import { MAILTO } from "@/lib/contact";
 import Head from "next/head";
-import BookFolio from "@/components/BookFolio";
-import CommandPalette from "@/components/CommandPalette";
-import ReadingProgress from "@/components/ReadingProgress";
-import SectionNav from "@/components/SectionNav";
-import { Reveal, RevealContainer } from "@/components/Reveal";
-import ThemeColophon from "@/components/ThemeColophon";
+import { cards } from "@/content/cards";
+import { chapters, profile, skills } from "@/content/resume";
+import { Holo } from "@/components/Holo";
+import { About, Collection, Experience, Highlights, Proof } from "@/components/Sections";
+import { Inspect } from "@/components/Inspect";
+import { Pack } from "@/components/Pack";
+import { Reveal } from "@/components/Reveal";
+import { SoundToggle } from "@/components/SoundToggle";
+import dynamic from "next/dynamic";
+import { resetPackState } from "@/components/pack3d/store";
 
-const linkClass =
-  "book-link text-[var(--book-ink)] underline decoration-[var(--book-rule)] underline-offset-[3px] hover:decoration-[var(--book-accent)]";
+const PackScene = dynamic(() => import("@/components/pack3d/PackScene"), { ssr: false });
 
-const Meta = () => {
-  const title =
-    "Anthony Freda — Staff Software Engineer (Distributed Systems, GraphQL, GenAI)";
-  const description =
-    "Staff-level engineer specializing in scalable systems and AI-augmented development workflows. TypeScript, React, Node.js, Python, Go. Federated GraphQL, distributed systems, RAG, OpenSearch.";
-  const url = "https://antfreda.com/";
+const SITE = "https://antfreda.com";
+const URL = `${SITE}/`;
+const TITLE = "Anthony Freda — Lead Software Engineer";
+const DESCRIPTION =
+  "Anthony Freda is a lead software engineer in Charlotte, NC, building AI agents, the tooling around them, and the platforms they run on.";
+const OG_ALT = "A trading-card booster pack printed with a blue-grey French bulldog and the name Anthony Freda, Lead Software Engineer.";
 
+function Seo() {
+  const current = chapters[0];
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${SITE}/#website`,
+        url: URL,
+        name: profile.name,
+        description: DESCRIPTION,
+        inLanguage: "en-US",
+        publisher: { "@id": `${SITE}/#person` },
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": `${SITE}/#profile`,
+        url: URL,
+        name: TITLE,
+        isPartOf: { "@id": `${SITE}/#website` },
+        mainEntity: { "@id": `${SITE}/#person` },
+        primaryImageOfPage: `${SITE}/og.png`,
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "Person",
+        "@id": `${SITE}/#person`,
+        name: profile.name,
+        url: URL,
+        email: `mailto:${profile.email}`,
+        jobTitle: profile.title,
+        description: profile.line,
+        image: `${SITE}/og.png`,
+        worksFor: { "@type": "Organization", name: current.company },
+        address: { "@type": "PostalAddress", addressLocality: "Charlotte", addressRegion: "NC", addressCountry: "US" },
+        knowsAbout: skills.flatMap((g) => [...g.items]),
+        sameAs: [profile.linkedin, profile.github],
+      },
+    ],
+  };
   return (
     <Head>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
-      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-      <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
-      <link rel="canonical" href={url} />
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta
-        name="keywords"
-        content="Anthony Freda, Staff Engineer, Staff Software Engineer, Distributed Systems, System Design, TypeScript, React, Next.js, Node.js, Python, Go, GraphQL, Apollo Federation, DGS, Microservices, RAG, OpenSearch, GenAI, LLM, AI Engineering"
-      />
-      <meta name="author" content="Anthony Freda" />
-      <meta name="robots" content="index,follow" />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
-      <meta property="og:site_name" content="Anthony Freda" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <title>{TITLE}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      <meta name="description" content={DESCRIPTION} />
+      <link rel="canonical" href={URL} />
+      <meta name="author" content={profile.name} />
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+      <meta name="format-detection" content="telephone=no" />
+
+      <meta property="og:type" content="profile" />
+      <meta property="profile:first_name" content="Anthony" />
+      <meta property="profile:last_name" content="Freda" />
+      <meta property="og:url" content={URL} />
+      <meta property="og:site_name" content={profile.name} />
+      <meta property="og:title" content={TITLE} />
+      <meta property="og:description" content={DESCRIPTION} />
       <meta property="og:locale" content="en_US" />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Anthony Freda",
-            url,
-            email: "mailto:anthonyfreda323@gmail.com",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Charlotte",
-              addressRegion: "NC",
-              addressCountry: "US",
-            },
-            jobTitle: "Staff Software Engineer",
-            knowsAbout: [
-              "Distributed systems",
-              "System design",
-              "TypeScript",
-              "React",
-              "Next.js",
-              "Node.js",
-              "Python",
-              "Go",
-              "GraphQL",
-              "Apollo Federation",
-              "Domain Graph Service (DGS)",
-              "Microservices",
-              "RAG",
-              "OpenSearch",
-              "LLM application development",
-            ],
-            sameAs: [
-              "https://www.linkedin.com/in/antfreda323",
-              "https://github.com/Afreda323",
-            ],
-          }),
-        }}
-      />
+      <meta property="og:image" content={`${SITE}/og.png`} />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={OG_ALT} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={TITLE} />
+      <meta name="twitter:description" content={DESCRIPTION} />
+      <meta name="twitter:image" content={`${SITE}/og.png`} />
+      <meta name="twitter:image:alt" content={OG_ALT} />
+
+      <link rel="preload" as="image" href="/art/pack.webp" type="image/webp" fetchPriority="high" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }} />
     </Head>
   );
-};
+}
 
-function SectionTitle({ id, children }: { id: string; children: React.ReactNode }) {
+function useReducedMotion() {
+  const [calm, setCalm] = React.useState(false);
+  React.useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const on = () => setCalm(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return calm;
+}
+
+/** Copies the address, for desktops without a mail app; says so when it has. */
+function CopyEmail() {
+  const [done, setDone] = React.useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setDone(true);
+      window.setTimeout(() => setDone(false), 2200);
+    } catch {
+      setDone(false);
+    }
+  };
   return (
-    <h2
-      id={id}
-      className="font-sans text-[0.7rem] font-medium uppercase tracking-[0.28em] text-[var(--book-muted)]"
-    >
-      {children}
-    </h2>
+    <button type="button" className="copy-btn" onClick={copy} aria-label={done ? "Email address copied" : "Copy email address"}>
+      <span aria-hidden>{done ? "Copied" : "Copy"}</span>
+      <span className="sr-only" aria-live="polite">
+        {done ? "Copied" : ""}
+      </span>
+    </button>
   );
 }
 
-function Prose({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-[1.05rem] leading-[1.75] text-[var(--book-ink)]">{children}</p>
-  );
-}
-
-function Bullets({ items }: { items: string[] }) {
-  return (
-    <ul className="list-disc space-y-2 pl-5 text-[1.02rem] leading-[1.7] marker:text-[var(--book-muted)]">
-      {items.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-    </ul>
-  );
-}
-
-function Chapter({
-  id,
-  title,
-  company,
-  titleRole,
-  dates,
-  items,
-}: {
-  id: string;
-  title: string;
-  company: string;
-  titleRole: string;
-  dates: string;
-  items: string[];
-}) {
-  return (
-    <section
-      id={id}
-      className="chapter-block -mx-3 scroll-mt-20 break-inside-avoid rounded-sm px-3 py-2 transition-colors duration-300"
-    >
-      <header className="mb-4 flex flex-col gap-1 border-b border-[var(--book-rule)] pb-3 sm:flex-row sm:items-baseline sm:justify-between">
-        <div>
-          <p className="font-sans text-[0.65rem] uppercase tracking-[0.28em] text-[var(--book-muted)]">
-            {title}
-          </p>
-          <h3 className="text-[1.35rem] font-semibold leading-tight text-[var(--book-ink)]">
-            <span className="font-normal italic text-[var(--book-muted)]">{company}</span>
-            <span className="text-[var(--book-muted)]"> — </span>
-            {titleRole}
-          </h3>
-        </div>
-        <p className="shrink-0 font-sans text-[0.7rem] tabular-nums text-[var(--book-muted)]">
-          {dates}
-        </p>
-      </header>
-      <Bullets items={items} />
-    </section>
-  );
+/** True once the element is near the viewport (mounts live parts lazily). */
+function useNear<T extends HTMLElement>() {
+  const ref = React.useRef<T>(null);
+  const [near, setNear] = React.useState(false);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setNear(e.isIntersecting), { rootMargin: "200px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return [ref, near] as const;
 }
 
 export default function Home() {
+  const calm = useReducedMotion();
+  const [stage, setStage] = React.useState<"sealed" | "revealing" | "opened">("sealed");
+  // a new pack is a new component: its tear, phase and timers all start clean
+  const [packGen, setPackGen] = React.useState(0);
+  const ripAnother = React.useCallback(() => {
+    resetPackState();
+    setPackGen((g) => g + 1);
+    setStage("sealed");
+  }, []);
+  const [inspecting, setInspecting] = React.useState<number | null>(null);
+  const lastPocket = React.useRef<HTMLElement | null>(null);
+  const openCard = React.useCallback((i: number) => {
+    lastPocket.current = document.activeElement as HTMLElement;
+    setInspecting(i);
+  }, []);
+  // printing: every experience row's details open, so the printed page is the whole resume
+  React.useEffect(() => {
+    let opened: HTMLDetailsElement[] = [];
+    const before = () => {
+      opened = [...document.querySelectorAll<HTMLDetailsElement>("details:not([open])")];
+      opened.forEach((d) => (d.open = true));
+    };
+    const after = () => opened.forEach((d) => (d.open = false));
+    window.addEventListener("beforeprint", before);
+    window.addEventListener("afterprint", after);
+    return () => {
+      window.removeEventListener("beforeprint", before);
+      window.removeEventListener("afterprint", after);
+    };
+  }, []);
+  // past the pack, the header sticks with an Email me button
+  const [pastHero, setPastHero] = React.useState(false);
+  React.useEffect(() => {
+    const on = () => setPastHero(window.scrollY > window.innerHeight * 0.7);
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, []);
+  const [closeRef, closeNear] = useNear<HTMLElement>();
+  const [askRef, askNear] = useNear<HTMLElement>();
+  // the WebGL pack: mounted when motion is welcome and WebGL exists; the DOM pack covers until it draws
+  const [webgl, setWebgl] = React.useState(false);
+  const [glReady, setGlReady] = React.useState(false);
+  React.useEffect(() => {
+    try {
+      const c = document.createElement("canvas");
+      setWebgl(!!(c.getContext("webgl2") || c.getContext("webgl")));
+    } catch {
+      setWebgl(false);
+    }
+  }, []);
+  const use3d = webgl && !calm;
+  // the pack only renders while the opening is on screen and nothing covers it
+  const [openingInView, setOpeningInView] = React.useState(true);
+  React.useEffect(() => {
+    const el = document.querySelector(".opening");
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setOpeningInView(e.isIntersecting), { rootMargin: "100px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const onGlReady = React.useCallback(() => setGlReady(true), []);
+  // the flat pack is held back before first paint (see _document) while the 3D one loads; let it show if 3D is off or slow
+  const [glGaveUp, setGlGaveUp] = React.useState(false);
+  React.useEffect(() => {
+    const root = document.documentElement;
+    if (glReady) return void root.classList.remove("gl-wait");
+    if (!use3d) {
+      // webgl is decided after mount; calm is too
+      const t = window.setTimeout(() => !use3dRef.current && root.classList.remove("gl-wait"), 400);
+      return () => window.clearTimeout(t);
+    }
+    const t = window.setTimeout(() => {
+      setGlGaveUp(true);
+      root.classList.remove("gl-wait");
+    }, 7000);
+    return () => window.clearTimeout(t);
+  }, [glReady, use3d]);
+  const use3dRef = React.useRef(use3d);
+  use3dRef.current = use3d;
+
+  // while the pack is being revealed, the page underneath is locked and inert
+  React.useEffect(() => {
+    const on = stage === "revealing" || inspecting !== null;
+    document.documentElement.classList.toggle("locked", on);
+    document.querySelectorAll<HTMLElement>("body .app > header, body .app > main, body .app > footer, body .app > .dock, body .app > .skip").forEach((el) => {
+      el.inert = on;
+    });
+  }, [stage, inspecting]);
+
+  const toBinder = React.useCallback(() => {
+    setStage("opened");
+    requestAnimationFrame(() => {
+      // after the pack, land on the pitch: the highlights (scroll-margin clears the stuck header), focus without a second scroll
+      document.getElementById("highlights")?.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "start" });
+      document.getElementById("highlights-title")?.focus({ preventScroll: true });
+    });
+  }, [calm]);
+
   return (
-    <div className="min-h-screen bg-[var(--book-paper)] text-[var(--book-ink)]">
-      <Meta />
-      <a
-        href="#main"
-        className="book-link no-print sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-[var(--book-paper)] focus:px-3 focus:py-2 focus:font-sans focus:text-sm"
-      >
+    <>
+      <Seo />
+      <a className="skip" href="#highlights">
         Skip to content
       </a>
-      <ReadingProgress />
-      <SectionNav />
-      <BookFolio />
-      <CommandPalette />
 
-      <main
-        id="main"
-        className="mx-auto max-w-[42rem] px-6 pb-20 pt-14 sm:px-10 sm:pt-20"
-      >
-        <RevealContainer>
-          <header
-            id="title"
-            className="mb-14 scroll-mt-20 border-b border-[var(--book-rule)] pb-10 text-center sm:text-left"
-          >
-            <Reveal i={0}>
-              <p className="font-sans text-[0.7rem] uppercase tracking-[0.35em] text-[var(--book-muted)]">
-                Staff Software Engineer
-              </p>
-              <h1 className="mt-2 text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.05] tracking-tight text-[var(--book-ink)]">
-                Anthony Freda
-              </h1>
-            </Reveal>
-            <Reveal i={1}>
-              <div className="mt-8 space-y-4 text-center sm:text-left">
-                <p className="text-[1.02rem] italic text-[var(--book-muted)]">Charlotte, NC</p>
-                <p className="text-[1.05rem] leading-[1.75] text-[var(--book-ink)]">
-                  <a href="mailto:anthonyfreda323@gmail.com" className={linkClass}>
-                    anthonyfreda323@gmail.com
-                  </a>
-                  <span className="text-[var(--book-muted)]"> · </span>
-                  <a
-                    href="https://www.linkedin.com/in/antfreda323"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={linkClass}
-                  >
-                    LinkedIn
-                  </a>
-                  <span className="text-[var(--book-muted)]"> · </span>
-                  <a
-                    href="https://github.com/Afreda323"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={linkClass}
-                  >
-                    GitHub
-                  </a>
-                </p>
-                <div className="pt-2">
-                  <p className="font-sans text-[0.65rem] uppercase tracking-[0.28em] text-[var(--book-muted)]">
-                    Open to opportunities
-                  </p>
-                  <p className="mt-2 text-[1.05rem] leading-[1.75] text-[var(--book-ink)]">
-                    Staff and lead IC roles — <em>remote only</em>.{" "}
-                    <a href="mailto:anthonyfreda323@gmail.com" className={linkClass}>
-                      Email
-                    </a>
-                    {" or "}
-                    <a
-                      href="https://www.linkedin.com/in/antfreda323"
-                      target="_blank"
-                      rel="noreferrer"
-                      className={linkClass}
-                    >
-                      LinkedIn
-                    </a>
-                    .
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          </header>
-        </RevealContainer>
+      <header className="top" data-stuck={pastHero || undefined}>
+        <a className="top-name" href="#main">
+          {profile.name}
+        </a>
+        <nav aria-label="Page">
+          <a href="#experience">Experience</a>
+          <a href="#binder">Cards</a>
+          <a className="nav-contact" href="#contact">
+            Contact
+          </a>
+          <SoundToggle />
+          <a className="btn btn-small top-cta" href={MAILTO}>
+            Email me
+          </a>
+        </nav>
+      </header>
 
-        <RevealContainer>
-          <section
-            id="summary"
-            aria-labelledby="summary-heading"
-            className="scroll-mt-20"
-          >
-            <Reveal i={0}>
-              <SectionTitle id="summary-heading">Summary</SectionTitle>
-            </Reveal>
-            <Reveal i={1} className="mt-4">
-              <Prose>
-            Staff-level engineer specializing in scalable systems and AI-augmented development
-            workflows. Expert in TypeScript, React, Node.js, Python, and Go, with deep experience
-            in distributed systems and system design. Proven track record of driving architecture,
-            improving developer productivity, and delivering high-impact platforms at scale.
-              </Prose>
-            </Reveal>
-          </section>
-        </RevealContainer>
-
-        <RevealContainer className="mt-14">
-          <section id="skills" aria-labelledby="skills-heading" className="scroll-mt-20">
-            <Reveal i={0}>
-              <SectionTitle id="skills-heading">Skills</SectionTitle>
-            </Reveal>
-            <Reveal i={1} className="mt-4">
-          <dl className="space-y-4 text-[0.98rem] leading-[1.65]">
-            {(
-              [
-                ["Languages", "TypeScript, JavaScript (ES6+), Python, Go"],
-                ["Frameworks", "React, Next.js, Node.js, NestJS, Tailwind"],
-                [
-                  "Architecture",
-                  "Federated GraphQL (Apollo Federation, DGS), microservices, distributed systems, domain-driven design",
-                ],
-                [
-                  "AI & productivity",
-                  "RAG, embeddings, vector databases, Cursor workflows, AI-assisted development",
-                ],
-                [
-                  "Infrastructure",
-                  "Docker, GitHub Actions, Vercel, OpenSearch, PostgreSQL, MySQL",
-                ],
-              ] as const
-            ).map(([label, value]) => (
-              <div
-                key={label}
-                className="sm:grid sm:grid-cols-[6.75rem_1fr] sm:gap-x-6"
-              >
-                <dt className="font-sans text-[0.65rem] uppercase tracking-[0.2em] text-[var(--book-muted)] sm:pt-0.5">
-                  {label}
-                </dt>
-                <dd>{value}</dd>
-              </div>
-            ))}
-          </dl>
-            </Reveal>
-          </section>
-        </RevealContainer>
-
-        <RevealContainer className="mt-16">
-          <section id="experience" aria-labelledby="experience-heading" className="scroll-mt-20">
-            <Reveal i={0}>
-              <SectionTitle id="experience-heading">Experience</SectionTitle>
-            </Reveal>
-
-          <div className="mt-10 space-y-12">
-            <Reveal i={1}>
-            <Chapter
-              id="chapter-yum"
-              title="I"
-              company="Yum Brands"
-              titleRole="Lead Software Engineer"
-              dates="June 2025 – Present"
-              items={[
-                "Architected federated GraphQL (Apollo Federation) for nationwide inventory across 3 brands — Taco Bell, Pizza Hut, and KFC",
-                "Designed Domain Graph Service architecture for multi-tenant scale and long-term extensibility",
-                "Built distributed systems handling 1,000+ requests per second with strong performance and observability",
-                "Introduced AI-driven engineering workflows (Cursor + LLM tooling) to improve velocity and code quality",
-                "Established spec-driven development to reduce frontend/backend misalignment",
-                "Standardized GraphQL and TypeScript patterns to cut tech debt and improve maintainability",
-                "Led hiring, mentorship, and onboarding for engineers on a complex distributed platform",
-              ]}
+      <main id="main" tabIndex={-1}>
+        <section className="opening" aria-labelledby="name">
+          <div className="lamp" aria-hidden />
+          {use3d && !glGaveUp ? (
+            <div className="pack-scene-wrap" aria-hidden data-ready={glReady || undefined}>
+              <PackScene onReady={onGlReady} name={profile.name} title={profile.title} active={stage !== "revealing" && openingInView} />
+            </div>
+          ) : null}
+          <div className="opening-pack">
+            <Pack
+              key={packGen}
+              calm={calm}
+              gl={use3d && !glGaveUp && glReady}
+              opened={stage === "opened"}
+              onOpened={() => setStage("revealing")}
+              onReset={ripAnother}
             />
-            </Reveal>
-
-            <Reveal i={2}>
-            <Chapter
-              id="chapter-do"
-              title="II"
-              company="DigitalOcean"
-              titleRole="Senior Software Engineer II (Tech Lead)"
-              dates="Jan 2024 – May 2025"
-              items={[
-                "Promoted to Tech Lead; mentored and guided a team of 8 engineers",
-                "Defined and executed the roadmap for a generative AI agent platform",
-                "Built a cloud-native GenAI stack across 4 languages/stacks — Python, Go, MySQL, and TypeScript/React",
-                "Enhanced RAG pipelines with multi-agent orchestration and OpenSearch",
-                "Implemented function calling for dynamic, context-aware agents",
-                "Delivered major React/TypeScript chatbot improvements for customization and accessibility",
-                "Migrated GPU workflows to TypeScript/tRPC for better maintainability",
-                "Built CI/CD pipelines for seamless deployment",
-                "Improved team efficiency through mentorship and process improvements",
-              ]}
-            />
-            </Reveal>
-
-            <Reveal i={3}>
-            <Chapter
-              id="chapter-1v1me"
-              title="III"
-              company="1V1ME"
-              titleRole="Senior Software Engineer"
-              dates="June 2022 – January 2024"
-              items={[
-                "Built user-facing web apps with Next.js, TypeScript, and Tailwind",
-                "Developed internal React/TypeScript tools to streamline workflows",
-                "Implemented CI/CD with GitHub Actions and Vercel",
-                "Shipped real-time match viewing with chat and multi-perspective experiences",
-                "Built Electron desktop apps with auto-update systems",
-                "Integrated payment systems and 3 esports APIs (Call of Duty, Apex Legends, Fortnite)",
-                "Partnered with product and engineering on feature planning and execution",
-              ]}
-            />
-            </Reveal>
-
-            <Reveal i={4}>
-            <Chapter
-              id="chapter-pools"
-              title="IV"
-              company="P00LS"
-              titleRole="Senior Software Engineer"
-              dates="December 2021 – June 2022"
-              items={[
-                "Built CMS and consumer apps with Next.js, TypeScript, Firebase, and GraphQL",
-                "Implemented a gamified ERC20 token earning system",
-                "Delivered localization and accessibility features",
-              ]}
-            />
-            </Reveal>
-
-            <Reveal i={5}>
-            <Chapter
-              id="chapter-movement"
-              title="V"
-              company="Movement Mortgage"
-              titleRole="Lead Software Engineer"
-              dates="April 2021 – December 2021"
-              items={[
-                "Led hiring and established Agile SDLC processes",
-                "Built a custom CRM with React and Redux",
-                "Migrated applications from JavaScript to TypeScript",
-              ]}
-            />
-            </Reveal>
-
-            <Reveal i={6}>
-            <Chapter
-              id="chapter-diligent"
-              title="VI"
-              company="Diligent Corporation"
-              titleRole="Senior Software Engineer"
-              dates="December 2019 – April 2021"
-              items={[
-                "Scaled React/TypeScript applications to serve 200,000+ users",
-                "Implemented micro-frontend architecture across multiple products",
-              ]}
-            />
-            </Reveal>
-
-            <Reveal i={7}>
-            <Chapter
-              id="chapter-bofa"
-              title="VII"
-              company="Bank of America"
-              titleRole="AVP, Senior Software Engineer"
-              dates="July 2017 – December 2019"
-              items={[
-                "Earned 2 performance awards (Gold and Bronze) for exceptional performance",
-                "Built scalable Next.js and GraphQL-based applications",
-              ]}
-            />
-            </Reveal>
-
-            <Reveal i={8}>
-            <section
-              id="chapter-earlier"
-              className="scroll-mt-20 border-t border-[var(--book-rule)] pt-8"
-            >
-              <h3 className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[var(--book-muted)]">
-                Earlier experience
-              </h3>
-              <Bullets
-                items={[
-                  "Web Developer — BRK Global Marketing (2017)",
-                  "Freelance Full-Stack Developer (2015–2017, 2+ years)",
-                ]}
-              />
-            </section>
-            </Reveal>
           </div>
-          </section>
-        </RevealContainer>
+          <div className="opening-copy">
+            <p className="opening-line">{profile.line}</p>
+            <div className="actions">
+              <a className="btn" href={MAILTO}>
+                Email me
+              </a>
+              <a className="link" href={profile.linkedin} rel="me noopener" target="_blank">
+                LinkedIn
+              </a>
+              <a className="link" href={profile.github} rel="me noopener" target="_blank">
+                GitHub
+              </a>
+            </div>
+          </div>
+        </section>
 
-        <footer className="no-print mt-16 border-t border-[var(--book-rule)] pt-8 font-sans text-[0.7rem] text-[var(--book-muted)]">
-          <p>© {new Date().getFullYear()} Anthony Freda</p>
-          <p className="mt-2">
-            <button
-              type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("open-cmdk"))}
-              className="book-link rounded-sm text-[var(--book-muted)] hover:text-[var(--book-ink)]"
-            >
-              <span className="uppercase tracking-[0.18em]">Table of contents</span>
-              <span className="mx-1.5 text-[var(--book-rule)]" aria-hidden>
-                ·
-              </span>
-              <kbd className="font-sans text-[0.65rem] tracking-wide">⌘K</kbd>
-            </button>
-          </p>
-          <ThemeColophon />
-        </footer>
+        <Proof />
+        <Highlights onOpen={openCard} />
+        <Experience onOpen={openCard} />
+        {/* the decision point: right after the work, one plain ask */}
+        <section className="ask" aria-labelledby="ask-title" ref={askRef}>
+          <div className="ask-copy">
+            <h2 id="ask-title" className="ask-line">
+              Hiring for AI, platform, or product engineering?
+            </h2>
+            <p className="ask-sub">
+              {profile.about[2]}
+            </p>
+          </div>
+          <div className="ask-actions">
+            <a className="btn btn-big" href={MAILTO}>
+              Email me
+            </a>
+            <span className="close-email-row">
+              <a className="close-email" href={MAILTO}>
+                {profile.email}
+              </a>
+              <CopyEmail />
+            </span>
+          </div>
+        </section>
+        <Collection onOpen={openCard} />
+        <About />
       </main>
-    </div>
+
+      <footer id="contact" className="close" ref={closeRef}>
+        <div className="close-card" aria-hidden>
+          <Holo card={cards[cards.length - 1]} index={cards.length - 1} live={closeNear && stage !== "revealing" && inspecting === null} headingLevel={4} />
+        </div>
+        <div className="close-copy">
+          <h2>Say hello</h2>
+          <p className="close-line">Email is the fastest way to reach me.</p>
+          <div className="close-actions">
+            <a className="btn btn-big" href={MAILTO}>
+              Email me
+            </a>
+            <span className="close-email-row">
+              <a className="close-email" href={MAILTO}>
+                {profile.email}
+              </a>
+              <CopyEmail />
+            </span>
+          </div>
+          <p className="close-links">
+            <a href={profile.linkedin} rel="me noopener" target="_blank">
+              LinkedIn
+            </a>
+            <a href={profile.github} rel="me noopener" target="_blank">
+              GitHub
+            </a>
+          </p>
+          <button
+            type="button"
+            className="text-btn close-again"
+            onClick={() => {
+              ripAnother();
+              window.scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" });
+            }}
+          >
+            Rip another pack
+          </button>
+        </div>
+        <p className="close-bar">
+          © {new Date().getFullYear()} {profile.name} · Charlotte, NC
+        </p>
+      </footer>
+
+      <a className="dock btn" href={MAILTO} data-hidden={!pastHero || closeNear || askNear || inspecting !== null || undefined}>
+        Email me
+      </a>
+
+      {stage === "revealing" ? <Reveal calm={calm} onDone={toBinder} /> : null}
+      {inspecting !== null ? (
+        <Inspect
+          index={inspecting}
+          onStep={setInspecting}
+          onClose={() => {
+            setInspecting(null);
+            requestAnimationFrame(() => lastPocket.current?.focus());
+          }}
+        />
+      ) : null}
+    </>
   );
 }
