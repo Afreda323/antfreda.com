@@ -3378,3 +3378,18 @@ html.gl-wait .pack:not(.is-gl)::after {
     display: inline-flex;
   }
 }
+
+/* the 2D turn (phones, Safari): no rotateY and no backface; each state shows exactly one face,
+   and the swap happens while the card is squeezed to zero width, so it is never seen */
+.reveal[data-flip="2d"] .flip,
+.reveal[data-flip="2d"] .reveal-card[data-face="back"] .flip {
+  transform: none;
+  transition: none;
+}
+.reveal[data-flip="2d"] .flip-back {
+  transform: none;
+}
+.reveal[data-flip="2d"] .reveal-card[data-face="back"] .flip-front,
+.reveal[data-flip="2d"] .reveal-card[data-face="front"] .flip-back {
+  visibility: hidden;
+}

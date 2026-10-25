@@ -15,15 +15,16 @@ type Props = { onDone: () => void; calm: boolean };
  * burst. The last card stays: it is the contact card.
  */
 export function Reveal({ onDone, calm }: Props) {
-  // phones and Safari (WebKit ignores backface-visibility on faces with their own layers, so the
-  // mirrored front shows through the back) skip the flip: the secret rare lands face up and celebrates
+  // the secret rare always arrives face down with the build-up. Browsers that render the 3D turn flip it in 3D;
+  // phones and Safari (WebKit ignores backface-visibility on faces with their own layers, so the mirrored front
+  // shows through the back) get a 2D turn: squeeze to the edge, swap faces at zero width, spring back out
   const flips = React.useMemo(() => {
     if (typeof window === "undefined") return true;
     const phone = window.matchMedia("(max-width: 860px), (hover: none)").matches;
     const webkit = /^((?!chrome|chromium|crios|fxios|edg|android).)*safari/i.test(navigator.userAgent);
     return !phone && !webkit;
   }, []);
-  const turns = (n: number) => flips && needsTurn(n);
+  const turns = needsTurn;
   const [i, setI] = React.useState(0);
   const [face, setFace] = React.useState<"back" | "front">(() => (turns(0) ? "back" : "front"));
   /** A throw in flight: input waits until the card has left. */
@@ -47,10 +48,30 @@ export function Reveal({ onDone, calm }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i, face]);
 
+  const turning = React.useRef(false);
   function turn() {
-    if (face === "front") return;
-    setFace("front");
-    celebrate(card.rarity);
+    if (face === "front" || turning.current) return;
+    const flip = top.current?.querySelector<HTMLElement>(".flip");
+    if (flips || calm || !flip || !flip.animate) {
+      setFace("front");
+      celebrate(card.rarity);
+      return;
+    }
+    // 2D: in to the edge, faces swap while the card has no width, then out with an overshoot
+    turning.current = true;
+    const squeeze = flip.animate([{ transform: "scaleX(1)" }, { transform: "scaleX(0.02) scaleY(1.04)" }], { duration: 220, easing: "cubic-bezier(0.55, 0, 1, 0.45)", fill: "forwards" });
+    squeeze.onfinish = () => {
+      setFace("front");
+      celebrate(card.rarity);
+      requestAnimationFrame(() => {
+        const open = flip.animate(
+          [{ transform: "scaleX(0.02) scaleY(1.04)" }, { transform: "scaleX(1.08) scaleY(1.02)", offset: 0.6 }, { transform: "scaleX(1)" }],
+          { duration: 420, easing: "cubic-bezier(0.2, 0.9, 0.3, 1)" }
+        );
+        squeeze.cancel();
+        open.onfinish = () => (turning.current = false);
+      });
+    };
   }
 
   /** The secret rare's arrival: sparkle, a buzz, and foil out of both sides of the card. */
@@ -88,8 +109,6 @@ export function Reveal({ onDone, calm }: Props) {
       flying.current = false;
       setI(n);
       setFace(turns(n) ? "back" : "front");
-      // no flip on phones: the celebration fires once the card has settled in the top spot
-      if (!turns(n) && cards[n].rarity === "secret") window.setTimeout(() => celebrate("secret"), 280);
     };
     const el = top.current;
     if (calm || !el) return advance();
@@ -166,6 +185,7 @@ export function Reveal({ onDone, calm }: Props) {
     <div
       ref={stage}
       className="reveal"
+      data-flip={flips ? "3d" : "2d"}
       role="dialog"
       aria-modal="true"
       aria-label="The cards"
