@@ -3418,3 +3418,175 @@ textarea {
 .app {
   font-family: var(--font-text), system-ui, sans-serif;
 }
+
+/* ---------- The secret rare: hush, heartbeat, shockwave ---------- */
+/* the room goes quiet: everything but the stack dims while the throw slows and the back beats */
+.reveal-hush {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(50% 45% at 50% 48%, transparent 30%, rgba(6, 3, 10, 0.92) 80%);
+  opacity: 0;
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.reveal[data-hush] .reveal-hush {
+  opacity: 1;
+}
+.reveal[data-hush] .reveal-rays {
+  opacity: 0.25;
+}
+.reveal[data-hush] .reveal-bar,
+.reveal[data-hush] .reveal-actions {
+  opacity: 0.35;
+  transition: opacity 500ms;
+}
+/* each beat brightens the light behind the face-down card */
+.reveal[data-hush] .reveal-card[data-face="back"][data-rarity="secret"] .flip-back {
+  filter: drop-shadow(0 0 calc(20px + var(--beat, 0) * 50px) rgba(255, 200, 90, calc(0.5 + var(--beat, 0) * 0.5)));
+  transition: filter 180ms ease-out;
+}
+/* the payoff: one ring of light crosses the screen */
+.reveal-shock {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  z-index: 0;
+  width: 60vmax;
+  height: 60vmax;
+  margin: -30vmax 0 0 -30vmax;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 54%, rgba(255, 240, 210, 0.85) 60%, rgba(255, 170, 220, 0.4) 64%, transparent 70%);
+  animation: shock 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes shock {
+  from {
+    transform: scale(0.15);
+    opacity: 1;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+/* and the rays turn to rainbow foil once it is face up */
+.reveal[data-rarity="secret"][data-face="front"] .reveal-rays {
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(255, 214, 140, 0.26) 0deg 4deg,
+    rgba(255, 140, 220, 0.2) 4deg 8deg,
+    rgba(130, 220, 255, 0.2) 8deg 12deg,
+    transparent 12deg 18deg
+  );
+  animation: spin 14s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-shock {
+    display: none;
+  }
+  .reveal[data-hush] .reveal-card[data-face="back"][data-rarity="secret"] .flip-back {
+    transition: none;
+  }
+}
+
+/* ---------- Inspect controls, one system (impeccable audit + critique) ---------- */
+.inspect-close {
+  position: fixed;
+  top: calc(16px + env(safe-area-inset-top));
+  right: var(--gutter);
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(247, 239, 227, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(247, 239, 227, 0.2);
+  cursor: pointer;
+  transition: background 160ms;
+}
+.inspect-close:hover {
+  background: rgba(247, 239, 227, 0.16);
+}
+.inspect-close:focus-visible {
+  outline: 3px solid var(--lamp);
+  outline-offset: 3px;
+}
+.inspect-copy .inspect-count {
+  min-width: 0;
+  margin: 0 0 10px;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+/* back, the ask, forward: one shape family, aligned to the panel's edges */
+.inspect-foot {
+  display: grid;
+  grid-template-columns: 52px 1fr 52px;
+  align-items: center;
+  gap: 10px;
+}
+.inspect-foot .inspect-step {
+  width: 52px;
+  padding: 0;
+}
+.inspect-foot .inspect-email {
+  width: 100%;
+}
+/* desktop: the text panel is the card's height, so the row never moves between cards */
+@media (min-width: 861px) {
+  .inspect-panel {
+    align-items: stretch;
+  }
+  .inspect-text {
+    height: min(calc(min(420px, 38vw) * 88 / 63), calc(100svh - 48px));
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+  }
+  .inspect-copy {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 6px;
+  }
+  .inspect-foot {
+    position: static;
+    margin: 16px -28px -24px;
+    padding: 16px 28px 24px;
+    border-radius: 0 0 18px 18px;
+    box-shadow: inset 0 1px 0 var(--rule);
+  }
+}
+/* phones: a slim bar pinned to the bottom edge */
+@media (max-width: 860px) {
+  .inspect-foot {
+    grid-template-columns: 52px 1fr 52px;
+    gap: 10px;
+    padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+    border-radius: 0;
+    background: var(--ground);
+    box-shadow: inset 0 1px 0 var(--rule);
+  }
+  .inspect-foot .inspect-email {
+    grid-column: auto;
+    order: 0;
+  }
+  .inspect {
+    padding-top: calc(72px + env(safe-area-inset-top));
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+}
+@media (min-width: 600px) and (max-width: 860px) {
+  .inspect-foot {
+    padding-inline: max(var(--gutter), calc((100vw - 560px) / 2));
+  }
+}

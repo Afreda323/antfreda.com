@@ -34,7 +34,7 @@ export function Inspect({ index, onClose, onStep }: { index: number; onClose: ()
     if (e.key === "ArrowRight") return step(1);
     if (e.key === "ArrowLeft") return step(-1);
     if (e.key === "Tab") {
-      const f = [...(root.current?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") ?? [])];
+      const f = [...(root.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled]):not([tabindex="-1"])') ?? [])];
       if (!f.length) return;
       if (e.shiftKey && document.activeElement === f[0]) {
         e.preventDefault();
@@ -58,6 +58,12 @@ export function Inspect({ index, onClose, onStep }: { index: number; onClose: ()
   return (
     <div className="inspect" role="dialog" aria-modal="true" aria-labelledby="inspect-title" ref={root} tabIndex={-1}>
       <button type="button" className="inspect-backdrop" aria-label="Close" tabIndex={-1} onClick={onClose} />
+      {/* Close sits where people look for it: the top-right corner, first in the focus order */}
+      <button ref={closeBtn} type="button" className="inspect-close" onClick={onClose} aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden>
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
       <div className="inspect-panel">
         <div className="inspect-card" key={card.id}>
           {card.rarity === "secret" ? (
@@ -73,31 +79,26 @@ export function Inspect({ index, onClose, onStep }: { index: number; onClose: ()
             <span id="inspect-title" className="sr-only">
               {card.name} card
             </span>
+            <p className="inspect-count" aria-live="polite">
+              Card {index + 1} of {TOTAL}
+            </p>
             <CardText id={card.id} headingLevel={2} />
           </div>
-          {/* one footer, always in reach: sticky in the panel on desktop, pinned to the screen on phones */}
+          {/* one row, in the order it reads: back, the ask, forward */}
           <div className="inspect-foot">
-            <a className="btn inspect-email" href={MAILTO}>
-              Email me
-            </a>
-            <button ref={closeBtn} type="button" className="btn btn-quiet inspect-close" onClick={onClose}>
-              Close
-            </button>
-          <div className="inspect-nav">
-            <button type="button" className="btn btn-quiet" onClick={() => step(-1)} aria-label="Previous card">
+            <button type="button" className="btn btn-quiet inspect-step" onClick={() => step(-1)} aria-label="Previous card">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <path d="M15 5l-7 7 7 7" />
               </svg>
             </button>
-            <span className="inspect-count" aria-live="polite">
-              {index + 1} / {TOTAL}
-            </span>
-            <button type="button" className="btn btn-quiet" onClick={() => step(1)} aria-label="Next card">
+            <a className="btn inspect-email" href={MAILTO}>
+              Email me
+            </a>
+            <button type="button" className="btn btn-quiet inspect-step" onClick={() => step(1)} aria-label="Next card">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <path d="M9 5l7 7-7 7" />
               </svg>
             </button>
-          </div>
           </div>
         </div>
       </div>

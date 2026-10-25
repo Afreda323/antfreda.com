@@ -4,7 +4,7 @@ import { cards, TOTAL } from "@/content/cards";
 import { CardBack, CardFace, rarityName } from "./Card";
 import { Holo } from "./Holo";
 import { burst } from "@/lib/shards";
-import { buzz, sparkle, whoosh } from "@/lib/sfx";
+import { buzz, sparkle, thump, whoosh } from "@/lib/sfx";
 
 type Props = { onDone: () => void; calm: boolean };
 
@@ -39,12 +39,37 @@ export function Reveal({ onDone, calm }: Props) {
     stage.current?.focus();
   }, []);
 
-  // rares turn over on their own after a beat; the secret rare gets the build-up
+  // the secret rare's build-up: the room goes quiet and the face-down card beats like a heart, faster and
+  // faster, then turns. Reduced motion keeps the hush and the turn, without the pulse.
+  const [hush, setHush] = React.useState(false);
+  const [shock, setShock] = React.useState(0);
   React.useEffect(() => {
     if (face === "front") return;
     const secret = card.rarity === "secret";
-    const t = window.setTimeout(() => turn(), calm ? 0 : secret ? 1100 : 520);
-    return () => window.clearTimeout(t);
+    if (!secret || calm) {
+      const t = window.setTimeout(() => turn(), calm ? 600 : 520);
+      return () => window.clearTimeout(t);
+    }
+    const beats = [250, 900, 1420, 1840, 2160, 2400, 2580];
+    const timers = beats.map((at, k) =>
+      window.setTimeout(() => {
+        // pulse the card inside the face, never the face itself: its own transform carries the 3D turn
+        const back = top.current?.querySelector<HTMLElement>(".flip-back .card-back");
+        const s = 0.025 + k * 0.006;
+        back?.animate(
+          [{ transform: "scale(1)" }, { transform: `scale(${1 + s})`, offset: 0.18 }, { transform: "scale(1)", offset: 0.45 }, { transform: `scale(${1 + s * 0.6})`, offset: 0.62 }, { transform: "scale(1)" }],
+          { duration: 420, easing: "cubic-bezier(0.16, 1, 0.3, 1)" }
+        );
+        stage.current?.style.setProperty("--beat", String(0.35 + k * 0.1));
+        thump(0.6 + k * 0.07);
+        buzz([16, 120, 12]);
+      }, at)
+    );
+    const go = window.setTimeout(() => turn(), 2820);
+    return () => {
+      timers.forEach(window.clearTimeout);
+      window.clearTimeout(go);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i, face]);
 
@@ -80,6 +105,16 @@ export function Reveal({ onDone, calm }: Props) {
     const el = top.current;
     const r = el?.getBoundingClientRect();
     if (rarity === "secret") {
+      // the room lights back up in one wave: a ring of light, rainbow rays, foil falling from the top
+      setHush(false);
+      setShock((n) => n + 1);
+      stage.current?.style.setProperty("--beat", "0");
+      for (let k = 0; k < 16; k++) {
+        window.setTimeout(() => {
+          const x = window.innerWidth * (0.08 + Math.random() * 0.84);
+          burst(x, -10, { count: 7, spread: 0.7, power: 0.45, up: -0.4, dir: Math.PI / 2, hues: [268, 186, 44, 330] });
+        }, 120 + k * 130);
+      }
       sparkle("secret");
       buzz([30, 60, 30, 60, 120]);
       if (r) {
@@ -109,15 +144,20 @@ export function Reveal({ onDone, calm }: Props) {
       flying.current = false;
       setI(n);
       setFace(turns(n) ? "back" : "front");
+      if (cards[n].rarity === "secret") setHush(true);
     };
     const el = top.current;
     if (calm || !el) return advance();
     whoosh();
     flying.current = true;
-    el.style.transition = "transform 340ms cubic-bezier(0.4, 0, 1, 1), opacity 340ms ease-in";
+    // the throw before the secret rare goes slow: time stretches as the room goes quiet
+    const slow = cards[n].rarity === "secret";
+    if (slow) setHush(true);
+    const ms = slow ? 900 : 340;
+    el.style.transition = `transform ${ms}ms cubic-bezier(0.2, 0.7, 0.4, 1), opacity ${ms}ms ease-in`;
     el.style.transform = `translate(${dir * 125}vw, -14vh) rotate(${dir * 36}deg)`;
     el.style.opacity = "0.9";
-    window.setTimeout(advance, 330);
+    window.setTimeout(advance, ms - 10);
   }
 
   const onKey = (e: React.KeyboardEvent) => {
@@ -186,6 +226,7 @@ export function Reveal({ onDone, calm }: Props) {
       ref={stage}
       className="reveal"
       data-flip={flips ? "3d" : "2d"}
+      data-hush={hush || undefined}
       role="dialog"
       aria-modal="true"
       aria-label="The cards"
@@ -197,6 +238,8 @@ export function Reveal({ onDone, calm }: Props) {
       {/* the backdrop lands first and covers the hero; the bar, stack and hint come in after it */}
       <div className="reveal-bg" aria-hidden />
       <div className="reveal-rays" aria-hidden />
+      <div className="reveal-hush" aria-hidden />
+      {shock ? <div key={shock} className="reveal-shock" aria-hidden /> : null}
       <div className="reveal-bar">
         <p className="reveal-count" aria-live="polite">
           Card {i + 1} of {TOTAL}

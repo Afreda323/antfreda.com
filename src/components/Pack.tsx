@@ -41,7 +41,7 @@ export function Pack({ onOpened, calm, opened, onReset, gl = false }: Props) {
   }, []);
   const [progress, setProgress] = React.useState(0);
   const [phase, setPhase] = React.useState<"sealed" | "tearing" | "ripped" | "gone">("sealed");
-  const drag = React.useRef<{ x: number; t: number; lastX: number; lastT: number; moved: number; dir: 1 | -1 } | null>(null);
+  const drag = React.useRef<{ x: number; y: number; t: number; lastX: number; lastT: number; moved: number; dir: 1 | -1 } | null>(null);
   const lastTick = React.useRef(0);
   const auto = React.useRef(0);
 
@@ -125,7 +125,7 @@ export function Pack({ onOpened, calm, opened, onReset, gl = false }: Props) {
   const onDown = (e: React.PointerEvent) => {
     if (phase !== "sealed") return;
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-    drag.current = { x: e.clientX, t: performance.now(), lastX: e.clientX, lastT: performance.now(), moved: 0, dir: 1 };
+    drag.current = { x: e.clientX, y: e.clientY, t: performance.now(), lastX: e.clientX, lastT: performance.now(), moved: 0, dir: 1 };
   };
   const onMove = (e: React.PointerEvent) => {
     onHover(e);
@@ -159,7 +159,14 @@ export function Pack({ onOpened, calm, opened, onReset, gl = false }: Props) {
     const d = drag.current;
     drag.current = null;
     if (!d || phase === "ripped" || phase === "gone") return;
-    if (d.moved < 6) return autoRip();
+    // the browser took the gesture (a vertical scroll): reset, never rip
+    if (e.type === "pointercancel") {
+      setProgress(0);
+      setPhase("sealed");
+      return;
+    }
+    // a tap rips; a vertical drag that never became a tear does nothing
+    if (d.moved < 6) return Math.abs(e.clientY - d.y) < 10 ? autoRip() : undefined;
     const v = Math.abs(e.clientX - d.lastX) / Math.max(1, performance.now() - d.lastT);
     if (progress > 0.42 || v > 0.9) {
       // finish the tear from wherever the hand let go

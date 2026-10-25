@@ -137,6 +137,26 @@ export function sparkle(level: "rare" | "secret") {
   });
 }
 
+/** One heartbeat: a low, soft double thump under the secret rare's build-up. */
+export function thump(strength = 1) {
+  const a = audio();
+  if (!a) return;
+  const t = a.currentTime;
+  [0, 0.16].forEach((off, k) => {
+    const o = a.createOscillator();
+    o.type = "sine";
+    o.frequency.setValueAtTime(k ? 62 : 70, t + off);
+    o.frequency.exponentialRampToValueAtTime(38, t + off + 0.18);
+    const g = a.createGain();
+    g.gain.setValueAtTime(0.0001, t + off);
+    g.gain.exponentialRampToValueAtTime((k ? 0.22 : 0.32) * strength, t + off + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + off + 0.22);
+    o.connect(g).connect(a.destination);
+    o.start(t + off);
+    o.stop(t + off + 0.25);
+  });
+}
+
 /** Phones that support it get a kick on the rip and a buzz on the secret rare. */
 export function buzz(pattern: number | number[]) {
   try {
