@@ -3393,3 +3393,28 @@ html.gl-wait .pack:not(.is-gl)::after {
 .reveal[data-flip="2d"] .reveal-card[data-face="front"] .flip-back {
   visibility: hidden;
 }
+
+/* ---------- impeccable critique: P0 + font fallback ---------- */
+/* buttons don't inherit fonts by default; the tiles, set cards and every <button> fell back to Arial */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+/* the dock is also a .btn, whose position: relative (the foil glint) outranked position: fixed */
+@media (max-width: 860px) {
+  .dock.btn {
+    position: fixed;
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    z-index: 30;
+  }
+}
+/* the font variables live on .app (next/font), so the text face is set where they resolve */
+.app {
+  font-family: var(--font-text), system-ui, sans-serif;
+}
