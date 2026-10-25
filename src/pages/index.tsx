@@ -290,6 +290,13 @@ export default function Home() {
               onReset={ripAnother}
             />
           </div>
+          {/* print only: the pack (which carries the h1) doesn't print, so the page names itself on paper */}
+          <div className="print-head" aria-hidden>
+            <p className="print-name">{profile.name}</p>
+            <p className="print-title">
+              {profile.title} · Charlotte, NC · {profile.email} · {profile.linkedin.replace("https://www.", "")} · {profile.github.replace("https://", "")}
+            </p>
+          </div>
           <div className="opening-copy">
             <p className="opening-line">{profile.line}</p>
             {/* who, where now, and the AI proof, in the resume's own words */}
