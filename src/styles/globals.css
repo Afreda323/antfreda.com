@@ -3098,3 +3098,157 @@ html.gl-wait .pack:not(.is-gl)::after {
 .top-name {
   white-space: nowrap;
 }
+
+/* ---------- Header: never collides ---------- */
+/* a guaranteed gap; the name never shrinks; the hidden CTA takes no room until the header sticks */
+.top {
+  gap: 24px;
+}
+.top-name {
+  flex: none;
+}
+.top nav {
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+.top nav a {
+  white-space: nowrap;
+}
+.top:not([data-stuck]) .top-cta {
+  display: none;
+}
+/* tighter widths: Contact steps out first (the dock and the close band carry it), then the gaps tighten */
+@media (max-width: 1080px) {
+  .nav-contact {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .top nav {
+    gap: 12px;
+  }
+  .top-name {
+    font-size: 17px;
+  }
+}
+
+/* the tap-target rule above makes nav links inline-flex; these must still win */
+@media (max-width: 1080px) {
+  .top nav a.nav-contact {
+    display: none;
+  }
+}
+@media (max-width: 860px) {
+  .top .top-cta {
+    display: none !important;
+  }
+  /* the contact card sits centred over the copy, inside the band */
+  .close-card {
+    justify-self: center;
+    width: min(60vw, 240px);
+    transform: rotate(-4deg);
+    margin-top: 8px;
+  }
+}
+
+/* the inspect text panel is one width for every card, never sized by its content */
+.inspect-panel {
+  width: min(1004px, 100%);
+}
+.inspect-text {
+  width: 100%;
+}
+@media (max-width: 860px) {
+  .inspect-panel {
+    width: 100%;
+    max-width: 560px;
+  }
+}
+@media (max-width: 860px) {
+  /* a transform on the panel would make the pinned footer ride along with it until the entrance ends; fade only */
+  .inspect-panel {
+    animation: pull-fade 320ms ease-out;
+  }
+}
+@keyframes pull-fade {
+  from {
+    opacity: 0;
+  }
+}
+@media (max-width: 350px) {
+  .top nav {
+    gap: 8px;
+  }
+  .top-name {
+    font-size: 16px;
+  }
+  .top .sound {
+    width: 40px;
+  }
+}
+
+/* the dock slides up into place and back down out of the way, never a hard cut */
+@media (max-width: 860px) {
+  .dock,
+  .dock[data-hidden],
+  html.locked .dock {
+    display: inline-flex;
+  }
+  .dock {
+    transition:
+      transform 380ms var(--ease-out),
+      opacity 240ms ease-out,
+      visibility 0s linear 0s;
+  }
+  .dock[data-hidden],
+  html.locked .dock {
+    transform: translateY(calc(100% + 24px + env(safe-area-inset-bottom)));
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      transform 300ms cubic-bezier(0.4, 0, 1, 1),
+      opacity 200ms ease-in,
+      visibility 0s linear 300ms;
+  }
+}
+@media (max-width: 860px) and (prefers-reduced-motion: reduce) {
+  .dock,
+  .dock[data-hidden] {
+    transition: opacity 150ms linear, visibility 0s linear 150ms;
+    transform: none;
+  }
+}
+
+/* tiles carry a headline, not a paragraph */
+.tile-line {
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 1.08;
+  max-width: 16ch;
+}
+.tile-xl .tile-line {
+  font-size: clamp(2rem, 3.4vw, 3.1rem);
+  max-width: 12ch;
+}
+.tile-sq .tile-line {
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+}
+.tile-sub {
+  max-width: 40ch;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.4;
+  color: color-mix(in oklab, var(--on-art) 88%, transparent);
+  text-wrap: pretty;
+}
+.tile-xl .tile-line {
+  max-width: 14ch;
+}
+@media (max-width: 860px) {
+  /* the lead tile carries a headline and a line: it gets the height for both, with its art above */
+  .tile-xl {
+    grid-row: span 2;
+  }
+  .tile-xl .tile-line {
+    font-size: clamp(1.9rem, 8vw, 2.3rem);
+  }
+}

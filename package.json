@@ -11,7 +11,7 @@
   "dependencies": {
     "@react-three/drei": "10.7.5",
     "@react-three/fiber": "9.3.0",
-    "next": "15.5.15",
+    "next": "15.5.28",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "three": "0.179.1"
@@ -21,7 +21,10 @@
     "@types/react": "19.1.10",
     "@types/react-dom": "19.1.7",
     "@types/three": "0.179.0",
-    "sharp": "^0.34.3",
+    "sharp": "^0.35.5",
     "typescript": "5.9.2"
+  },
+  "overrides": {
+    "postcss": "^8.5.31"
   }
 }

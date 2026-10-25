@@ -30,12 +30,32 @@ export function Highlights({ onOpen }: { onOpen: (i: number) => void }) {
   const yum = job("yum");
   const docn = job("digitalocean");
 
-  // the agentic through-line leads; every line is a quote, every tile opens the card it came from
+  // headlines lead with scope and leadership; a short line under the big two. The full bullets are one tap away in each card.
+  // every tile has its own art
+  const v1 = job("1v1me");
   const tiles = [
-    { id: "digitalocean", size: "xl", art: "/art/digitalocean.webp", pos: "50% 40%", line: docn.bullets[1], meta: `${docn.company} · ${docn.role} · ${docn.dates}` },
-    { id: "yum", size: "wide", art: "/art/yum.webp", pos: "50% 38%", line: yum.bullets[4], meta: `${yum.company} · ${yum.role} · ${yum.dates}` },
-    { id: "yum", size: "sq", art: "/art/yum.webp", pos: "22% 48%", line: yum.bullets[2].split(". ")[1] ?? yum.bullets[2], meta: yum.company },
-    { id: "digitalocean", size: "sq", art: "/art/digitalocean.webp", pos: "95% 85%", line: docn.bullets[2], meta: docn.company },
+    {
+      id: "digitalocean",
+      size: "xl",
+      art: "/art/digitalocean.webp",
+      pos: "50% 40%",
+      title: "Tech lead on the GenAI agent platform",
+      sub: "The whole AI platform at DigitalOcean: agents, function calling, retrieval and evaluations.",
+      line: docn.bullets[0],
+      meta: `${docn.company} · ${docn.dates}`,
+    },
+    {
+      id: "yum",
+      size: "wide",
+      art: "/art/yum.webp",
+      pos: "50% 38%",
+      title: "Leading a zero-to-one platform",
+      sub: "Federated GraphQL inventory platform at Yum Brands, headed for stores in 2027.",
+      line: yum.bullets[0],
+      meta: `${yum.company} · ${yum.dates}`,
+    },
+    { id: "yum", size: "sq", art: "/art/yum-kitchen.webp", pos: "50% 50%", title: "Drove AI across the team", line: yum.bullets[1], meta: yum.company },
+    { id: "1v1me", size: "sq", art: "/art/1v1me.webp", pos: "50% 45%", title: "Real-time match viewing", line: v1.bullets[0], meta: v1.company },
   ];
   return (
     <section id="highlights" className="highlights" aria-labelledby="highlights-title">
@@ -49,7 +69,8 @@ export function Highlights({ onOpen }: { onOpen: (i: number) => void }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={t.art} alt="" loading="lazy" decoding="async" style={{ objectPosition: t.pos }} />
               <span className="tile-text">
-                <span className="tile-line">{t.line}</span>
+                <span className="tile-line">{t.title}</span>
+                {"sub" in t && t.sub ? <span className="tile-sub">{t.sub}</span> : null}
                 <span className="tile-meta">
                   {t.meta.split(" · ").map((part, k) => (
                     <span key={part}>

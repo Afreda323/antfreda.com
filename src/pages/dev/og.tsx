@@ -10,7 +10,12 @@ import { CardFace } from "@/components/Card";
  */
 export const getStaticProps: GetStaticProps = async () => (process.env.NODE_ENV === "production" ? { notFound: true } : { props: {} });
 
-const fan = ["digitalocean", "yum", "contact"].map((id) => ({ card: cards.find((c) => c.id === id)!, index: cards.findIndex((c) => c.id === id) }));
+// left to right behind the pack; the contact card sits lowest, its details tucked under the others
+const fan = [
+  { id: "contact", k: 0, z: 1 },
+  { id: "digitalocean", k: 1, z: 2 },
+  { id: "yum", k: 2, z: 3 },
+].map((f) => ({ ...f, card: cards.find((c) => c.id === f.id)!, index: cards.findIndex((c) => c.id === f.id) }));
 
 export default function Og() {
   return (
@@ -26,16 +31,14 @@ export default function Og() {
           <p className="og-line">{profile.line}</p>
         </div>
         <div className="og-stage">
-          {fan.map(({ card, index }, k) => (
-            <div key={card.id} className="og-card" style={{ ["--k" as string]: k }}>
+          {fan.map(({ card, index, k, z }) => (
+            <div key={card.id} className="og-card" style={{ ["--k" as string]: k, zIndex: z }}>
               <CardFace card={card} index={index} eager />
             </div>
           ))}
-          <div className="og-pack">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/art/pack.webp" alt="" />
-            <span className="og-pack-name">{profile.name}</span>
-          </div>
+          {/* the live 3D pack, rendered from the site (public/og-pack.webp) */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="og-pack" src="/og-pack.webp" alt="" />
         </div>
       </div>
       <style jsx global>{`
@@ -93,43 +96,21 @@ export default function Og() {
         }
         .og-card {
           position: absolute;
-          top: 120px;
-          left: calc(150px + var(--k) * 120px);
-          width: 250px;
+          top: 110px;
+          left: calc(250px + var(--k) * 105px);
+          width: 240px;
           container-type: inline-size;
           transform: rotate(calc(-14deg + var(--k) * 14deg)) translateY(calc(var(--k) * -8px));
           transform-origin: 50% 120%;
         }
         .og-pack {
           position: absolute;
-          left: 40px;
-          top: 70px;
-          width: 300px;
-          height: 470px;
-          border-radius: 10px;
-          overflow: hidden;
-          transform: rotate(-8deg);
-          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-        }
-        .og-pack img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        .og-pack-name {
-          position: absolute;
-          top: 52px;
-          left: 0;
-          right: 0;
-          text-align: center;
-          font-family: var(--font-display);
-          font-weight: 800;
-          font-variation-settings: "wdth" 80;
-          font-size: 40px;
-          letter-spacing: -0.03em;
-          color: #fff;
-          -webkit-text-stroke: 0.04em #2a1240;
-          paint-order: stroke fill;
+          z-index: 5;
+          left: 10px;
+          top: 34px;
+          width: 380px;
+          height: auto;
+          filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.6)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
         }
       `}</style>
     </>
